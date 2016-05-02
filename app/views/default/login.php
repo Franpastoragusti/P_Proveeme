@@ -25,7 +25,7 @@
 					<label for="username"></label>
 						<input placeholder="Nombre de usuario" type="text" name="username" id="username" value="">
 					<label for="password"></label>
-						<input placeholder="Contraseña" type="password" name="password" id="password"  value="">
+						<input placeholder="Contrasesña" type="password" name="password" id="password"  value="">
 					<input class="myButton" type="submit" id="enviar" value="Entrar"></input>
 				</form>
 				<p>Si aun no tienes una cuenta, haz click <a href="">AQUÍ</a></p>
