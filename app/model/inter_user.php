@@ -1,8 +1,4 @@
 <?php
 interface Iuser {
- public function login($nombre,$pass){
- 	iuhiuhiuj
- } 
- public function modificarDatos(){
- }
+ public function login($nombre,$pass);
 ?>
