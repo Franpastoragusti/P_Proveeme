@@ -24,50 +24,59 @@
 				        	<input type="radio" name="tipoUsuario" value="Proveedor" class="radioBut">
 				        	</label>
 				    </fieldset>
-				    <input type="submit" value="enviar">
 			    </div>
 				<div class="lateral-derecha">
 				    <fieldset>
-				       <legend> Datos Empresa</legend>
+				       <legend>Datos Empresa</legend>
 					          	<label>Nombre Empresa
 					          		<input type="text" id="nombreEmp" required/>
 					          	</label>
 					          	<label>CIF:
 					          		<input type="text" required />
 					          	</label>
-					          	<label>Telefono
+					          	<label>Teléfono
 					          		<input type="number" id="telefono" required/>
 					          	</label>
 					          	<label>Email:
 					          		<input type="email" id="email" required/>
 					          	</label>
+						
+					</fieldset>
+				</div>
+				<div>
 						<fieldset>
 						<legend> Datos Empresa:</legend>
-				        	<label>Provincia:
-					      		<select name="Provincia">
-							        <option selected="selected">Valencia</option>
-							        <option>Castellón</option>
-							        <option>Alicante</option>
-					      		</select>
-				        	</label>
-				        	<label>Localidad:
-				        		<input type="text" id="localidad" required/>
-				        	</label>
-				        	<label>Código postal:
-				        		<input type="text" id="CP" required/>
-				        	</label> 
-				        	<label>Calle
-				        		<input type="text" required/>
-				        	</label>
-				        	<label>Nº
-				        		<input type="number" id="numero" required/>
-				        	</label>
-				    	<label >Descripción
-					    	<textarea rows="10" cols="50"></textarea>  
-					    </label>  
+				        	<div class="lateral-izquierda">
+					        	<label>Provincia:
+						      		<select name="Provincia">
+								        <option selected="selected">Valencia</option>
+								        <option>Castellón</option>
+								        <option>Alicante</option>
+						      		</select>
+					        	</label>
+					        	<label>Localidad:
+					        		<input type="text" id="localidad" required/>
+					        	</label>
+					        	<label>Código postal:
+					        		<input type="text" id="CP" required/>
+					        	</label>
+					        	<label>Calle
+					        		<input type="text" required/>
+					        	</label>
+					        </div>
+					        <div class="lateral-derecha">
+					        	<label>Nº
+					        		<input type="number" id="numero" required/>
+					        	</label>
+						    	<label >Descripción
+							    	<textarea rows="15" cols="60"></textarea>  
+							    </label>  
+						    </div>
 				    </fieldset>
-				</fieldset>
-			</div>
+				</div>
+		<div id="bot">
+			<input class="boton"type="submit" value="enviar">
+		</div>
 		</form>
 	</div>
 </body>

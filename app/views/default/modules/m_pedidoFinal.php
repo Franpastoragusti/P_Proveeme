@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-		<h3>Pedido **/**/** FINAL </h3>
+		<h3>Pedido ##FECHA## FINAL </h3>
 		
 
 		<div class="datagrid"><table>
@@ -36,7 +36,6 @@
 		</tbody>
 </table>
 </div>
-<input id="botonAtras" type="button" value="Atrás" name="Atrás" onclick= "self.location.href = '../page.php'" />
-				
+		
 </body>
 </html>

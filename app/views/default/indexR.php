@@ -12,11 +12,11 @@
 	</header>
 	<main id="main">
 		<section>
-				<img id="logoRes" src="images/laCasona.jpg">
+				<img id="logoRes" src="#LOGO#">
 				<ul>
-	    			<li><a href="indexP.php?action=#">Lista de Pedidos</a></li>
-	    			<li><a href="indexP.php?action=#">Mis de Proveedores</a></li>
-	    			<li><a href="indexP.php?action=#">Modificar datos de la cuenta</a></li>
+	    			<li><a href="indexP.php?action=RMPedidos">Lista de Pedidos</a></li>
+	    			<li><a href="indexP.php?action=RLProveedores">Lista de Proveedores</a></li>
+	    			<li><a href="indexP.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
 				</ul>
 		</section>
 	</main>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<meta charset="UTF-8">	
 	<title>Proveedor | MenuPrincipal</title>
 </head>
@@ -12,12 +12,12 @@
 	</header>
 	<main id="main">
 		<section>
-				<img id="logo" src="images/logo_heineken.png">
+				<img id="logo" src="#LOGO#">
 				<ul>
-	    			<li><a href="indexP.php?action=#">Lista de Pedidos</a></li>
-	    			<li><a href="indexP.php?action=#">Mis Restaurantes</a></li>
-	    			<li><a href="indexP.php?action=#">Lista de Productos</a></li>
-	    			<li><a href="indexP.php?action=#">Modificar datos de la cuenta</a></li>
+	    			<li><a href="indexP.php?action=PLPedido">Lista de Pedidos</a></li>
+	    			<li><a href="indexP.php?action=PMRestaurantes">Mis Restaurantes</a></li>
+	    			<li><a href="indexP.php?action=PLProductos">Lista de Productos</a></li>
+	    			<li><a href="indexP.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
 				</ul>
 		</section>
 	</main>

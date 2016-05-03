@@ -20,7 +20,7 @@
 				<p>Chanante ipsum dolor sit amet, ullamco pepino en la mano tempor ad one more time. Saepe cabeza de viejo cuerpo de joven ullamco to sueltecico exercitation, tempor et ullamco nisi ut tontiploster, ut ea estoy fatal de lo mío. Ut adipisicing minim sed elit eiusmod fresquete, gaticos.Chanante ipsum dolor sit amet, ullamco pepino en la mano tempor ad one more time. Saepe cabeza de viejo cuerpo de joven ullamco to sueltecico exercitation, tempor et ullamco nisi ut tontiploster, ut.</p>
 			</div>
 			<div class="lateral-derecha">
-				<form method="POST" action="">
+				<form method="POST" action="../../controller/decisionPoR.php">
 					<h3>Introduce tus datos</h3>
 					<label for="username"></label>
 						<input placeholder="Nombre de usuario" type="text" name="username" id="username" value="">

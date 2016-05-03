@@ -8,17 +8,22 @@
 </head>
 <body>
 
-		<h3>Lista de Proveedores</h3>
-		<p>Sector : 
+	<h3>Lista de Proveedores</h3>
+	<form method="GET" action="">
+		<label>Sector:
 			<select class="selectSector">
-			  <option value="Valor1">Valor1</option>
-			  <option value="Valor2">Valor2</option>
-			  <option value="Valor3">Valor3</option>
-			  <option value="Valor4">Valor4</option>
+				<option value="Carnico">Cárnico</option>
+				<option value="Pescateria">Pescatería</option>
+				<option value="Lacteo">Lácteo</option>
+				<option value="Bebida">Bebida</option>
+				<option value="Repostería">Repostería</option>
 			</select>
-		</p>
+		</label>
+		<!--Tiene que hacer la seleccion y recargarse sin tener que dar submit-->
+	</form>
 
-		<div class="datagrid"><table>
+	<div class="datagrid">
+		<table>
 			<thead>
 				<tr>
 					<th>#header1</th>
@@ -36,8 +41,8 @@
 					<td>datos</td>
 					<td>datos</td>
 				</tr>
-		</tbody>
-</table>
-</div>			
+			</tbody>
+		</table>
+	</div>			
 </body>
 </html>

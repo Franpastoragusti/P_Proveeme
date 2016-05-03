@@ -8,34 +8,37 @@
 </head>
 <title>Proveedor | Tabla Datos Restaurante</title>
 	<body class="formEmergente">
-		<form>
+		<form method="POST" action="">
 			<fieldset>
-			    <legend> Nombre Restaurante</legend> 
-			       <label class="inlineBlock">Email: <input type="email" id="email" required/></label>
-			       <label class="inlineBlock">Telefono <input type="number" id="telefono" required/></label>
-				<fieldset>
-							
+			    <legend> #NOMBREEMPRESA#</legend> 
+			       <label class="inlineBlock">Email: 
+			       		<input type="email" class="anchocampo" name="email" required/>
+			       </label>
+			       <label class="inlineBlock">Telefono 
+			     		<input type="text" class="anchocampo" name="telefono" required/>
+			       </label>
+				<fieldset>	
 			        <legend> Dirección</legend>
 			        <div class="lateral-izquierda">
 			        	<label for="Provincia">Provincia</label>
-				        <select name="Provincia">
+				        <select name="Provincia" class="anchocampo">
 							<option selected="selected">Valencia</option>
 							<option>Castellón</option>
 							<option>Alicante</option>
 						</select>
 						<label>Localidad 
-						   	<input type="text" id="localidad" required/>
+						   	<input type="text" class="anchocampo" name="localidad" required/>
 						</label>
 					</div>
 					<div class="lateral-derecha">
 	      				<label id="cp">CP: 
-	      					<input type="text" id="codigopostal" pattern="[0-9]{5}" required/>
+	      					<input type="text" class="anchocampo" name="codigopostal" pattern="[0-9]{5}" required/>
 	      				</label>
 						<label>Calle 
-							<input type="text" id="c" required/>
+							<input type="text" class="anchocampo"name="calle" required/>
 						</label>
 						<label>Nº: 
-							<input type="number" id="numeropuerta" />
+							<input type="number" name="numero" class="anchocampo" />
 						</label>
 					</div>
 				</fieldset>
@@ -44,6 +47,6 @@
 			    <input class="boton" type="submit" value="Enviar"/>
 			    <input type="button" value="Cancelar" class="boton" onclick= "self.location.href = '../page.php'" />
 			</div> 
-			</form>
+		</form>
 	</body>
 </html>
