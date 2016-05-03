@@ -7,7 +7,6 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Formulario de registro</h1>
 		<form method="POST" action="">
 			   <div class="lateral-izquierda">
 					<fieldset>

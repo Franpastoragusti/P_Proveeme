@@ -8,20 +8,19 @@
 </head>
 <body>
 <form>
+	<h4>Se enviará el pedido a los siguientes proveedores</h4>
+
 	<table class="tablaPedidoFinal">
-		<tr class="trTablaPedidoFinal">
-		  <td class="tdTablaPedidoFinal"><h3>Se enviará el pedido a los siguientes proveedores</h3></td>
-		</tr>
 		 
 		<tr class="trTablaPedidoFinal">
-		  <td class="tdTablaPedidoFinal">#Proveedor</td>
+		  <td class="tdTablaPedidoFinal">#Proveedor#</td>
 		  
 		</tr>
 		 
 		
 	</table>
-	<div id="botones">
-		<input class="boton" type="button" value="Enviar" id="enviar" name="enviar" onclick= "self.location.href = '../page.php'" />
+	<div>
+		<input id="boton2" type="button" value="Enviar" id="enviar" name="enviar" onclick= "self.location.href = '../page.php'"/>
 	</div>
 </form>			
 </body>

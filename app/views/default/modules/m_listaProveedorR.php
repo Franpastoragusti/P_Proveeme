@@ -38,8 +38,6 @@
 				</tr>
 		</tbody>
 </table>
-</div>
-<input id="botonAtras" type="button" value="Atrás" name="Atrás" onclick= "self.location.href = '../page.php'" />
-				
+</div>			
 </body>
 </html>

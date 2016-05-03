@@ -91,7 +91,7 @@ select{
 	
 .datagrid {
 	font: normal 12px/150% Arial, Helvetica, sans-serif; 
-	background: #fff; overflow: hidden; border: 2px solid #006699;
+	background: #fff; overflow: hidden; border: 2px solid rgb(64, 0, 9) 100% );
 	 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 .datagrid table td, .datagrid table th { 
@@ -99,12 +99,12 @@ select{
 }
 
 .datagrid table thead th {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
-	background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop rgba(161, 124, 107, 0.8) , color-stop(1, #00557F) );
+	background:-moz-linear-gradient( center top, rgba(161, 124, 107, 0.8) 5%, rgb(64, 0, 9) 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
-	background-color:#006699; color:#FFFFFF; 
+	background-color:rgba(161, 124, 107, 0.8); color:#FFFFFF; 
 	font-size: 15px; 
-	font-weight: bold; border-left: 1px solid #0070A8; 
+	font-weight: bold; border-left: 1px solid rgb(64, 0, 9); 
 	} 
 	.datagrid table thead th:first-child {
 		 border: none; 
@@ -112,12 +112,12 @@ select{
 		
 	.datagrid table tbody td { 
 		color: #00557F; 
-		border-left: 1px solid #E1EEF4;
+		border-left: 1px solid rgb(64, 0, 9);
 		font-size: 12px;font-weight: normal; 
 	}
 		
 	.datagrid table tbody .alt td { 
-		background: #E1EEf4; color: #00557F; 
+		background: #E1EEf4; color: rgba(0, 0, 107,1); 
 	}
 
 	.datagrid table tbody td:first-child { 
@@ -137,6 +137,7 @@ select{
 
 #botonAtras{
 	width: 20%;
+	padding: 0;
 	display: inline;
 }
 
@@ -148,6 +149,7 @@ select{
 *************************************************************/
 .selectSector{
 	width: 15%;
+	padding: 0px;
 }
 
 
@@ -173,24 +175,23 @@ h3{
 **********************************************************/
 
 .tablaPedidoFinal{
-	border-collapse: separate; 
+
 	font-family:Sans-Serif;
-    font-size: 12px;    
-    margin: 45px;    
-    width: 480px; 
-    text-align: left;    
- 
+    font-size: 12px;       
+    width: 400px; 
+    text-align: center;  
+    border:solid 1px;  
+ 	border-color: black;
+
 }
 
 
 .tdTablaPedidoFinal {   
- padding: 8px;     
- border-bottom: 1px solid #fff;
- color: #669; 
+ 	padding: 8px;     
+	border-color: #f8f2ec;
  
  
 }
-
-.trTablaPedidoFinal{
-	background: #e8edff;
+#boton2{
+	width: 300px;
 }
