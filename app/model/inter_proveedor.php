@@ -17,9 +17,5 @@ interface Iproveedor {
 	 
 	 public function modificarCuenta();
 
-	 
-	 public function cancelarPedido();
-
-	 
 }
 ?>
