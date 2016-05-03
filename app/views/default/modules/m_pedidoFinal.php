@@ -4,19 +4,12 @@
 	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="../css/f_CreacionCuenta.css">
 	<meta charset="UTF-8">	
-	<title>Proveedor | Lista de Proveedores</title>
+	<title>Proveedor | Pedido Final</title>
 </head>
 <body>
-
-		<h3>Lista de Proveedores</h3>
-		<p>Sector : 
-			<select class="selectSector">
-			  <option value="Valor1">Valor1</option>
-			  <option value="Valor2">Valor2</option>
-			  <option value="Valor3">Valor3</option>
-			  <option value="Valor4">Valor4</option>
-			</select>
-		</p>
+	
+		<h3>Pedido **/**/** FINAL </h3>
+		
 
 		<div class="datagrid"><table>
 			<thead>
@@ -26,10 +19,14 @@
 					<th>#header3</th>
 					<th>#header4</th>
 					<th>#header5</th>
+					<th>#header6</th>
+					<th>#header7</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="alt">
+					<td>datos</td>
+					<td>datos</td>
 					<td>datos</td>
 					<td>datos</td>
 					<td>datos</td>
