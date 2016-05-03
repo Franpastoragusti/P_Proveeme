@@ -9,12 +9,12 @@
 <body>
 	<header>
 		<img id="logoProveeme" src="images/logotipo2.png">
-		<h1>Proveedor</h1>
+		<h1>#TITLE#</h1>
 	</header>
 
 	<main id="main">
 			<section>
-					<img id="logo" src="images/logo_heineken.png">
+					<img id="logo" src="#LOGO#">
 					<BR>
 					#BOTONES#
 					<BR>
