@@ -4,12 +4,17 @@
 	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="../css/f_CreacionCuenta.css">
 	<meta charset="UTF-8">	
-	<title>Proveedor | Ver estado del pedido</title>
+	<title>Proveedor | Lista de Proveedores</title>
 </head>
 <body>
-	<h2>Datos del pedido</h2>
-		<p>Fecha Entrega: #FECHA#</p>
-		<p>Hora Entrega : #HORA# 
+	<h2>Nombre del Restaurante</h2>
+		<p>Lista de Proveedores</p>
+		<select class="selectSector">
+		  <option value="Valor1"></option>
+		  <option value="Valor2"></option>
+		  <option value="Valor3"></option>
+		  <option value="Valor4"></option>
+		</select>
 
 		<div class="datagrid"><table>
 			<thead>
@@ -19,12 +24,10 @@
 					<th>header3</th>
 					<th>header4</th>
 					<th>header5</th>
-					<th>header6</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="alt">
-					<td>datos</td>
 					<td>datos</td>
 					<td>datos</td>
 					<td>datos</td>
