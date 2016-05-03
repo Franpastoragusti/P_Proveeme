@@ -19,6 +19,5 @@ interface Irestaurante {
 	 public function modificarCuenta();
 
 	 
-	 public function verListaPedidos();
 	}
 ?>
