@@ -11,8 +11,8 @@ class Database {
 	{
 		if(!isset($this->conexion))
 		{
-		  $this->conexion = (mysql_connect("localhost","root","root")) or die(mysql_error());
-		  mysql_select_db("biblioteca",$this->conexion) or die(mysql_error());		  
+		  $this->conexion = (mysqli_connect("localhost","root","root", "biblioteca"));
+		  	  
 		}
 	}	
 
@@ -23,7 +23,7 @@ class Database {
 	*/
 	public function consulta($sql)
 	{
-		$resultado = mysql_query($sql,$this->conexion);
+		$resultado = mysqli_query($this->conexion,$sql);
   		return $resultado; 
 	}
 	
@@ -32,8 +32,8 @@ class Database {
 		OUTPUT:  cantidad de registros encontrados
 	*/
 	function numero_de_filas($result){
-		if(!is_resource($result)) return false;
-		return mysql_num_rows($result);
+		
+		return mysqli_num_rows($result);
 	}
 	
 	/*METODO PARA CREAR ARRAY DESDE UNA CONSULTA
@@ -41,14 +41,14 @@ class Database {
 		OUTPUT: array con los resultados de una consulta
 	*/
 	function fetch_assoc($result){
-		if(!is_resource($result)) return false;
-			return mysql_fetch_assoc($result);
+		
+			return mysqli_fetch_assoc($result);
 	}
 	
      /* METODO PARA CERRAR LA CONEXION A LA BASE DE DATOS */	
 	public function disconnect()
 	{
-		mysql_close();
+		mysqli_close($this->conexion);
 	}
 	
 }

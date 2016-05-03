@@ -24,9 +24,7 @@ interface Irestaurante {
 	 public function modificarCuenta(){
 
 	 }
-	 public function addPedido(){
-
-	 } 
+	 
 	 public function verListaPedidos(){
 	 }
 }
