@@ -98,8 +98,30 @@ class Proveedor extends Database implements Iproveedor{
 		}			
 	}
 	 
-	 public function modificarCuenta(){
-
+	 
+	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo,
+	 	$sector, $pedidoMinimo,
+	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
+	 	$provincia, $localidad, $calle, $numero, $cp){
+	 	//conexion a la base de datos
+		$this->conectar();	
+		$sentencia = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id;
+		UPDATE proveedores SET sector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor='$id';
+					UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id';
+					UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";
+		echo $sentencia;	
+	$query = $this->consulta("UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id='$id'; 
+		UPDATE proveedores SET sector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor='$id';
+							  UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id';
+							  UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'");
+ 	    $this->disconnect();					
+		if($query) // existe -> datos correctos
+		{		
+				return true;
+		}else
+		{	
+			return false;
+		}
 	 }
 
 	 
