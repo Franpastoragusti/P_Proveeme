@@ -9,11 +9,7 @@
 <body>
 	<header>
 		<img id="logoProveeme" src="images/logotipo2.png">
-<<<<<<< HEAD
 		<h1>#TIPOEMPRESA#</h1>
-=======
-		<h1>#TITLE#</h1>
->>>>>>> Fran
 	</header>
 
 	<main id="main">

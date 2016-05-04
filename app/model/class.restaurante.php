@@ -1,4 +1,7 @@
 <?php
+require_once "class.db.php";
+require_once "inter_restaurante.php";
+
 class Restaurante extends Database implements Irestaurante{
 
 	public function addPedido($idProd, $cantidad){
