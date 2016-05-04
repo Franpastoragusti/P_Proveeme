@@ -32,5 +32,8 @@ class User extends Database implements Iuser{
 			return false;
 		}
 	}
+	function decision($nombre){
+		//Consulta que devuelve si un usuario es restaurante o proveedor
+	}
 }
 ?>
