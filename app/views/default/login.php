@@ -28,7 +28,7 @@
 						<input placeholder="Contrasesña" type="password" name="password" id="password"  value="">
 					<input class="myButton" type="submit" id="enviar" value="Entrar"></input>
 				</form>
-				<p>Si aun no tienes una cuenta, haz click <a href="">AQUÍ</a></p>
+				<p>Si aun no tienes una cuenta, haz click <a href="modules/m_creacioncuenta.php">AQUÍ</a></p>
 				</div>
 		</div>
 		<div class="footer">

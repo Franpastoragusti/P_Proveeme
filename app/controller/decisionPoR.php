@@ -1,3 +1,7 @@
 <?php
-echo "adasdad";
+	if ($_POST["username"]) {
+		# code...
+	}
+
+
 ?>
