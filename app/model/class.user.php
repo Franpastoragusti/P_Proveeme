@@ -23,7 +23,7 @@ class User extends Database implements Iuser{
 		//conexion a la base de datos
 		$this->conectar();	
 		$sentencia = "INSERT INTO usuarios(id, nombreUsuario, pass, logo) 
-		VALUES ('$id', '$nombreUsuario', '$pass', '$logo')";	
+		VALUES ('$id', '$nombre', '$pass', '$logo')";	
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
 			return true;
