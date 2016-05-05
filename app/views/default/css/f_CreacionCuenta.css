@@ -90,13 +90,17 @@ select{
 .datagrid table { 
 	border-collapse: collapse; 
 	text-align: left; 
-	width: 100%; 
+	width: 97%; 
+	margin:0 auto;
 } 
 	
 .datagrid {
 	font: normal 12px/150% Arial, Helvetica, sans-serif; 
 	background: #fff; overflow: hidden; border: 2px solid rgb(64, 0, 9) 100% );
 	 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	 overflow: scroll;
+	 max-height: 700px;
+
 }
 .datagrid table td, .datagrid table th { 
 	padding: 3px 10px; 

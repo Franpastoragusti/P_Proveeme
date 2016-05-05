@@ -2,13 +2,14 @@
 <html>
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/index1.css">
+	<link rel="stylesheet" type="text/css" href="app/views/default/css/index1.css">
+	<link rel="stylesheet" type="text/css" href="app/views/default/css/f_CreacionCuenta.css">
 	<meta charset="UTF-8">	
 	<title>Proveedor | MenuPrincipal</title>
 </head>
 <body>
 	<header>
-		<img id="logoProveeme" src="images/logotipo2.png">
+		<img id="logoProveeme" src="app/views/default/images/logotipo2.png">
 		<h1>#TIPOEMPRESA#</h1>
 	</header>
 
@@ -18,7 +19,7 @@
 					<BR>
 					#BOTONES#
 					<BR>
-					<a href="inicio.php"><img id="casita" src="images/casita.png"></a>
+					<a href="inicio.php"><img id="casita" src="app/views/default/images/casita.png"></a>
 			</section>
 				
 			<div id="tabla">
