@@ -1,10 +1,10 @@
 <?php
 interface Irestaurante {
-	 public function addPedido();
+	 public function addPedido($idProd, $cantidad);
  
-	 public function verListaPedidos();
+	 public function verListaPedidos($idRestaurante);
 
-	 public function enviarPedido();
+	 public function enviarPedido($idPedido,$precioTotalPedido,$hora,$estado,$idRestaurante,$idProveedor,$idPedido);
  
 	 public function verListaProveedores();
 
@@ -16,7 +16,9 @@ interface Irestaurante {
 	 public function eliminarMisProveedores();
 		*/
  
-	 public function modificarCuenta();
+	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo, 
+	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
+	 	$provincia, $localidad, $calle, $numero, $cp);
 
 	 
 	}
