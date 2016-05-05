@@ -1,5 +1,5 @@
 <?php
 interface Ipedido {
-	 public function precioTotal(); 
+	 public function precioTotal($idPedido); 
 }
 ?>
