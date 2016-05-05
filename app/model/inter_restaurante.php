@@ -20,6 +20,9 @@ interface Irestaurante {
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
 	 	$provincia, $localidad, $calle, $numero, $cp);
 
+	 public function modificarCuenta();
+
+
 	 
 	}
 ?>
