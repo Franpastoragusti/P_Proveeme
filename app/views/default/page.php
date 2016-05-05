@@ -16,10 +16,11 @@
 	<main id="main">
 			<section>
 					<img id="logo" src="#LOGO#">
+					<div class="posBotones">
+						#BOTONES#
+					</div>
 					<BR>
-					#BOTONES#
-					<BR>
-					<a href="inicio.php"><img id="casita" src="app/views/default/images/casita.png"></a>
+					<a href="app/views/default/indexP.php"><img id="casita" src="app/views/default/images/casita.png"></a>
 			</section>
 				
 			<div id="tabla">
@@ -32,7 +33,7 @@
 	<footer>
 	<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 	</footer>
-				
+
 </body>
 </html>
 

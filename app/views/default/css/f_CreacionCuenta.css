@@ -9,6 +9,13 @@ h1{
 	color: #333745;
 	text-align: center;
 }
+h2{
+	font-size: 2vw;
+	color: #333745;
+	text-align: center;
+	font-family: 'Finger Paint', cursive;
+	margin: 1vw;
+}
 .container{
 	width: 99%;
 	height: 100%;
@@ -90,52 +97,84 @@ select{
 .datagrid table { 
 	border-collapse: collapse; 
 	text-align: left; 
-	width: 97%; 
+	width: 100%; 
 	margin:0 auto;
+
 } 
 	
 .datagrid {
 	font: normal 12px/150% Arial, Helvetica, sans-serif; 
-	background: #fff; overflow: hidden; border: 2px solid rgb(64, 0, 9) 100% );
-	 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-	 overflow: scroll;
-	 max-height: 700px;
+	background: #f8f2ec;
 
 }
 .datagrid table td, .datagrid table th { 
-	padding: 3px 10px; 
+	padding: 5px 10px; 
+
 }
 
 .datagrid table thead th {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop rgba(161, 124, 107, 0.8) , color-stop(1, #00557F) );
-	background:-moz-linear-gradient( center top, rgba(161, 124, 107, 0.8) 5%, rgb(64, 0, 9) 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
-	background-color:rgba(161, 124, 107, 0.8); color:#FFFFFF; 
-	font-size: 15px; 
-	font-weight: bold; border-left: 1px solid rgb(64, 0, 9); 
-	} 
-	.datagrid table thead th:first-child {
-		 border: none; 
-	}
-		
-	.datagrid table tbody td { 
-		color: #00557F; 
-		border-left: 1px solid rgb(64, 0, 9);
-		font-size: 12px;
-		font-weight: normal; 
-	}
-		
-	.datagrid table tbody .alt td { 
-		background: #E1EEf4; color: rgba(0, 0, 107,1); 
-	}
 
-	.datagrid table tbody td:first-child { 
-		border-left: none; 
+	
+	background-color:rgba(161, 124, 107, 0.8); 
+	color:#FFFFFF; 
+	font-size: 15px; 
+	font-weight: bold; 
+	border: 1px solid rgba(161, 124, 107, 0.8); 
+} 	
+.datagrid table tbody td { 
+	color: #00557F; 
+	font-size: 15px;
+
+}
+		
+.datagrid table tbody .alt td { 
+	background: #E1EEf4; 
+	color: rgba(0, 0, 107,1); 
 }
 
-.datagrid table tbody tr:last-child td {
- border-bottom: none;
+.datagrid table thead th:last-child { 
+padding-right: 10px;
+}
+
+.datagrid table tbody {
+
+	max-height:430px;
+	width: 100%;
+
+	
   }
+
+tbody {
+  display: block;
+  overflow-Y: scroll;
+}
+tr {
+  display: block;
+
+}
+
+th, td {
+  
+width:25%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*************************************************************

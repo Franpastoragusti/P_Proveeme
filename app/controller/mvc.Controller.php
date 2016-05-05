@@ -15,7 +15,7 @@ class mvc_controller {
 		$html = load_page('app/views/default/modules/m_misRestaurantes.php');
 			$pagina = replace_content('/\#TABLA\#/ms' ,$html , $pagina);
 			$pagina = replace_botones('/\#BOTONES\#/ms' ,'' , $pagina);
-			$pagina = replace_logo('/\#LOGO\#/ms' ,'http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/062012/label_beer.jpg?itok=6bP2lJu5' , $pagina);
+			$pagina = replace_logo('/\#LOGO\#/ms' ,'https://logodownload.org/wp-content/uploads/2014/08/logo-Heineken.png' , $pagina);
 		echo $pagina;
 	}
 
