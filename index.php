@@ -4,6 +4,6 @@
 
 $mvc = new mvc_controller();
 
-	$mvc->mostrarMisRestaurantes();	
+	$mvc->mostrarMisRestaurantes(5,1);	
 
 ?>

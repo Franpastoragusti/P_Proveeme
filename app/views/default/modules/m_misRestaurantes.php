@@ -4,50 +4,29 @@
 			<table>
 			<thead>
 				<tr>
-					<th>Restaurante</th>
-					<th>Dirección</th>
-					<th>Ciudad</th>
-					<th>Email</th>
-					<th>Contacto</th>
-					<th>Gasto Total</th>
+					<th class="tdPeque">Restaurante</th>
+					<th class="tdGrande">Dirección</th>
+					<th class="tdPeque">Ciudad</th>
+					<th class="tdGrande">Email</th>
+					<th class="tdPeque">Contacto</th>
+					<th class="tdPeque">Gasto Total</th>
 				</tr>
 			</thead>
 			<tbody>
 	<!--Mejorar el slide de las tablas al aumentar el contenido-->
-			<tr class="alt">
-					<td>Restaurante Vertical</td>
-					<td>C/Moncada 12 1</td>
-					<td>Valencia</td>
-					<td>ejemplo@gmail.com</td>
-					<td>6363636</td>
-					<td>2000</td>
-				</tr>
-				<tr class="alt">
-					<td>Restaurante Vertical</td>
-					<td>C/Moncada 12 1</td>
-					<td>Valencia</td>
-					<td>ejemplo@gmail.com</td>
-					<td>6363636</td>
-					<td>2000</td>
-				</tr>
+			 	<?php foreach ($tsArray as $data): ?>
 					<tr class="alt">
-					<td>Restaurante Vertical</td>
-					<td>C/Moncada 12 1</td>
-					<td>Valencia</td>
-					<td>ejemplo@gmail.com</td>
-					<td>6363636</td>
-					<td>2000</td>
-				</tr>
-					<tr class="alt">
-					<td>Restaurante Vertical</td>
-					<td>C/Moncada 12 1</td>
-					<td>Valencia</td>
-					<td>ejemplo@gmail.com</td>
-					<td>6363636</td>
-					<td>2000</td>
-				</tr>		
-
+						<td class="tdPeque"><?php echo $data['nombreEmpresa'];?></td>
+						<td class="tdGrande"><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
+						<td class="tdPeque"><?php echo $data['localidad'];?></td>
+						<td class="tdGrande"><?php echo $data['email'];?></td>
+						<td class="tdPeque"><?php echo $data['telefono'];?></td>
+						<td class="tdPeque"><?php echo $data['Gasto Total'];?></td>
+					</tr>
+				 <?php endforeach; ?>
 			</tbody>
-		</table>
+			
+			</table>
+
 		</div>
 	</div>

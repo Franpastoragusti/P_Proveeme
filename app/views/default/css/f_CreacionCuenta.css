@@ -96,9 +96,9 @@ select{
 ***********************************************************************************/
 .datagrid table { 
 	border-collapse: collapse; 
-	text-align: left; 
+	text-align: center; 
 	width: 100%; 
-	margin:0 auto;
+
 
 } 
 	
@@ -113,7 +113,6 @@ select{
 }
 
 .datagrid table thead th {
-
 	
 	background-color:rgba(161, 124, 107, 0.8); 
 	color:#FFFFFF; 
@@ -132,16 +131,10 @@ select{
 	color: rgba(0, 0, 107,1); 
 }
 
-.datagrid table thead th:last-child { 
-padding-right: 10px;
-}
 
 .datagrid table tbody {
-
 	max-height:430px;
 	width: 100%;
-
-	
   }
 
 tbody {
@@ -156,6 +149,12 @@ tr {
 th, td {
   
 width:25%;
+}
+.tdPeque{
+width:15%;
+}
+.tdGrande{
+width:30%;
 }
 
 

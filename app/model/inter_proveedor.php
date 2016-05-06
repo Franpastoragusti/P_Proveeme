@@ -12,7 +12,7 @@ interface Iproveedor {
 	 public function modificarEstadoPedido($idPedido, $estado);
 	 
 
-	 public function verMisRestaurantes($idRestaurante, $idProveedor);
+	 public function verMisRestaurantes($idProveedor);
 
 	 
 	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo,
