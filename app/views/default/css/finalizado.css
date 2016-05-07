@@ -1,0 +1,97 @@
+body{ 
+	position: relative;
+	background-repeat: no-repeat;
+	background: url("../images/fondo_proveeme.png");
+
+}
+.frestaurante{
+	background: url("../images/fondo_restaurante.png");
+	background-position: top;
+
+}
+.fproveedor{
+		background: url("../images/fondo_proveedores.png");
+		background-position: top;
+}
+
+
+
+
+
+
+
+h1{
+font-family: 'Cookie', cursive;
+font-size: 150px;
+
+color: rgba(185, 113, 60, 0.9);
+text-shadow:4px 2px 4px #212021;
+
+
+
+}
+.login{
+	padding: 60px;
+	padding-top: 20px;
+	background-color: rgba(255, 255, 255, 0.2);
+	margin-bottom: 170px;
+}
+header{
+	padding:35px;
+	text-align: center;
+}
+.btn{
+	margin-top: 60px;
+	margin-bottom: 40px;
+	background-color: rgba(158, 160, 158, 0.9);
+	border: none;
+	box-shadow: 2px 1px 2px #212021;
+	font-family: 'Cookie', cursive;
+	color: black;	
+	font-size: 25px;
+
+
+}
+
+.btn:hover{
+	background-color: rgba(92, 94, 90, 0.9);
+}
+li>a.btn{
+	margin-top: 10px;
+	margin-bottom: 30px;
+	color: black;	
+
+}
+#logo{
+	width:240px;
+	height: 200px;
+	-webkit-filter: grayscale(100%);
+}
+li>a.btn:hover{
+	background-color: rgba(92, 94, 90, 0.9);
+}
+a:hover{
+	color: #000;
+	text-decoration: none;
+}
+a{
+	color: #000;
+}
+a:visited{
+	color: #000;
+}
+
+footer{
+	position: absolute;
+	bottom: -70px;
+	left: 20px;
+}
+.menu{
+	margin-bottom: 83px;
+}
+
+.res{
+	position: absolute;
+	bottom: -110px;
+	left: 20px;
+}

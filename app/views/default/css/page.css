@@ -1,0 +1,120 @@
+body{ 
+	background: url("../images/fondo_proveeme.png");
+	position: relative;
+	background-repeat: no-repeat;
+}
+
+h1{
+font-family: 'Cookie', cursive;
+font-size: 150px;
+color: rgba(185, 113, 60, 0.9);
+text-shadow:4px 2px 4px #212021;
+margin-top: 0px;
+}
+
+header{
+	text-align: center;
+	position: unset;
+}
+.btn{
+	margin-top: 60px;
+	margin-bottom: 40px;
+	background-color: rgba(158, 160, 158, 0.9);
+	border: none;
+	box-shadow: 2px 1px 2px #212021;
+	font-family: 'Cookie', cursive;
+	color: black;	
+	font-size: 25px;
+	max-width: 300px;
+}
+
+#botones{
+	border:solid;
+}
+}
+
+.btn:hover{
+	background-color: rgba(92, 94, 90, 0.9);
+}
+li>a.btn{
+	margin-top: 10px;
+	margin-bottom: 30px;
+	color: black;	
+
+}
+#logo{
+	width:240px;
+	-webkit-filter: grayscale(100%);
+}
+
+
+
+
+li>a.btn:hover{
+	background-color: rgba(92, 94, 90, 0.9);
+}
+a:hover{
+	color: #000;
+	text-decoration: none;
+}
+a{
+	color: #000;
+}
+a:visited{
+	color: #000;
+}
+
+
+
+
+footer{
+padding: 20px;
+}
+.izquierda{
+	position: absolute;
+	left:-10%;
+}
+.derecha{
+	float:right;
+	padding: 5px;
+}
+thead, tbody, tr, td, th { display: block; }
+table {
+        width: 100%;
+    }
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+thead tr {
+   background-color: rgba(182, 179, 179, 0.9);
+   	font-family: 'Cookie', cursive;
+   	font-size: 25px;
+}
+thead th {
+    height: 40px;
+}
+tbody {
+    height: 500px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+tbody td, thead th {
+    width: 14%;
+    float: left;
+}
+.Grande{
+	width: 21%;
+}
+h4{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	margin-top: 0px;
+}
+#casa{
+	margin: 0 auto;
+	width: 100px;
+	margin-top: -40px;	
+}

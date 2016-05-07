@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='https://fonts.googleapis.com/css?family=Finger+Paint|Oregano' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/finalizado.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">	
 	<title>Proveeme | Distribucion de pedidos online</title>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<h1>Proveeme</h1>
-			<img id="logoProveeme" src="images/logotipo.png">
-		</div>
-		<div class="central">
-			<div class="lateral-izquierda">
-				<h2>¿Qué es Proveeme?</h2>
-				<p>Chanante ipsum dolor sit amet, ullamco pepino en la mano tempor ad one more time. Saepe cabeza de viejo cuerpo de joven ullamco to sueltecico exercitation, tempor et ullamco nisi ut tontiploster, ut ea estoy fatal de lo mío. Ut adipisicing minim sed elit eiusmod fresquete, gaticos.</p>
-				<h2>¿Como funciona?</h2>
-				<p>Chanante ipsum dolor sit amet, ullamco pepino en la mano tempor ad one more time. Saepe cabeza de viejo cuerpo de joven ullamco to sueltecico exercitation, tempor et ullamco nisi ut tontiploster, ut ea estoy fatal de lo mío. Ut adipisicing minim sed elit eiusmod fresquete, gaticos.Chanante ipsum dolor sit amet, ullamco pepino en la mano tempor ad one more time. Saepe cabeza de viejo cuerpo de joven ullamco to sueltecico exercitation, tempor et ullamco nisi ut tontiploster, ut.</p>
-			</div>
-			<div class="lateral-derecha">
+	<div class="container-fluid vertical">
+		
+		<header class="row center-block">
+			<h1>Provéeme</h1>
+		</header>
+		<div class="row center-block">
+			<div class="col-md-4  col-md-offset-4 text-center login">
 				<form method="POST" action="../../controller/decisionPoR.php">
-					<h3>Introduce tus datos</h3>
-					<label for="username"></label>
-						<input placeholder="Nombre de usuario" type="text" name="username" id="username" value="">
-					<label for="password"></label>
-						<input placeholder="Contrasesña" type="password" name="password" id="password"  value="">
-					<input class="myButton" type="submit" id="enviar" value="Entrar"></input>
+					<div class="form-group input-group-lg">
+						<label for="username"></label>
+							<input class="form-control" placeholder="Nombre de usuario" type="text" name="username" value="">
+					</div>
+					<div class="form-group input-group-lg">
+						<label class="" for="password"></label>
+							<input class="form-control " placeholder="Contraseña" type="password" name="password" value="">
+					 </div>
+						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="Entrar"></input>
 				</form>
-				<p>Si aun no tienes una cuenta, haz click <a href="modules/m_creacioncuenta.php">AQUÍ</a></p>
-				</div>
+				<p class="row text-center">Si aun no tienes una cuenta, haz click <a href="modules/m_creacioncuenta.php">AQUÍ</a></p>
+			</div>
 		</div>
-		<div class="footer">
+		<footer class="container-fluid vertical text-center">
 			<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
-		</div>
+		</footer>
 	</div>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>

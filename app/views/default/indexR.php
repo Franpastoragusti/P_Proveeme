@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/finalizado.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">	
-	<title>Proveedor | MenuPrincipal</title>
+	<title>Restaurante | MenuPrincipal</title>
 </head>
-<body>
-	<header>
-		<h1>Restaurante</h1>
-	</header>
-	<main id="main">
-		<section>
-				<img id="logoRes" src="#LOGO#">
-				<ul>
-	    			<li><a href="indexP.php?action=RMPedidos">Lista de Pedidos</a></li>
-	    			<li><a href="indexP.php?action=RLProveedores">Lista de Proveedores</a></li>
-	    			<li><a href="indexP.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
-				</ul>
-		</section>
-	</main>
-	<footer>
-	<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
-	</footer>
-				
+<body class="frestaurante">
+	<main class="container-fluid vertical">
+		<header>
+			<h1>Provéeme</h1>
+		</header>
+			<section class="col-md-4 col-md-offset-4 text-center" >
+				<img id="logo" src="http://www.atugusto.com/wp-content/uploads/2015/02/logo-copia.png">
+			</section>
+			<section class="col-md-4 col-md-offset-4 text-center menu">
+					
+					<ul class="nav nav-pills nav-stacked">
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLPedido">Lista de Pedidos</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=RLProveedores">Lista de Proveedores</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
+					</ul>
+			</section>
+		<footer class="container-fluid vertical text-center res">
+		<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
+		</footer>
+	</main>	
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>		
 </body>
 </html>

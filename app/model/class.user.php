@@ -34,8 +34,44 @@ class User extends Database implements Iuser{
 	}
 
 	function decision($nombre){
-		//Consulta que devuelve si un usuario es restaurante o proveedor
+		$this->conectar();	
+		$query = $this->consulta("SELECT u.id, u.pass FROM usuarios u WHERE u.nombreUsuario='$nombre'");	
+		$this->disconnect();					
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return 'El usuario no es correcto';
+		}		
 	}
+	function proveOrest($id){
+		$this->conectar();	
+		$query = $this->consulta("SELECT * FROM proveedores p, usuarios u WHERE u.id=1 AND p.idProveedor=u.id");	
+					
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+			return true;
+		}else{
+	
+			return false;
+		}
+		$this->disconnect();
+	}		
+
+
+
+
+
+
+
+
+
+
 
 }
 ?>

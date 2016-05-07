@@ -1,32 +1,25 @@
-<h2>Mis Restaurantes</h2>
-		<div class="datagrid table-wrapper">
-			<div class="table-scroll">
-			<table>
-			<thead>
-				<tr>
-					<th class="tdPeque">Restaurante</th>
-					<th class="tdGrande">Dirección</th>
-					<th class="tdPeque">Ciudad</th>
-					<th class="tdGrande">Email</th>
-					<th class="tdPeque">Contacto</th>
-					<th class="tdPeque">Gasto Total</th>
-				</tr>
-			</thead>
-			<tbody>
-	<!--Mejorar el slide de las tablas al aumentar el contenido-->
-			 	<?php foreach ($tsArray as $data): ?>
-					<tr class="alt">
-						<td class="tdPeque"><?php echo $data['nombreEmpresa'];?></td>
-						<td class="tdGrande"><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
-						<td class="tdPeque"><?php echo $data['localidad'];?></td>
-						<td class="tdGrande"><?php echo $data['email'];?></td>
-						<td class="tdPeque"><?php echo $data['telefono'];?></td>
-						<td class="tdPeque"><?php echo $data['Gasto Total'];?></td>
+<h4 class="text-center">Mis Restaurantes</h4>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Restaurante</th>
+						<th class="Grande">Dirección</th>
+						<th>Ciudad</th>
+						<th class="Grande">Email</th>
+						<th>Contacto</th>
+						<th>Gasto Total</th>
 					</tr>
-				 <?php endforeach; ?>
-			</tbody>
-			
+				</thead>
+				<tbody>
+					<?php foreach ($tsArray as $data): ?>
+						<tr>
+							<td><?php echo $data['nombreEmpresa'];?></td>
+							<td class="Grande"><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
+							<td><?php echo $data['localidad'];?></td>
+							<td class="Grande"><?php echo $data['email'];?></td>
+							<td><?php echo $data['telefono'];?></td>
+							<td><?php echo $data['Gasto Total'];?></td>
+						</tr>
+					 <?php endforeach; ?>				
+				</tbody>
 			</table>
-
-		</div>
-	</div>
