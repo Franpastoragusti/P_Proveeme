@@ -13,7 +13,7 @@ class mvc_controller {
 	function mostrarMisRestaurantes($idProveedor){
 		$proveedor=new Proveedor();
 
-		$pagina=load_template('PROVEEDOR');	
+		$pagina=load_template();	
 
 		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/finalizado.css"/>
+	<link rel="stylesheet" type="text/css" href="app/views/default/css/finalizado.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">	
 	<title>Proveedor | MenuPrincipal</title>
@@ -13,7 +13,7 @@
 			<h1>Provéeme</h1>
 		</header>
 			<section class="col-md-4 col-md-offset-4 text-center" >
-				<img id="logo" src="http://www.logoeps.com/wp-content/uploads/2014/07/heineken-vector-logo.png">
+				<img id="logo" src="#LOGO#">
 			</section>
 			<section class="col-md-4 col-md-offset-4 text-center">
 					
@@ -24,7 +24,7 @@
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
 					</ul>
 			</section>
-		<footer class="container-fluid vertical text-center res">
+		<footer class="container-fluid vertical text-center pro">
 		<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
 	</main>	

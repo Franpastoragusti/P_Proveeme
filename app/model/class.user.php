@@ -33,10 +33,12 @@ class User extends Database implements Iuser{
 		}
 	}
 
-	function decision($nombre){
+
+
+	//Estas funciones van juntas, una abre y otra cierra la conexion///////////////////////////////////
+	function existo($nombre){
 		$this->conectar();	
-		$query = $this->consulta("SELECT u.id, u.pass FROM usuarios u WHERE u.nombreUsuario='$nombre'");	
-		$this->disconnect();					
+		$query = $this->consulta("SELECT u.id, u.pass FROM usuarios u WHERE u.nombreUsuario='$nombre'");						
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
 		{		
 				//se llenan los datos en un array
@@ -46,23 +48,35 @@ class User extends Database implements Iuser{
 				return $data;
 		}else
 		{	
-			return 'El usuario no es correcto';
+			return '';
 		}		
 	}
 	function proveOrest($id){
-		$this->conectar();	
-		$query = $this->consulta("SELECT * FROM proveedores p, usuarios u WHERE u.id=1 AND p.idProveedor=u.id");	
-					
-		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
-		{		
-			return true;
-		}else{
-	
-			return false;
-		}
-		$this->disconnect();
-	}		
+		$sentenciaP = "SELECT * FROM proveedores p, usuarios u WHERE u.id='$id' AND p.idProveedor=u.id";
+		$query=$this->consulta($sentenciaP);
 
+		$sentenciaR="SELECT * FROM restaurante r, usuarios u WHERE u.id='$id' AND r.idRestaurante=u.id";
+		$query2=$this->consulta($sentenciaR);
+
+		$this->disconnect();	
+
+		if($this->numero_de_filas($query) > 0){		
+				//se llenan los datos en un array
+			while ( $tsArray = $this->fetch_assoc($query) ) 
+				$data[] = $tsArray;			
+	
+			return $data;
+		}	
+
+		if($this->numero_de_filas($query2) > 0){		
+			//se llenan los datos en un array
+			while ( $tsArray = $this->fetch_assoc($query2) ) 
+				$data[] = $tsArray;			
+		
+			return $data;
+		}	
+	}		
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

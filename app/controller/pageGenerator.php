@@ -1,6 +1,6 @@
 <?php
 
-function load_template($title){
+function load_template(){
 
 
 	$pagina = load_page('app/views/default/page.php');

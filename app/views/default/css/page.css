@@ -22,16 +22,16 @@ header{
 	background-color: rgba(158, 160, 158, 0.9);
 	border: none;
 	box-shadow: 2px 1px 2px #212021;
-	font-family: 'Cookie', cursive;
 	color: black;	
 	font-size: 25px;
 	max-width: 300px;
+	font-family: 'Ubuntu', sans-serif !important;
 }
 
 #botones{
 	border:solid;
 }
-}
+
 
 .btn:hover{
 	background-color: rgba(92, 94, 90, 0.9);
@@ -45,6 +45,7 @@ li>a.btn{
 #logo{
 	width:240px;
 	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
 }
 
 
@@ -67,9 +68,6 @@ a:visited{
 
 
 
-footer{
-padding: 20px;
-}
 .izquierda{
 	position: absolute;
 	left:-10%;
