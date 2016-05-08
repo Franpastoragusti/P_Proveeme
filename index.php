@@ -4,6 +4,8 @@
 
 $mvc = new mvc_controller();
 
-	$mvc->mostrarMisRestaurantes(5,1);	
+	//$mvc->mostrarMisRestaurantes(5,1);	
+
+	$mvc->decision();
 
 ?>

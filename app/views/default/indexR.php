@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="app/views/default/css/finalizado.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">	
 	<title>Restaurante | MenuPrincipal</title>
 </head>
