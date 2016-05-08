@@ -3,8 +3,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
     <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="../css/formularios.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="app/views/default/css/formularios.css"/>
     <meta charset="UTF-8">  
     <title>Proveeme | Sign in</title>
 </head>
@@ -18,15 +18,15 @@
         <fieldset>
             <legend>Datos de Usuario</legend>
             <div class="form-group">
-                <label for="nUsuario" class="control-label col-xs-3">Nombre de Usuario</label>
+                <label for="username" class="control-label col-xs-3">Nombre de Usuario</label>
                 <div class="col-xs-9">
-                    <input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre de usuario" required>
+                    <input type="text" class="form-control" name="username" id="nUsuario" placeholder="Nombre de usuario" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Password" class="control-label col-xs-3">Contraseña:</label>
                 <div class="col-xs-9">
-                    <input type="password" class="form-control" name="Password" id="Password" placeholder="Password" required>
+                    <input type="password" class="form-control" name="password" id="Password" placeholder="Password" required>
                 </div>
             </div>
             <div class="form-group">
@@ -40,12 +40,12 @@
                 <label class="control-label col-xs-3">Tipo de Usuario</label>
                 <div class="col-xs-2">
                     <label for="restaurante" class="radio-inline">
-                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="sector.disabled=true;pedidoMin.disabled=true" > Restaurante
+                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="sector.disabled=true;pedidoMin.disabled=true" required> Restaurante
                     </label>
                 </div>
                 <div class="col-xs-2">
                     <label for="proveedor"  class="radio-inline">
-                        <input  type="radio" id="proveedor" name="tipoUsuario" value="Proveedor" onclick="sector.disabled=false;pedidoMin.disabled=false" > Proveedor
+                        <input  type="radio" id="proveedor" name="tipoUsuario" value="Proveedor" onclick="sector.disabled=false;pedidoMin.disabled=false" required> Proveedor
                     </label>
                 </div>
                
@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label for="sector" class="control-label col-xs-4">Sector:</label>
                     <div class="col-xs-3">
-                        <select class="form-control" name="sector" disabled="disabled" id="sector">
+                        <select class="form-control" name="sector" disabled="disabled" id="sector" required>
                             <option value="Carnico">Cárnico</option>
                             <option value="Pescateria">Pescatería</option>
                             <option value="Lacteo">Lácteo</option>
@@ -63,7 +63,7 @@
                     </div>
                 <label for="pedidoMin" class="control-label col-xs-3">Precio pedido mínimo:</label>
                     <div class="col-xs-2">
-                        <input type="text" id="pedidoMin" name="pedidoMin" class="form-control" placeholder="500" disabled="disabled">
+                        <input type="number" id="pedidoMin" name="pedidoMin" class="form-control" placeholder="500" disabled="disabled" required>
                     </div>
             </div>
         </fieldset>
@@ -127,7 +127,7 @@
                 <div class="form-group">
                     <label for="numero" class="control-label col-xs-3">Numero:</label>
                     <div class="col-xs-9">
-                        <input type="text" name="numero" id="numero" class="form-control" placeholder="Número" required>
+                        <input type="number" name="numero" id="numero" class="form-control" placeholder="Número" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,7 +138,7 @@
                 </div>
                 <div class="form-group text-center">
                     <div class="col-xs-offset-3 col-xs-9">
-                        <a><input type="submit" class="btn btn-warning" value="Enviar"></a>
+                        <input type="submit" class="btn btn-warning" value="Enviar">
                         <input type="reset" class="btn1 btn-default" value="Limpiar">
                     </div>
                 </div>

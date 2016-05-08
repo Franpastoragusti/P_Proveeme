@@ -26,10 +26,10 @@
 					 </div>
 						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="Entrar"></input>
 				</form>
-				<p class="row text-center">Si aun no tienes una cuenta, haz click <a href="app/views/default/modules/m_creacioncuenta.php" class="btn btn-primary btn-xs cc">AQUÍ</a></p>
+				<p class="row text-center">Si aun no tienes una cuenta, haz click <a href="index.php?action=crearCuenta" class="btn btn-primary btn-xs cc">AQUÍ</a></p>
 			</div>
 		</div>
-		<footer class="container-fluid vertical">
+		<footer class="row">
 			<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
 

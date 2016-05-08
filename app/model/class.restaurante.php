@@ -103,4 +103,6 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	 }
 }
+
+//FALTA FUNCION DE REGISTRO DE RESTAURANTE (REGISTRO)
 ?>

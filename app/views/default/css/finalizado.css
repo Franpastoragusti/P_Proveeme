@@ -19,15 +19,12 @@ font-size: 150px;
 
 color: rgba(185, 113, 60, 0.9);
 text-shadow:4px 2px 4px #212021;
-
-
-
 }
 .login{
 	padding: 60px;
 	padding-top: 20px;
 	background-color: rgba(255, 255, 255, 0.2);
-	margin-bottom: 170px;
+	margin-bottom: 130px;
 }
 header{
 	padding:35px;
@@ -35,7 +32,7 @@ header{
 }
 .btn{
 	margin-top: 60px;
-	margin-bottom: 40px;
+	margin-bottom: 35px;
 	background-color: rgba(158, 160, 158, 0.9);
 	border: none;
 	box-shadow: 2px 1px 2px #212021;
@@ -77,9 +74,9 @@ a:visited{
 }
 
 footer{
-
 	
-	left: 20px;
+	
+	padding-left: 20px;
 }
 .menu{
 	margin-bottom: 83px;

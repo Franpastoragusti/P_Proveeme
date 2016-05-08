@@ -1,4 +1,5 @@
 <?php
+
 require 'app/model/class.user.php';
 require 'app/model/class.restaurante.php';
 require 'app/model/class.proveedor.php';
@@ -8,7 +9,7 @@ require 'app/controller/pageGenerator.php';
 class mvc_controller {
 
 
-//FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO
+/***************FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO***********/
 
 	function decision(){
 
@@ -48,9 +49,47 @@ class mvc_controller {
 		}
 
 	}
+/****************************************************************************/
 
 
+/*****************INSERTAR USUARIOS NUEVOS*************************************/
+	//Despues de rellenar el formulario de registro
+	//determindo ya si eres proveedor o restaurante en funcion del campo tipoUsuario y en funcion de lo que determine se llama a altaProveedor u a altaRestaurante
 
+	function altaRestaurante($usuario,$pass,$confirmPass,$tipoUsuario,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+		$restaurante = new Restaurante();
+		$pagina = load_page('index.php');
+		$tsArray = $restaurante->registro($usuario,$pass,$confirmPass,$tipoUsuario,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+		if($tsArray!=''){
+		 	
+
+		}else{
+		
+
+		}
+
+	}
+	function altaProveedor($usuario,$pass,$confirmPass,$tipoUsuario,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+		$proveedor = new Proveedor();
+		$pagina = load_page('index.php');
+		$tsArray = $proveedor->registro($usuario,$pass,$confirmPass,$tipoUsuario,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+		 if($tsArray!=''){
+		 	
+
+		 }else{
+		
+
+		 }
+	}
+
+	//INTRODUCIR DATOS APRA ALTA//
+		function introducirInfo(){					
+		$pagina = load_page('app/views/default/modules/m_creacioncuenta.php');
+		view_page($pagina);
+	}
+
+
+/********************************************************************************/
 
 
 

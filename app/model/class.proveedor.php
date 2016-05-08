@@ -124,6 +124,6 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	 
+	 //FALTA FUNCION DE REGISTRO DE PROVEEDOR (REGISTRO)
 }
 ?>
