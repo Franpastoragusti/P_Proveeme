@@ -11,7 +11,7 @@ class Database {
 	{
 		if(!isset($this->conexion))
 		{
-		  $this->conexion = (mysqli_connect("localhost","root","", "proveeme"));
+		  $this->conexion = (mysqli_connect("localhost","root","root", "proveeme"));
 		  	  
 		}
 	}	
