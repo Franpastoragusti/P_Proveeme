@@ -19,5 +19,6 @@ interface Irestaurante {
 	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo, 
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
 	 	$provincia, $localidad, $calle, $numero, $cp);
+	 public function altaRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
 	}
 ?>

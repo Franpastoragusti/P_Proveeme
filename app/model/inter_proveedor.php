@@ -19,6 +19,7 @@ interface Iproveedor {
 	 	$sector, $pedidoMinimo,
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
 	 	$provincia, $localidad, $calle, $numero, $cp);
+	 public function altaProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
 
 }
 ?>
