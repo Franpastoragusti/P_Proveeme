@@ -20,6 +20,19 @@ class User extends Database implements Iuser{
 		}			
 	}
 
+	function registro($usuario, $pass, $logo){
+		//conexion a la base de datos
+		$this->conectar();	
+		$sentencia = "INSERT INTO usuarios(nombreUsuario, pass, logo) VALUES ('$usuario', '$pass', '$logo')";	
+		if($query = $this->consulta($sentencia)){
+			$this->disconnect();	
+			return true;
+		}else{
+			$this->disconnect();	
+			return false;
+		}
+	}
+
 
 
 	//Estas funciones van juntas, una abre y otra cierra la conexion///////////////////////////////////

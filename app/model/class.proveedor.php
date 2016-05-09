@@ -124,6 +124,19 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	 //FALTA FUNCION DE REGISTRO DE PROVEEDOR (REGISTRO)
+	 function altaProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+	 	//conexion a la base de datos
+		$this->conectar();	
+		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin');
+						INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion');
+						INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
+		if($query = $this->consulta($sentencia)){
+			$this->disconnect();	
+			return true;
+		}else{
+			$this->disconnect();	
+			return false;
+		}
+	 }
 }
 ?>

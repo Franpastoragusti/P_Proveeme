@@ -102,7 +102,22 @@ class Restaurante extends Database implements Irestaurante{
 			return false;
 		}
 	 }
+	 function altaRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+	//conexion a la base de datos
+		$this->conectar();	
+		$sentencia = "INSERT INTO restaurante(idRestaurante) VALUES ('$id');
+						INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion');
+						INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
+		if($query = $this->consulta($sentencia)){
+			$this->disconnect();	
+			return true;
+		}else{
+			$this->disconnect();	
+			return false;
+		}
+	}
+
 }
 
-//FALTA FUNCION DE REGISTRO DE RESTAURANTE (REGISTRO)
+
 ?>
