@@ -3,7 +3,7 @@
 	require './app/controller/mvc.Controller.php';
 
 $mvc = new mvc_controller();
-	
+	session_start();
 
 	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo del buscador
 	{	
@@ -11,7 +11,6 @@ $mvc = new mvc_controller();
 
 	}elseif ( $_GET['action'] == 'PMRestaurantes' ) 
 	{
-		session_start();
 		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
 		var_dump($_SESSION);
 		//$_SESSION está vacia 
@@ -39,11 +38,11 @@ $mvc = new mvc_controller();
 			//Insertar usuario nuevo
 			if ($tipoUsuario=='Restaurante') {
 				//inserta un restaurante
-				$mvc->altaRestaurante($_POST['username'],$_POST['password'],$_POST['tipoUsuario'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
+				$mvc->altaRestaurante($_SESSION['id'],$_POST['username'],$_POST['password'],$_POST['tipoUsuario'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
 
 			}elseif ($tipoUsuario=='Proveedor') {
 				//inserta un proveedor
-				$mvc->altaProveedor($_POST['username'],$_POST['password'],$_POST['tipoUsuario'],$_POST['sector'],$_POST['pedidoMin'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
+				$mvc->altaProveedor($_SESSION['id'], $_POST['username'],$_POST['password'],$_POST['tipoUsuario'],$_POST['sector'],$_POST['pedidoMin'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
 			}
 		}else{*/
 			$_POST= array();

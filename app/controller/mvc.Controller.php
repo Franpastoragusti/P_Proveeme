@@ -25,7 +25,6 @@ class mvc_controller {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
 						//var_dump($profesion);
-						session_start();
 						$_SESSION['id']=$profesion[0]['id'];
 						$_SESSION['logo']=$profesion[0]['logo'];
 						var_dump($_SESSION);
