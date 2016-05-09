@@ -20,6 +20,6 @@
 							<td><?php echo $data['telefono'];?></td>
 							<td><?php echo $data['Gasto Total'];?></td>
 						</tr>
-					 <?php endforeach; ?>				
+					 <?php endforeach;?>				
 				</tbody>
 			</table>

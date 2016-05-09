@@ -16,7 +16,7 @@
 		</header>
 		<div class="col-xs-6 col-md-4 izquierda">
 			<section class="col-md-offset-4 text-center" >
-				<img id="logo" src="http://www.logoeps.com/wp-content/uploads/2014/07/heineken-vector-logo.png">
+				<img id="logo" src="#LOGO#">
 			</section>
 			<section class="col-md-offset-4 text-center botones" >
 					

@@ -24,9 +24,9 @@
 						<label class="" for="password"></label>
 							<input class="form-control " placeholder="Contraseña" type="password" name="password" value="" required="">
 					 </div>
-						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="Entrar"></input>
+						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR"></input>
 				</form>
-				<p class="row text-center">Si aun no tienes una cuenta, haz click <a href="index.php?action=crearCuenta" class="btn btn-primary btn-xs cc">AQUÍ</a></p>
+				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block cc">Registrate</a>
 			</div>
 		</div>
 		<footer class="row">

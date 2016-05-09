@@ -19,10 +19,10 @@
 			<section class="col-md-4 col-md-offset-4 text-center">
 					
 					<ul class="nav nav-pills nav-stacked">
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLPedido">Lista de Pedidos</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PMRestaurantes">Mis Restaurantes</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLProductos">Lista de Productos</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PLPedido">Lista de Pedidos</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PMRestaurantes">Mis Restaurantes</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PLProductos">Lista de Productos</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
 					</ul>
 			</section>
 		<footer class="container-fluid vertical text-center pro">

@@ -1,14 +1,26 @@
 <?php
-		error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 	require './app/controller/mvc.Controller.php';
 
 $mvc = new mvc_controller();
-
-	//$mvc->mostrarMisRestaurantes(5,1);	
+	
 
 	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo del buscador
 	{	
 		$mvc->introducirInfo();	
+
+	}elseif ( $_GET['action'] == 'PMRestaurantes' ) 
+	{
+		session_start();
+		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
+		var_dump($_SESSION);
+		//$_SESSION está vacia 
+
+
+
+
+
+
 	}elseif (isset($_POST['username']) && 
 			isset($_POST['password']) && 
 			isset($_POST['confirmPassword']) && 
@@ -38,6 +50,7 @@ $mvc = new mvc_controller();
 			$mvc->decision();
 		//}
 	}else{
+		
 		$mvc->decision();
 	}
 

@@ -25,16 +25,21 @@ class mvc_controller {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
 						//var_dump($profesion);
+						session_start();
+						$_SESSION['id']=$profesion[0]['id'];
+						$_SESSION['logo']=$profesion[0]['logo'];
+						var_dump($_SESSION);
+
 						//En funcion de lo que sea el id (Proveedor/Restaurante) cargamos un menu u otro
 						if (isset($profesion[0]["idProveedor"])) {
 
 							$pagina=load_page("app/views/default/indexP.php");
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$profesion[0]["logo"] , $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
 							view_page($pagina);
 
 						}elseif(isset($profesion[0]["idRestaurante"])){
 							$pagina=load_page("app/views/default/indexR.php");
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$profesion[0]["logo"] , $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
 							view_page($pagina);
 						}
 				}else{
@@ -99,7 +104,7 @@ class mvc_controller {
 
 	//METODOS QUE MUESTRAN LAS PAGINAS PRINCIPALES DE LOS PROVEEDORES//
 
-	function mostrarMisRestaurantes($idProveedor){
+	function mostrarMisRestaurantes($idProveedor,$logo){
 		$proveedor=new Proveedor();
 
 		$pagina=load_template();	
@@ -115,11 +120,11 @@ class mvc_controller {
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,"", $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,'https://logodownload.org/wp-content/uploads/2014/08/logo-Heineken.png' , $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
 				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,"" , $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,'https://logodownload.org/wp-content/uploads/2014/08/logo-Heineken.png' , $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
 		echo $pagina;
 	}

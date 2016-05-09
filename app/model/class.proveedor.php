@@ -78,10 +78,10 @@ class Proveedor extends Database implements Iproveedor{
 	 	$sentencia = "SELECT e.nombreEmpresa, d.calle, d.numero, d.cp, d.localidad, e.telefono, e.email, COUNT(proc.idPedido) AS 'Numero de Pedidos', (SELECT SUM(DISTINCT(ped.precioTotalPedido))
 			FROM procesado_pedido proc, contenido_pedidos cont, productos p, proveedores prov, restaurante r, pedidos ped
 			WHERE ped.idPedido=proc.idPedido AND cont.idPedido=ped.idPedido AND prov.idProveedor=p.idProveedor AND cont.idProducto=p.idProducto
-			AND proc.idRestaurante=r.idRestaurante AND proc.idProveedor=prov.idProveedor AND proc.idRestaurante=5 AND proc.idProveedor=1) AS 'Gasto Total'
+			AND proc.idRestaurante=r.idRestaurante AND proc.idProveedor=prov.idProveedor AND proc.idProveedor='$idProveedor') AS 'Gasto Total'
 			FROM restaurante r, direccion d, empresa e, procesado_pedido proc, pedidos ped, proveedores prov
 			WHERE r.idRestaurante=proc.idRestaurante AND proc.idPedido=ped.idPedido AND d.idUsuario=r.idRestaurante AND proc.idProveedor=prov.idProveedor
-			AND e.idUsuario=r.idRestaurante AND proc.idRestaurante=5 AND proc.idProveedor=1";
+			AND e.idUsuario=r.idRestaurante AND proc.idProveedor='$idProveedor'";
 		$query = $this->consulta($sentencia);
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
