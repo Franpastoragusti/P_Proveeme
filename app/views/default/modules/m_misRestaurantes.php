@@ -1,6 +1,6 @@
 <h4 class="text-center">Mis Restaurantes</h4>
 				<table class="table table-hover">
-				<thead>
+				<thead class="text-center">
 					<tr>
 						<th>Restaurante</th>
 						<th class="Grande">Dirección</th>
