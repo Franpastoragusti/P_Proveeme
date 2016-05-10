@@ -41,14 +41,16 @@ $mvc = new mvc_controller();
 
 				//Insertar usuario nuevo
 				$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
+				$datos=$mvc->controlExist($_POST['username']);
+				var_dump($datos);
 						
-				if ($tipoUsuario=='Restaurante') {
+				if ($_POST['tipoUsuario']=='Restaurante') {
 						//inserta un restaurante
-						$mvc->registroRestaurante($_SESSION['id'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
+						$mvc->registroRestaurante($datos[0]['id'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
 
-				}elseif ($tipoUsuario=='Proveedor') {
+				}elseif ($_POST['tipoUsuario']=='Proveedor') {
 						//inserta un proveedor
-						$mvc->registroProveedor($_SESSION['id'],$_POST['sector'],$_POST['pedidoMin'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
+						$mvc->registroProveedor($datos[0]['id'],$_POST['sector'],$_POST['pedidoMin'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);
 				}
 						
 	}else{

@@ -20,12 +20,8 @@
 			</section>
 			<section class="col-md-offset-4 text-center center-block" >
 					
-					<ul class="nav nav-pills nav-stacked">
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLPedido">Lista de Pedidos</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PMRestaurantes">Mis Restaurantes</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLProductos">Lista de Productos</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
-					</ul>
+				#BOTONES#
+
 			</section>
 			<section class="col-md-offset-4 center">
 				<img id="casa" src="app/views/default/images/home.png">

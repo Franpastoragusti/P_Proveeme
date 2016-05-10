@@ -1,5 +1,3 @@
-
-<div class="conteiner-fluid">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="alert alert-danger">
@@ -8,4 +6,3 @@
 			</div>	 
 		</div>
 	</div>
-</div>

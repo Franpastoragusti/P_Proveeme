@@ -43,6 +43,7 @@ class mvc_controller {
 						}
 				}else{
 					//Si la contraseña no coicide volvemos al login
+					//$error=load_page('app/views/default/modules/m_Error.php');
 					$pagina=load_page("app/views/default/login.php");
 					view_page($pagina);
 				}
@@ -91,20 +92,19 @@ class mvc_controller {
 /*****************INSERTAR USUARIOS NUEVOS*************************************/
 	//Despues de rellenar el formulario de registro
 
-	function nuevoUsuario(){
-
-
-
-
+	function controlExist($nombre){
+		$usuario=new User();
+		$datos=$usuario->existo($nombre);
+		return $datos;
 	}
 
 
 	///////AQUIIIIIIIIIIIIIIII //////////////
 	//determindo ya si eres proveedor o restaurante en funcion del campo tipoUsuario y en funcion de lo que determine se llama a altaProveedor u a altaRestaurante
 
-	function registroUsuario($usuario, $pass, $logo){
+	function registroUsuario($nombre, $pass, $logo){
 		$usuario = new User();	
-		$usuario->registro($usuario, $pass, $logo);
+		$usuario->registro($nombre, $pass, $logo);
 	}
 	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 			$Proveedor=new Proveedor();
@@ -152,13 +152,13 @@ class mvc_controller {
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 
 					//carga la tabla de la seccion de m.table_univ.php
-					include '/app/views/default/modules/m_misRestaurantes.php';
+					include './app/views/default/modules/m_misRestaurantes.php';
 					$table = ob_get_clean();	
-
+					$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
 
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,"", $pagina);
+						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
 				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
