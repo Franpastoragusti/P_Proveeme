@@ -124,7 +124,26 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	 function altaProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+	 function verProductos($id){
+	 	$this->conectar();		
+		$query = $this->consulta("SELECT p.nombre, p.tipo, p.descripcion, p.precio, p.medida, p.idProducto
+									FROM productos p, proveedores prov
+									WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='$id'");
+ 	    $this->disconnect();					
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query)) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}	
+	 }
+
+	 function registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	 	//conexion a la base de datos
 		$this->conectar();	
 		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin');

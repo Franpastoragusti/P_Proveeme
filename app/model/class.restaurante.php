@@ -102,7 +102,7 @@ class Restaurante extends Database implements Irestaurante{
 			return false;
 		}
 	 }
-	 function altaRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+	 function registro($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	//conexion a la base de datos
 		$this->conectar();	
 		$sentencia = "INSERT INTO restaurante(idRestaurante) VALUES ('$id');
