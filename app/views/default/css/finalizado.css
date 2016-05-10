@@ -97,8 +97,14 @@ footer{
 	
 }
 #casa{
-	width: 100px;
+	width: 40px;
 }
-.Grande{
-	width: 30%;
+.casita{
+	position: absolute;
+	bottom: -370px;
+	left: 0px;
+}
+.foot{
+	position: absolute;
+	bottom: -450px;
 }

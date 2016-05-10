@@ -24,14 +24,38 @@ class User extends Database implements Iuser{
 		//conexion a la base de datos
 		$this->conectar();	
 		$sentencia = "INSERT INTO usuarios(nombreUsuario, pass, logo) VALUES ('$usuario', '$pass', '$logo')";	
-		if($query = $this->consulta($sentencia)){
-			$this->disconnect();	
+		if($query = $this->consulta($sentencia)){	
 			return true;
-		}else{
-			$this->disconnect();	
+		}else{	
 			return false;
 		}
 	}
+
+function exist($nombre){
+		$this->conectar();	
+		$query = $this->consulta("SELECT u.id, u.pass FROM usuarios u WHERE u.nombreUsuario='$nombre'");						
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{	
+			$this->disconnect();
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}		
+	}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -21,7 +21,7 @@ class mvc_controller {
 					$datos=$usuario->existo($nombre);	
 					//var_dump($datos);
 					//Si no encuentra la pass devolvera '' entonces si esta llena Y es igual a la de la BBDD
-				if (!empty($datos[0]['pass'])&&($datos[0]["pass"]===$_POST["password"])) {
+				if (!empty($datos[0]['pass'])&&($datos[0]["pass"]===($_POST["password"]))) {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
 						//var_dump($profesion);
@@ -109,21 +109,15 @@ class mvc_controller {
 	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 			$Proveedor=new Proveedor();
 			$pagina=load_page("app/views/default/login.php");
-			if($Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion)){
-				$pagina=$pagina.load_page("app/views/default/modules/m_Correcto");
-				view_page($pagina);
-			}else{
-				return false;
-			}
+			$Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+			view_page($pagina);
 	}
 	function registroRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 			$Restaurante=new Restaurante();
-			$Restaurante->registro($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);					
+			$pagina=load_page("app/views/default/login.php");
+			$Restaurante->registro($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);		
+			view_page($pagina);			
 	}
-
-
-
-
 
 
 	//INTRODUCIR DATOS PARA ALTA//
@@ -162,7 +156,7 @@ class mvc_controller {
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
 				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,"" , $pagina);
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
 		echo $pagina;

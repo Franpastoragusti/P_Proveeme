@@ -12,7 +12,7 @@ $mvc = new mvc_controller();
 	}elseif ( $_GET['action'] == 'PMRestaurantes' ) 
 	{
 		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
-		var_dump($_SESSION);
+		//var_dump($_SESSION);
 		//$_SESSION está vacia 
 
 
@@ -42,7 +42,7 @@ $mvc = new mvc_controller();
 				//Insertar usuario nuevo
 				$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
 				$datos=$mvc->controlExist($_POST['username']);
-				var_dump($datos);
+				//var_dump($datos);
 						
 				if ($_POST['tipoUsuario']=='Restaurante') {
 						//inserta un restaurante
