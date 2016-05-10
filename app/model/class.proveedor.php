@@ -124,7 +124,7 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	 function altaProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+	 function registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	 	//conexion a la base de datos
 		$this->conectar();	
 		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin');

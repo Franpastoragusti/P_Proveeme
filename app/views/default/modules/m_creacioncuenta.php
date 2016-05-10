@@ -93,6 +93,12 @@
                     <input type="email" name="email" id="email" class="form-control" id="inputEmail" placeholder="Email" required>
                 </div>
             </div>
+            <div class="form-group">
+                <label  for="cif" class="control-label col-xs-3">Logo:</label>
+                <div class="col-xs-9">
+                    <input type="text" name="logo" id="logo" class="form-control" placeholder="Url del logo de tu empresa" required>
+                </div>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Dirección</legend>

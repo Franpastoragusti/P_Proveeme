@@ -53,40 +53,80 @@ class mvc_controller {
 		}
 
 	}
+
+
+
+	function decisionSinCarga(){
+
+		$usuario = new User();
+		//comprobamos que se ha rellenado el login
+		if (!empty($_POST)) {
+					$nombre=$_POST["username"];
+					//comparo el nombre del formulario con la BBDD que me devuelve el id y la pass
+					$datos=$usuario->existo($nombre);	
+					//var_dump($datos);
+					//Si no encuentra la pass devolvera '' entonces si esta llena Y es igual a la de la BBDD
+				if (!empty($datos[0]['pass'])&&($datos[0]["pass"]===$_POST["password"])) {
+						//Buscamos en la BBDD si el id es Proveedor o Restaurante
+						$profesion=$usuario->proveOrest($datos[0]['id']);
+						//var_dump($profesion);
+						$_SESSION['id']=$profesion[0]['id'];
+						$_SESSION['logo']=$profesion[0]['logo'];
+						//var_dump($_SESSION);
+				}else{
+					//Si la contraseña no coicide volvemos al login
+					$pagina=load_page("app/views/default/login.php");
+					view_page($pagina);
+				}
+		}else{
+			//si POST esta vacio es la primera vez que entramos al login
+			$pagina=load_page("app/views/default/login.php");
+			view_page($pagina);
+		}
+
+	}
 /****************************************************************************/
 
 
 /*****************INSERTAR USUARIOS NUEVOS*************************************/
 	//Despues de rellenar el formulario de registro
+
+	function nuevoUsuario(){
+
+
+
+
+	}
+
+
+	///////AQUIIIIIIIIIIIIIIII //////////////
 	//determindo ya si eres proveedor o restaurante en funcion del campo tipoUsuario y en funcion de lo que determine se llama a altaProveedor u a altaRestaurante
 
-	function altaRestaurante($usuario,$pass,$confirmPass,$tipoUsuario,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
-		$restaurante = new Restaurante();
-		$pagina = load_page('index.php');
-		$tsArray = $restaurante->registro($usuario,$pass,$confirmPass,$tipoUsuario,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
-		if($tsArray!=''){
-		 	
-
-		}else{
-		
-
-		}
-
+	function registroUsuario($usuario, $pass, $logo){
+		$usuario = new User();	
+		$usuario->registro($usuario, $pass, $logo);
 	}
-	function altaProveedor($usuario,$pass,$confirmPass,$tipoUsuario,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
-		$proveedor = new Proveedor();
-		$pagina = load_page('index.php');
-		$tsArray = $proveedor->registro($usuario,$pass,$confirmPass,$tipoUsuario,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
-		 if($tsArray!=''){
-		 	
-
-		 }else{
-		
-
-		 }
+	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+			$Proveedor=new Proveedor();
+			$pagina=load_page("app/views/default/login.php");
+			if($Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion)){
+				$pagina=$pagina.load_page("app/views/default/modules/m_Correcto");
+				view_page($pagina);
+			}else{
+				return false;
+			}
+	}
+	function registroRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+			$Restaurante=new Restaurante();
+			$Restaurante->registro($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);					
 	}
 
-	//INTRODUCIR DATOS APRA ALTA//
+
+
+
+
+
+	//INTRODUCIR DATOS PARA ALTA//
 		function introducirInfo(){					
 		$pagina = load_page('app/views/default/modules/m_creacioncuenta.php');
 		view_page($pagina);
