@@ -124,32 +124,13 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	 function verProductos($id){
-	 	$this->conectar();		
-		$query = $this->consulta("SELECT p.nombre, p.tipo, p.descripcion, p.precio, p.medida, p.idProducto
-									FROM productos p, proveedores prov
-									WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='$id'");
- 	    $this->disconnect();					
-		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
-		{		
-				//se llenan los datos en un array
-				while ( $tsArray = $this->fetch_assoc($query)) 
-					$data[] = $tsArray;			
-		
-				return $data;
-		}else
-		{	
-			return '';
-		}	
-	 }
-
 	 function registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	 	//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin');
-						INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion');
-						INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
-		if($query = $this->consulta($sentencia)){
+		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin')";
+		$sentencia2="INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion')";
+		$sentencia3="INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
+		if($query = $this->consulta($sentencia)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)){
 			$this->disconnect();	
 			return true;
 		}else{
