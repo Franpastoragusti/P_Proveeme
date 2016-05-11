@@ -24,6 +24,10 @@ $mvc = new mvc_controller();
 
 		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 	
+	}elseif ( $_GET['action'] == 'RLProveedores' ){
+
+		$mvc->mostrarProveedores($_SESSION['id'],$_SESSION['logo']);
+	
 
 
 	}elseif (isset($_POST['username']) && 

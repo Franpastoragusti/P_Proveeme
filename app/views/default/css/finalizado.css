@@ -125,3 +125,27 @@ z-index: 2;
 	left: 105px;
 	top: -13px;
 }
+#buscar{
+	padding: 5px 100px;
+	margin-top: 30px;
+}
+.selectSector{
+	padding: 5px 50px;
+}
+h4{
+	background-color: rgba(255, 255, 255, 0.2);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	box-shadow: 2px 1px 2px #212021;
+	color: black;	
+	font-size: 25px;
+	font-family: 'Ubuntu', sans-serif !important;
+}
+td{
+	background-color: rgba(255, 255, 255, 0.2);
+
+}
+thead{
+	background-color: rgba(158, 160, 158, 0.7);
+	box-shadow: 2px 1px 2px #212021;
+}

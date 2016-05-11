@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link href='https://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="../css/f_CreacionCuenta.css">
-	<meta charset="UTF-8">	
-	<title>Proveedor | Lista de Proveedores</title>
-</head>
-<body>
-
-	<h3>Lista de Proveedores</h3>
-	<form method="GET" action="">
-		<label>Sector:
-			<select class="selectSector">
-				<option value="Carnico">Cárnico</option>
-				<option value="Pescateria">Pescatería</option>
-				<option value="Lacteo">Lácteo</option>
-				<option value="Bebida">Bebida</option>
-				<option value="Repostería">Repostería</option>
-			</select>
-		</label>
-		<!--Tiene que hacer la seleccion y recargarse sin tener que dar submit-->
-	</form>
-
-	<div class="datagrid">
-		<table>
-			<thead>
-				<tr>
-					<th>#header1</th>
-					<th>#header2</th>
-					<th>#header3</th>
-					<th>#header4</th>
-					<th>#header5</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="alt">
-					<td>datos</td>
-					<td>datos</td>
-					<td>datos</td>
-					<td>datos</td>
-					<td>datos</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>			
-</body>
-</html>
+<h4 class="text-center">Proveedores</h4>
+				<div class="bs-primary"> 
+					<nav class="navbar navbar-default navbar-static"> 
+						<div class="container-fluid"> 
+							<div class="navbar-header"> 
+								<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+									<span class="sr-only">Toggle navigation</span> 
+									<span class="icon-bar"></span> <span class="icon-bar"></span> 
+									<span class="icon-bar"></span>
+								</button> 
+								<span class="navbar-brand">Busqueda por sector</span> 
+							</div> 
+							<div class="collapse navbar-collapse bs-example-js-navbar-collapse"> 
+								<ul class="nav navbar-nav navbar-right"> 
+									<li id="fat-menu" class="dropdown"> 
+										<a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+											Seleccione 
+											<span class="caret"></span> 
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="drop3">
+											<li><a href="#">postres</a></li> 
+											<li><a href="#">bebidas</a></li> 
+											<li><a href="#">carne</a></li> 
+										</ul> 
+									</li> 
+								</ul>
+							</div>
+						</div>
+					</nav> 
+				</div>
+				<table class="table table-hover">
+				<thead class="text-center">
+					<tr>
+						<th>Proveedor</th>
+						<th class="Grande">Dirección</th>
+						<th>Teléfono</th>
+						<th>Sector</th>
+						<th>Pedido Mínimo €</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($tsArray as $data): ?>
+						<tr>
+							<td><?php echo $data['nombreEmpresa'];?></td>
+							<td class="Grande"><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
+							<td><?php echo $data['telefono'];?></td>
+							<td><?php echo $data['sector'];?></td>
+							<td><?php echo $data['pedidoMinimo'];?></td>
+						</tr>
+					 <?php endforeach;?>				
+				</tbody>
+			</table>

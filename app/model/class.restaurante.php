@@ -51,7 +51,7 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	 }
  
-	 public function verListaProveedores(){
+	 public function verListaProveedores($idRestaurante){
 	 	$this->conectar();		
 		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
 								 e.telefono, e.email, prov.pedidoMinimo, prov.sector
