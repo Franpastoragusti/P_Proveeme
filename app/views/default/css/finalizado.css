@@ -1,5 +1,5 @@
 body{ 
-	position: relative;
+
 	background-repeat: no-repeat;
 	background: url("../images/fondo_proveeme.png");
 }
@@ -72,7 +72,9 @@ a{
 a:visited{
 	color: #000;
 }
-
+.fijo{
+	position: relative;
+}
 footer{
 	
 	
@@ -96,13 +98,18 @@ footer{
 	margin-bottom: 70px;
 	
 }
-
+#casa{
+	width: 40px;
+}
 .casita{
 	position: absolute;
-	bottom: -370px;
-	left: 0px;
+	bottom: -150px;
+	left: 30px;
 }
 .foot{
 	position: absolute;
-	bottom: -450px;
+	bottom:-80px;
+}
+#botonesVacios{
+	height: 500px;
 }
