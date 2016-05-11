@@ -45,6 +45,8 @@ class mvc_controller {
 					//Si la contraseña no coicide volvemos al login
 					//$error=load_page('app/views/default/modules/m_Error.php');
 					$pagina=load_page("app/views/default/login.php");
+					$error=load_page("app/views/default/modules/m_Error.php");
+					$pagina = replace_error("/<h4>Logg/" , $error, $pagina);
 					view_page($pagina);
 				}
 		}else{
@@ -154,6 +156,28 @@ class mvc_controller {
 		echo $pagina;
 	}
 
+	function mostrarProductos($idProveedor,$logo){
+		$proveedor=new Proveedor();
+
+		$pagina=load_template();	
+
+		$tsArray = $proveedor->verProductos($idProveedor);			   
+			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+					//carga la tabla de la seccion de m.table_univ.php
+					include './app/views/default/modules/m_listaProductos.php';
+					$table = ob_get_clean();	
+					$botones=load_page('./app/views/default/modules/m_botonesMisProductos.php');
+					//realiza el parseado 
+						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+			   	}else{
+				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+	   			}		
+		echo $pagina;
+	}
 
 }
 

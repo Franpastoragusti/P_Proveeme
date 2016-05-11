@@ -138,14 +138,14 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
-	function sacarProductosProveedor($productos)
+	function verProductos($idProveedor)
 	{
 		//conexion a la base de datos
 		$this->conectar();		
 		$query = $this->consulta("SELECT p.nombre, p.tipo, p.descripcion, p.precio, p.medida,
 								 p.idProducto
 								 FROM productos p, proveedores prov
-								 WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='';");
+								 WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='$idProveedor'");
  	    $this->disconnect();	
  	    				
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos

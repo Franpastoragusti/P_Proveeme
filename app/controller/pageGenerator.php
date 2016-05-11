@@ -29,4 +29,7 @@ function replace_botones($in='/\#BOTONES\#/ms', $out,$pagina){
 function replace_logo($in='/\#LOGO\#/ms', $out,$pagina){
 	return preg_replace($in, $out, $pagina);	 	
 }
+function replace_error($in="/listo/", $out,$pagina){
+	return preg_replace($in, $out, $pagina);	 	
+}
 ?>
