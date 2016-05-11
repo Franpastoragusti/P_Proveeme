@@ -14,8 +14,11 @@ $mvc = new mvc_controller();
 		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
 		//var_dump($_SESSION);
 		//$_SESSION está vacia 
+		
+	}elseif ( $_GET['action'] == 'PLPedido' ){
 
-
+		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
+	
 
 
 

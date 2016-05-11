@@ -33,7 +33,7 @@ class Proveedor extends Database implements Iproveedor{
 	
 	 public function verListaPedidos($idProveedor){
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa, ped.fechaPedido, ped.fechaEntrega, ped.hora, ped.precioTotalPedido
+		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa, ped.fechaEntrega, ped.hora, ped.precioTotalPedido
 			FROM procesado_pedido proc, pedidos ped, proveedores prov, restaurante r, empresa e
 			WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor 
 			AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario 

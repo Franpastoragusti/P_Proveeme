@@ -18,9 +18,7 @@
 				<img id="logo" src="#LOGO#">
 			</section>
 			<section class="col-md-offset-4 text-center center-block fijo" >
-					
 				#BOTONES#
-
 			</section>
 			<section class="col-md-offset-4 casita">
 				<a href="index.php"> <img id="casa" src="app/views/default/images/home.png"></a>
