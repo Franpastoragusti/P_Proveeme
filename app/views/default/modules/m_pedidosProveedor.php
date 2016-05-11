@@ -14,11 +14,11 @@
 					<?php foreach ($tsArray as $data): ?>
 						<tr>
 							<td><?php echo $data['idPedido'];?></td>
-							<td><?php echo $data['estado'];?></td>
 							<td><?php echo $data['nombreEmpresa'];?></td>
 							<td><?php echo $data['fechaEntrega'];?></td>
 							<td><?php echo $data['hora'];?></td>
 							<td><?php echo $data['precioTotalPedido'];?></td>
+							<td><?php echo $data['estado'];?></td>
 						</tr>
 					 <?php endforeach;?>				
 				</tbody>

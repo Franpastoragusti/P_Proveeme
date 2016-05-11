@@ -139,8 +139,8 @@ class mvc_controller {
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
-					var_dump($tsArray);
-					$table =load_page('./app/views/default/modules/m_pedidosProveedor.php');	
+					include './app/views/default/modules/m_pedidosProveedor.php';
+					$table = ob_get_clean();	
 					$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
