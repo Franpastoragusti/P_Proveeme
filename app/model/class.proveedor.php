@@ -16,7 +16,6 @@ class Proveedor extends Database implements Iproveedor{
 			return false;
 		}
 	}
-
 	 
 	 public function eliminarProducto($idProd, $idProveedor){
 	 		//conexion a la base de datos
@@ -40,8 +39,8 @@ class Proveedor extends Database implements Iproveedor{
 			AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario 
 			AND proc.idProveedor='$idProveedor'");
  	    $this->disconnect();					
-		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
-		{		
+		if($this->numero_de_filas($query) > 0){ // existe -> datos correctos
+				
 				//se llenan los datos en un array
 				while ( $tsArray = $this->fetch_assoc($query)) 
 					$data[] = $tsArray;			
@@ -138,5 +137,28 @@ class Proveedor extends Database implements Iproveedor{
 			return false;
 		}
 	 }
+
+	function sacarProductosProveedor($productos)
+	{
+		//conexion a la base de datos
+		$this->conectar();		
+		$query = $this->consulta("SELECT p.nombre, p.tipo, p.descripcion, p.precio, p.medida,
+								 p.idProducto
+								 FROM productos p, proveedores prov
+								 WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='';");
+ 	    $this->disconnect();	
+ 	    				
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}			
+	}
 }
 ?>
