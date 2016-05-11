@@ -12,7 +12,7 @@ class mvc_controller {
 /***************FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO***********/
 
 	function decision(){
-
+		
 		$usuario = new User();
 		//comprobamos que se ha rellenado el login
 		if (!empty($_POST)) {
@@ -46,7 +46,7 @@ class mvc_controller {
 					//$error=load_page('app/views/default/modules/m_Error.php');
 					$pagina=load_page("app/views/default/login.php");
 					$error=load_page("app/views/default/modules/m_Error.php");
-					$pagina = replace_error("/<h4>Logg/" , $error, $pagina);
+					$pagina = replace_error("/listo/" , $error, $pagina);
 					view_page($pagina);
 				}
 		}else{

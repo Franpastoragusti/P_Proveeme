@@ -2,8 +2,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="app/views/default/css/finalizado.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
@@ -17,7 +18,7 @@
 		</header>
 		<div class="row center-block text-center">
 			<div class="col-md-4  col-md-offset-4 text-center login">
-			<h4>Log in</h4>
+			<span id="mensaje">listo</span>
 				<form method="POST" action="index.php">
 					<div class="form-group input-group-lg ">
 						<label for="username"></label>
@@ -27,7 +28,8 @@
 						<label for="password"></label>
 							<input class="form-control " placeholder="Contraseña" type="password" name="password" value="" required="">
 					 </div>
-						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR"></input>
+						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR">
+					<div class="g-recaptcha" data-sitekey="6Lc0pB8TAAAAAAxV42kLAcE7TNuala8Kv-BQiyte"></div>
 				</form>
 				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block cc">Registrate</a>
 			</div>
