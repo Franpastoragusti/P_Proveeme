@@ -54,7 +54,7 @@ class Restaurante extends Database implements Irestaurante{
 	 public function verListaProveedores($idRestaurante){
 	 	$this->conectar();		
 		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
-								 e.telefono, e.email, prov.pedidoMinimo, prov.sector
+								 e.telefono, e.email, prov.pedidoMinimo, prov.idSector
 								FROM empresa e, proveedores prov, direccion d
 								WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor");
  	    $this->disconnect();					
@@ -71,6 +71,32 @@ class Restaurante extends Database implements Irestaurante{
 		}	
 
 	 }
+	 function verProveedoresPorSector($idSector){
+	 	$this->conectar();		
+		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
+								 e.telefono, e.email, prov.pedidoMinimo, prov.idSector
+								FROM empresa e, proveedores prov, direccion d
+								WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor AND prov.idSector=$idSector");
+ 	    $this->disconnect();					
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}	
+
+
+
+	 }
+
+
+
 
 		/*Comentar a juan
 	 public function verMisProveedores(){}

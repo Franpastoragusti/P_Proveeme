@@ -13,14 +13,23 @@
 							<div class="collapse navbar-collapse bs-example-js-navbar-collapse"> 
 								<ul class="nav navbar-nav navbar-right"> 
 									<li id="fat-menu" class="dropdown"> 
-										<a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+										<a id="drop3" href="" class="dropdown-toggle" data-toggle="dropdown" name="drop" role="button" aria-haspopup="true" aria-expanded="false"> 
 											Seleccione 
 											<span class="caret"></span> 
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="drop3">
-											<li><a href="#">postres</a></li> 
-											<li><a href="#">bebidas</a></li> 
-											<li><a href="#">carne</a></li> 
+											<li><a href="index.php?action=RLProveedores&sector=1">Carniceria</a></li> 
+											<li><a href="index.php?action=RLProveedores&sector=2">Bebidas</a></li> 
+											<li><a href="action=RLProveedores&sector=3">Reposteria</a></li> 
+											<li><a href="action=RLProveedores&sector=4">Congelados</a></li> 
+											<li><a href="action=RLProveedores&sector=5">Pescaderia</a></li> 
+											<li><a href="action=RLProveedores&sector=6">Menaje</a></li> 
+											<li><a href="action=RLProveedores&sector=7">Hortofruticola</a></li> 
+											<li><a href="action=RLProveedores&sector=8">Lacteos</a></li> 
+											<li><a href="action=RLProveedores&sector=9">Aliños</a></li> 
+											<li><a href="action=RLProveedores&sector=10">Aditivos</a></li> 
+
+
 										</ul> 
 									</li> 
 								</ul>
@@ -46,7 +55,7 @@
 							<td><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
 							<td><?php echo $data['localidad'];?></td>
 							<td><?php echo $data['telefono'];?></td>
-							<td><?php echo $data['sector'];?></td>
+							<td><?php echo $data['idSector'];?></td>
 							<td><?php echo $data['pedidoMinimo'];?></td>
 						</tr>
 					 <?php endforeach;?>				

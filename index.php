@@ -32,7 +32,40 @@ $mvc = new mvc_controller();
 
 		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
 	
+	}elseif (  $_GET['action'] == 'MenuPrincipal' && isset($_GET['sector'])){
 
+		switch ($_GET['sector']) {
+			case '1':
+				$mvc->buscarProveedor(1,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '2':
+				$mvc->buscarProveedor(2,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '3':
+				$mvc->buscarProveedor(3,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '4':
+				$mvc->buscarProveedor(4,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '5':
+				$mvc->buscarProveedor(5,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '6':
+				$mvc->buscarProveedor(6,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '7':
+				$mvc->buscarProveedor(7,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '8':
+				$mvc->buscarProveedor(8,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			case '9':
+				$mvc->buscarProveedor(9,$_SESSION['id'],$_SESSION['logo']);
+				break;
+			default:
+				$mvc->buscarProveedor(10,$_SESSION['id'],$_SESSION['logo']);
+				break;
+		}
 
 	}elseif (isset($_POST['username']) && 
 			isset($_POST['password']) && 
