@@ -126,7 +126,7 @@ class Proveedor extends Database implements Iproveedor{
 	 function registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	 	//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "INSERT INTO proveedores(idProveedor, sector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin')";
+		$sentencia = "INSERT INTO proveedores(idProveedor, idSector, pedidoMinimo) VALUES ('$id', '$sector', '$pedidoMin')";
 		$sentencia2="INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion')";
 		$sentencia3="INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
 		if($query = $this->consulta($sentencia)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)){
