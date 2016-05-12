@@ -40,25 +40,30 @@
                 <label class="control-label col-xs-3">Tipo de Usuario</label>
                 <div class="col-xs-2">
                     <label for="restaurante" class="radio-inline">
-                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="sector.disabled=true;pedidoMin.disabled=true" required> Restaurante
+                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="idSector.disabled=true;pedidoMin.disabled=true" required> Restaurante
                     </label>
                 </div>
                 <div class="col-xs-2">
                     <label for="proveedor"  class="radio-inline">
-                        <input  type="radio" id="proveedor" name="tipoUsuario" value="Proveedor" onclick="sector.disabled=false;pedidoMin.disabled=false" required> Proveedor
+                        <input  type="radio" id="proveedor" name="tipoUsuario" value="Proveedor" onclick="idSector.disabled=false;pedidoMin.disabled=false" required> Proveedor
                     </label>
                 </div>
                
             </div>
             <div class="form-group">
-                <label for="sector" class="control-label col-xs-4">Sector:</label>
+                <label for="idSector" class="control-label col-xs-4">Sector:</label>
                     <div class="col-xs-3">
-                        <select class="form-control" name="sector" disabled="disabled" id="sector" required>
-                            <option value="Carnico">Cárnico</option>
-                            <option value="Pescateria">Pescatería</option>
-                            <option value="Lacteo">Lácteo</option>
-                            <option value="Bebida">Bebida</option>
-                            <option value="Repostería">Repostería</option>
+                        <select class="form-control" name="idSector" disabled="disabled" id="idSector" required>
+                            <option value="1">Carniceria</option>
+                            <option value="2">Bebidas</option>
+                            <option value="3">Reposteria</option>
+                            <option value="4">Congelados</option>
+                            <option value="5">Pescaderia</option>
+                            <option value="6">Menaje</option>
+                            <option value="7">Hortofruticola</option>
+                            <option value="8">Lacteos</option>
+                            <option value="9">Aliños</option>
+                            <option value="10">Aditivos</option>
                         </select>
                     </div>
                 <label for="pedidoMin" class="control-label col-xs-3">Precio pedido mínimo:</label>
