@@ -21,7 +21,7 @@ class mvc_controller {
 					$datos=$usuario->existo($nombre);	
 					//var_dump($datos);
 					//Si no encuentra la pass devolvera '' entonces si esta llena Y es igual a la de la BBDD
-				if (!empty($datos[0]['pass'])&&($datos[0]["pass"]===($_POST["password"]))) {
+				if (!empty($datos[0]['pass'])&&$datos[0]["pass"]===md5($_POST["password"])) {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
 						//var_dump($profesion);
