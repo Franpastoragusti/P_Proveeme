@@ -130,7 +130,7 @@ class mvc_controller {
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
-		echo $pagina;
+		view_page($pagina);
 	}
 
 	function mostrarPedidos($idProveedor,$logo){
@@ -153,7 +153,7 @@ class mvc_controller {
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
-		echo $pagina;
+		view_page($pagina);
 	}
 
 	function mostrarProductos($idProveedor,$logo){
@@ -176,11 +176,39 @@ class mvc_controller {
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
-		echo $pagina;
+		view_page($pagina);
+	}
+
+
+
+
+
+
+	//METODOS QUE MUESTRAN LAS PAGINAS PRINCIPALES DE LOS RESTAURANTES//
+	function mostrarProveedores($idRestaurante,$logo){
+		$restaurante=new Restaurante();
+
+		$pagina=load_template();	
+
+		$tsArray = $restaurante->verListaProveedores($idRestaurante);			   
+			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+					//carga la tabla de la seccion de m.table_univ.php
+					include './app/views/default/modules/m_listaProveedorR.php';
+					$table = ob_get_clean();	
+					$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
+					//realiza el parseado 
+						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+			   	}else{
+				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+	   			}		
+		view_page($pagina);
 	}
 
 }
-
-
+	
 
 ?>

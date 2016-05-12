@@ -19,9 +19,9 @@
 			<section class="col-md-4 col-md-offset-4 text-center menu">
 					
 					<ul class="nav nav-pills nav-stacked">
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PLPedido">Lista de Pedidos</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=RLProveedores">Lista de Proveedores</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PLPedido">Lista de Pedidos</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLProveedores">Lista de Proveedores</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
 					</ul>
 			</section>
 		<footer class="container-fluid vertical text-center res">

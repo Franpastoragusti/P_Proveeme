@@ -6,8 +6,7 @@ interface Irestaurante {
 
 	 public function enviarPedido($idPedido,$precioTotalPedido,$hora,$estado,$idRestaurante,$idProveedor,$idPedido);
  
-	 public function verListaProveedores();
-
+	  public function verListaProveedores($idRestaurante);
 		/*Comentar a juan
 	 public function verMisProveedores();
  
