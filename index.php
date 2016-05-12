@@ -28,9 +28,9 @@ $mvc = new mvc_controller();
 	}elseif ( $_GET['action'] == 'RLProveedores' ){
 
 		$mvc->mostrarProveedores($_SESSION['id'],$_SESSION['logo']);
-//	}elseif ( $_GET['action'] == 'MenuPrincipal' ){
+	}elseif ( $_GET['action'] == 'MenuPrincipal' ){
 
-//		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
+		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
 	
 
 

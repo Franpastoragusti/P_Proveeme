@@ -13,7 +13,10 @@ class mvc_controller {
 
 	function menuPrincipal($id,$logo){
 		$usuario = new User();
+		$datos=$usuario->existo($nombre);
 		$profesion=$usuario->proveOrest($id);
+		var_dump($profesion);
+		var_dump($_SESSION);
 		if (isset($profesion[0]["idProveedor"])) {
 
 				$pagina=load_page("app/views/default/indexP.php");

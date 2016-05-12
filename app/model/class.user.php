@@ -52,13 +52,6 @@ function exist($nombre){
 
 
 
-
-
-
-
-
-
-
 	//Estas funciones van juntas, una abre y otra cierra la conexion///////////////////////////////////
 	function existo($nombre){
 		$this->conectar();	
@@ -76,6 +69,7 @@ function exist($nombre){
 		}		
 	}
 	function proveOrest($id){
+
 		$sentenciaP = "SELECT * FROM proveedores p, usuarios u WHERE u.id='$id' AND p.idProveedor=u.id";
 		$query=$this->consulta($sentenciaP);
 
