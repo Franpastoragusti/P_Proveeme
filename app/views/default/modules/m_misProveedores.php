@@ -1,5 +1,5 @@
 <h4 class="text-center">Proveedores</h4>
-				<table class="table table-hover">
+				<table class="table table-hover table-responsive">
 				<thead class="text-center">
 					<tr>
 						<th>Proveedor</th>
@@ -17,7 +17,7 @@
 							<td><?php echo $data['telefono'];?></td>
 							<td><?php echo $data['sector'];?></td>
 							<td><?php echo $data['pedidoMinimo'];?></td>
-							<td class="Grande"><?php echo $data['descripcion'];?></td>
+							<td><?php echo $data['localidad'];?></td>
 						</tr>
 					 <?php endforeach;?>				
 				</tbody>
