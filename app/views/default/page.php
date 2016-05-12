@@ -21,7 +21,7 @@
 				#BOTONES#
 			</section>
 			<section class="col-md-offset-4 casita">
-				<a href="index.php"> <img id="casa" src="app/views/default/images/home.png"></a>
+				<a href="index.php?action=MenuPrincipal"> <img id="casa" src="app/views/default/images/home.png"></a>
 			</section>
 		</div>
 		<div class="col-md-9 pull-right">

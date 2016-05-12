@@ -11,6 +11,22 @@ class mvc_controller {
 
 /***************FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO***********/
 
+	function menuPrincipal($id,$logo){
+		$usuario = new User();
+		$profesion=$usuario->proveOrest($id);
+		if (isset($profesion[0]["idProveedor"])) {
+
+				$pagina=load_page("app/views/default/indexP.php");
+				$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
+				view_page($pagina);
+
+		}elseif(isset($profesion[0]["idRestaurante"])){
+				$pagina=load_page("app/views/default/indexR.php");
+				$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
+				view_page($pagina);
+		}
+	}
+
 	function decision(){
 		
 		$usuario = new User();
