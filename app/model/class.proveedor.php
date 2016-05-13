@@ -129,7 +129,11 @@ class Proveedor extends Database implements Iproveedor{
 	}
 	function precioTotalPedido($idPedido){
 		this->conectar();		
-	 	$sentencia = ""; /*Falta esta*/
+	 	$sentencia = "SELECT cont.cantidad * prod.Precio AS PrecioTotalProducto
+					FROM contenido_pedidos cont, pedidos ped, productos p, productos_proveedor prod, proveedores prov, procesado_pedido proc
+					WHERE cont.idPedido=proc.idPedido AND cont.idProducto=prod.idProducto AND prod.idProducto=p.idProducto 
+					AND prod.idProveedor=prov.idProveedor AND prod.idProveedor=proc.idProveedor AND proc.idPedido='$idPedido'
+					GROUP BY p.idProducto";
 		$query = $this->consulta($sentencia);
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
