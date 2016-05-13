@@ -33,11 +33,10 @@ class Proveedor extends Database implements Iproveedor{
 	
 	 public function verListaPedidos($idProveedor){
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa, ped.fechaEntrega, ped.hora, ped.precioTotalPedido
-			FROM procesado_pedido proc, pedidos ped, proveedores prov, restaurante r, empresa e
-			WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor 
-			AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario 
-			AND proc.idProveedor='$idProveedor'");
+		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa,ped.fechaEntrega, ped.hora, ped.precioTotalPedido
+								FROM procesado_pedido proc, pedidos ped, proveedores prov, restaurante r, empresa e
+								WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor 
+								AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario AND proc.idProveedor='$idProveedor'");
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0){ // existe -> datos correctos
 				
@@ -139,10 +138,10 @@ class Proveedor extends Database implements Iproveedor{
 	{
 		//conexion a la base de datos
 		$this->conectar();		
-		$query = $this->consulta("SELECT p.nombre, p.tipo, p.descripcion, p.precio, p.medida,
-								 p.idProducto
-								 FROM productos p, proveedores prov
-								 WHERE prov.idProveedor=p.idProveedor AND prov.idProveedor='$idProveedor'");
+		$query = $this->consulta("SELECT p.nombre,s.nombre , prod.precio, p.medida, p.idProducto
+									FROM productos p, proveedores prov, productos_proveedor prod, sectores s
+									WHERE prod.idProveedor=prov.idProveedor AND prod.idProducto=p.idProducto 
+									AND s.idSector=p.idSector AND prov.idProveedor='$idProveedor'");
  	    $this->disconnect();	
  	    				
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos

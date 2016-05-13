@@ -12,8 +12,9 @@ class Database {
 		if(!isset($this->conexion))
 		{
 			
-		  $this->conexion = (mysqli_connect("localhost","root","", "proveeme"));
-		  	  
+		  $this->conexion = (mysqli_connect("localhost","root","root", "proveeme")) or die(mysqli_error());
+		  mysqli_set_charset($this->conexion, "utf8");
+		  
 		}
 	}	
 

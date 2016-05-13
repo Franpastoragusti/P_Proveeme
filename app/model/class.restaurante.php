@@ -19,7 +19,7 @@ class Restaurante extends Database implements Irestaurante{
 	 public function verListaPedidos($idRestaurante){
 
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa, ped.fechaPedido, ped.fechaEntrega, ped.hora, ped.precioTotalPedido
+		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa,ped.fechaEntrega, ped.hora, ped.precioTotalPedido
 								FROM procesado_pedido proc, pedidos ped, proveedores prov, restaurante r, empresa e
 								WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor 
 								AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario AND proc.idRestaurante='$idRestaurante'");
@@ -96,16 +96,6 @@ class Restaurante extends Database implements Irestaurante{
 	 }
 
 
-
-
-		/*Comentar a juan
-	 public function verMisProveedores(){}
- 
-	 public function addMisProveedores(){}
-
-
-	 public function eliminarMisProveedores(){}
-		*/
  
 	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo, 
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
