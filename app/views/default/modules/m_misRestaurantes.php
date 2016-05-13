@@ -18,9 +18,7 @@
 							<td><?php echo $data['localidad'];?></td>
 							<td class="Grande"><?php echo $data['email'];?></td>
 							<td><?php echo $data['telefono'];?></td>
-						<!--
-							<td><?php //echo $data['Gasto Total'];?></td>
-							-->
+							<td><?php echo $data['Gasto Total'];?></td>
 						</tr>
 					 <?php endforeach;?>				
 				</tbody>

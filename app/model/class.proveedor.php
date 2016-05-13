@@ -2,7 +2,6 @@
 require_once "class.db.php";
 require_once "inter_proveedor.php";
 
-ljkl
 
 class Proveedor extends Database implements Iproveedor{
 
@@ -21,7 +20,7 @@ class Proveedor extends Database implements Iproveedor{
 	public function addProductoTablaProd_Prov($idProducto, $idProveedor, $precio){
 			//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, $precio)"	
+		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, $precio)";	
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
 			return true;
@@ -84,7 +83,7 @@ class Proveedor extends Database implements Iproveedor{
 	}
 
 	function verProductosPedido($idPedido){
-		this->conectar();		
+		$this->conectar();		
 	 	$sentencia = "SELECT p.nombre, p.medida, prod.Precio, cont.cantidad, cont.cantidad * prod.Precio
 			FROM productos p, productos_proveedor prod, proveedores prov, contenido_pedidos cont, procesado_pedido proc, pedidos ped
 			WHERE p.idProducto=prod.idProducto AND prov.idProveedor=prod.idProveedor AND proc.idProveedor=prov.idProveedor
@@ -107,7 +106,7 @@ class Proveedor extends Database implements Iproveedor{
 	}
 	
 	function verDatosRestaurantePedido($idRestaurante){
-		this->conectar();		
+		$this->conectar();		
 	 	$sentencia = "SELECT e.nombreEmpresa, d.provincia, d.localidad, d.calle, d.numero, d.cp
 						FROM empresa e, direccion d, procesado_pedido proc, restaurante r
 						WHERE e.idUsuario=r.idRestaurante AND r.idRestaurante=proc.idRestaurante 
@@ -128,7 +127,7 @@ class Proveedor extends Database implements Iproveedor{
 		}	
 	}
 	function precioTotalPedido($idPedido){
-		this->conectar();		
+		$this->conectar();		
 	 	$sentencia = "SELECT cont.cantidad * prod.Precio AS PrecioTotalProducto
 					FROM contenido_pedidos cont, pedidos ped, productos p, productos_proveedor prod, proveedores prov, procesado_pedido proc
 					WHERE cont.idPedido=proc.idPedido AND cont.idProducto=prod.idProducto AND prod.idProducto=p.idProducto 
@@ -154,7 +153,7 @@ class Proveedor extends Database implements Iproveedor{
 
 	 	$this->conectar();		
 	 	$sentencia = "SELECT DISTINCT (e.nombreEmpresa), d.calle, d.numero, d.cp, d.localidad, e.telefono, e.email, r.idRestaurante,
-	 					SUM(DISTINCT(ped.precioTotalPedido))
+	 					SUM(DISTINCT(ped.precioTotalPedido)) AS 'Gasto Total'
 						FROM procesado_pedido proc, contenido_pedidos cont, proveedores prov, restaurante r, pedidos ped, direccion d, empresa e
 						WHERE ped.idPedido=proc.idPedido AND cont.idPedido=ped.idPedido AND e.idUsuario=r.idRestaurante
 						AND proc.idRestaurante=r.idRestaurante AND proc.idProveedor=prov.idProveedor AND proc.idProveedor=$idProveedor
@@ -206,10 +205,10 @@ class Proveedor extends Database implements Iproveedor{
 	 	$provincia, $localidad, $calle, $numero, $cp){
 	 	//conexion a la base de datos
 		$this->conectar();	
-		$sentencia1 = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id"
-		$sentencia2 = "UPDATE proveedores SET idSector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor=$id;"
-		$sentencia3 = "UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id';"
-		$sentencia4 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id';"
+		$sentencia1 = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id";
+		$sentencia2 = "UPDATE proveedores SET idSector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor=$id";
+		$sentencia3 = "UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id'";
+		$sentencia4 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";
 		echo $sentencia;	
  	    $this->disconnect();					
 		if($query = $this->consulta($sentencia1)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)&&$query4 = $this->consulta($sentencia4)) // existe -> datos correctos
@@ -240,7 +239,7 @@ class Proveedor extends Database implements Iproveedor{
 	{
 		//conexion a la base de datos
 		$this->conectar();		
-		$query = $this->consulta("SELECT p.nombre,s.nombre , prod.precio, p.medida, p.idProducto
+		$query = $this->consulta("SELECT p.nombre,s.nombre AS 'Tipo' , prod.precio, p.medida, p.idProducto
 									FROM productos p, proveedores prov, productos_proveedor prod, sectores s
 									WHERE prod.idProveedor=prov.idProveedor AND prod.idProducto=p.idProducto 
 									AND s.idSector=p.idSector AND prov.idProveedor='$idProveedor'");

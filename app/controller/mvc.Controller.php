@@ -185,15 +185,17 @@ class mvc_controller {
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_listaProductos.php';
-					$table = ob_get_clean();	
-					$botones=load_page('./app/views/default/modules/m_botonesMisProductos.php');
+					$table = ob_get_clean();
+		
+					$botones=load_page("app/views/default/modules/m_botonesMisProductos.php");
 					//realiza el parseado 
+					var_dump($tsArray);
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
 				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' , $botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
 		view_page($pagina);

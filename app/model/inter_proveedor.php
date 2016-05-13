@@ -1,6 +1,6 @@
 <?php
 interface Iproveedor {
-	 public function addProducto($id, $idProveedor, $tipo, $nombre, $precio, $descripcion, $medida);
+	 public function addProductoTablaProd($idSector, $nombre, $medida);
 
 	 
 	 public function eliminarProducto($idProd, $idProveedor);
@@ -9,7 +9,7 @@ interface Iproveedor {
 	 public function verListaPedidos($idProveedor);
 
 	 
-	 public function modificarEstadoPedido($idPedido, $estado);
+	 public function modificarEstadoPedido($idPedido, $estado, $hora, $fecha); 
 	 
 
 	 public function verMisRestaurantes($idProveedor);

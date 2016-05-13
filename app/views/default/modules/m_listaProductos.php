@@ -7,7 +7,6 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Medida</th>
-						<th class="Grande">Descripción</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -15,10 +14,9 @@
 						<tr>
 							<td><?php echo $data['idProducto'];?></td>
 							<td><?php echo $data['nombre'];?></td>
-							<td><?php echo $data['tipo'];?></td>
+							<td><?php echo $data['Tipo'];?></td>
 							<td><?php echo $data['precio'];?></td>
 							<td><?php echo $data['medida'];?></td>
-							<td class="Grande"><?php echo $data['descripcion'];?></td>
 						</tr>
 					 <?php endforeach;?>				
 				</tbody>
