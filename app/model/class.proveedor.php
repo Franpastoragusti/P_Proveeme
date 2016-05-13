@@ -2,6 +2,8 @@
 require_once "class.db.php";
 require_once "inter_proveedor.php";
 
+ljkl
+
 class Proveedor extends Database implements Iproveedor{
 
 	public function addProductoTablaProd($idSector, $nombre, $medida){
