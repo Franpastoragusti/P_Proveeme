@@ -32,7 +32,7 @@ $mvc = new mvc_controller();
 
 		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
 	
-	}elseif (  $_GET['action'] == 'MenuPrincipal' && isset($_GET['sector'])){
+	}elseif (isset($_GET['sector'])){
 
 		switch ($_GET['sector']) {
 			case '1':

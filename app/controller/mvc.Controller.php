@@ -134,7 +134,7 @@ class mvc_controller {
 
 		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-
+			    	var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_misRestaurantes.php';
 					$table = ob_get_clean();	
@@ -199,10 +199,10 @@ class mvc_controller {
 	}
 
 	function buscarProveedor($idSector,$idRestaurante,$logo){
-		$usuario = new Restaurante();	
+		$restaurante = new Restaurante();	
 		$pagina=load_template();
 		$tsArray = $restaurante->verProveedoresPorSector($idSector);	
-		var_dump($tsArray);		   
+		//var_dump($tsArray);		   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_listaProveedorR.php';

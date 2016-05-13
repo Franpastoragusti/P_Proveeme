@@ -18,16 +18,16 @@
 											<span class="caret"></span> 
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="drop3">
-											<li><a href="index.php?action=RLProveedores&sector=1">Carniceria</a></li> 
-											<li><a href="index.php?action=RLProveedores&sector=2">Bebidas</a></li> 
-											<li><a href="action=RLProveedores&sector=3">Reposteria</a></li> 
-											<li><a href="action=RLProveedores&sector=4">Congelados</a></li> 
-											<li><a href="action=RLProveedores&sector=5">Pescaderia</a></li> 
-											<li><a href="action=RLProveedores&sector=6">Menaje</a></li> 
-											<li><a href="action=RLProveedores&sector=7">Hortofruticola</a></li> 
-											<li><a href="action=RLProveedores&sector=8">Lacteos</a></li> 
-											<li><a href="action=RLProveedores&sector=9">Aliños</a></li> 
-											<li><a href="action=RLProveedores&sector=10">Aditivos</a></li> 
+											<li><a href="index.php?sector=1">Carniceria</a></li> 
+											<li><a href="index.php?sector=2">Bebidas</a></li> 
+											<li><a href="index.php?sector=3">Reposteria</a></li> 
+											<li><a href="index.php?sector=4">Congelados</a></li> 
+											<li><a href="index.php?sector=5">Pescaderia</a></li> 
+											<li><a href="index.php?sector=6">Menaje</a></li> 
+											<li><a href="index.php?sector=7">Hortofruticola</a></li> 
+											<li><a href="index.php?sector=8">Lacteos</a></li> 
+											<li><a href="index.php?sector=9">Aliños</a></li> 
+											<li><a href="index.php?sector=10">Aditivos</a></li> 
 
 
 										</ul> 
