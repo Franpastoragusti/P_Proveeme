@@ -61,7 +61,9 @@ $mvc = new mvc_controller();
 		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
 
 
+	}elseif (isset($_POST['idPedidoBuscado'])){
 
+		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
 
 
 	}elseif ( $_GET['action'] == 'AddProducto' ){

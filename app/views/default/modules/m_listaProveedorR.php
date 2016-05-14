@@ -28,8 +28,6 @@
 											<li><a href="index.php?sector=8">Lacteos</a></li> 
 											<li><a href="index.php?sector=9">Aliños</a></li> 
 											<li><a href="index.php?sector=10">Aditivos</a></li> 
-
-
 										</ul> 
 									</li> 
 								</ul>
@@ -40,6 +38,7 @@
 				<table class="table table-hover">
 				<thead class="text-center">
 					<tr>
+						<th>ID</th>
 						<th>Proveedor</th>
 						<th>Dirección</th>
 						<th>Localidad</th>
@@ -51,6 +50,7 @@
 				<tbody>
 					<?php foreach ($tsArray as $data): ?>
 						<tr>
+							<td><?php echo $data['idProveedor'];?></td>
 							<td><?php echo $data['nombreEmpresa'];?></td>
 							<td><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
 							<td><?php echo $data['localidad'];?></td>

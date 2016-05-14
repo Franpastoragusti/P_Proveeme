@@ -19,10 +19,13 @@ class Restaurante extends Database implements Irestaurante{
 	 public function verListaPedidos($idRestaurante){
 
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa,ped.fechaEntrega, ped.hora, ped.precioTotalPedido
+		$query = $this->consulta("SELECT ped.idPedido, ped.estado,e.nombreEmpresa, proc.idProveedor, ped.fechaEntrega, ped.hora, ped.precioTotalPedido
 								FROM procesado_pedido proc, pedidos ped, proveedores prov, restaurante r, empresa e
-								WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor 
-								AND r.idRestaurante=proc.idRestaurante AND r.idRestaurante=e.idUsuario AND proc.idRestaurante='$idRestaurante'");
+								WHERE ped.idPedido=proc.idPedido AND prov.idProveedor=proc.idProveedor AND e.idUsuario=prov.idProveedor AND r.idRestaurante=proc.idRestaurante AND proc.idRestaurante='$idRestaurante'");
+
+
+
+
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
 		{		
@@ -53,7 +56,7 @@ class Restaurante extends Database implements Irestaurante{
  
 	 public function verListaProveedores($idRestaurante){
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
+		$query = $this->consulta("SELECT prov.idProveedor, e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
 								 e.telefono, e.email, prov.pedidoMinimo, prov.idSector
 								FROM empresa e, proveedores prov, direccion d
 								WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor");

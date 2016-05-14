@@ -3,7 +3,7 @@
 require 'app/model/class.user.php';
 require 'app/model/class.restaurante.php';
 require 'app/model/class.proveedor.php';
-//require 'app/model/class.pedido.php';
+require 'app/model/class.pedido.php';
 require 'app/controller/pageGenerator.php';
 
 class mvc_controller {
@@ -44,7 +44,7 @@ class mvc_controller {
 				if (!empty($datos[0]['pass'])&&$datos[0]["pass"]===md5($_POST["password"])) {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
-						//var_dump($profesion);
+						var_dump($profesion);
 						$_SESSION['id']=$profesion[0]['id'];
 						$_SESSION['logo']=$profesion[0]['logo'];
 						var_dump($_SESSION);
@@ -160,6 +160,7 @@ class mvc_controller {
 
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+					var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_pedidosProveedor.php';
 					$table = ob_get_clean();	
@@ -311,6 +312,45 @@ class mvc_controller {
 			$proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha);
 
 	}
+
+
+	function mostrarProductosPedido($idPedido,$id,$logo){
+		$pedido=new Pedido();
+
+		$usuario = new User();
+		$datos=$usuario->existo($nombre);
+		$profesion=$usuario->proveOrest($id);
+
+
+		$pagina=load_template();
+		$tsArray = $pedido->verProductosPedido($idPedido);	
+		echo "tsArray";
+		var_dump($tsArray); 
+				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+						var_dump($tsArray);
+						//carga la tabla de la seccion de m.table_univ.php
+
+						include './app/views/default/modules/m_productosPedido.php';
+						$table = ob_get_clean();	
+
+
+						if (isset($profesion[0]["idProveedor"])) {
+							$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
+						}elseif(isset($profesion[0]["idRestaurante"])){
+							$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
+						}		
+						//realiza el parseado 
+							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+				   	}else{
+					   		$pagina = replace_content('/\#TABLA\#/ms' ,"<h3>No existen resultados</h3>", $pagina);	
+					   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+		   			}		
+			view_page($pagina);
+	}
+
 
 }
 	

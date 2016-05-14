@@ -26,8 +26,7 @@ class Database {
 	public function consulta($sql)
 	{
 		$resultado = mysqli_query($this->conexion,$sql);
-		var_dump($resultado);
-  		return $resultado; 
+		return $resultado; 
 	}
 	
 	/*METODO PARA CONTAR EL NUMERO DE RESULTADOS
