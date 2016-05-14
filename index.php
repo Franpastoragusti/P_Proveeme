@@ -1,5 +1,5 @@
 <?php
-
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require './app/controller/mvc.Controller.php';
 
 $mvc = new mvc_controller();
@@ -31,7 +31,44 @@ $mvc = new mvc_controller();
 	}elseif ( $_GET['action'] == 'MenuPrincipal' ){
 
 		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
+
+	}elseif ( $_GET['action'] == 'RLPedido' ){
+
+		$mvc->mostrarPedidosRestaurante($_SESSION['id'],$_SESSION['logo']);
+
+
+
+
+
+	}elseif (isset($_POST['nombreProd']) && 
+			isset($_POST['medida']) &&  
+			isset($_POST['idSector'])){
+		
+		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
+
+		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 	
+
+
+	}elseif (isset($_POST['idProducto'])){
+
+		$mvc->eliminarProducto($_POST['idProducto'], $_SESSION['id']);
+		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
+
+	}elseif (isset($_POST['estadoPedido'])){
+
+		$mvc->modificarEstadoPedido($_SESSION['id'], $_POST['estadoPedido'], $_POST['hora'], $_POST['fecha']);
+		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
+
+
+
+
+
+	}elseif ( $_GET['action'] == 'AddProducto' ){
+
+		$mvc->addProducto($_SESSION['id'],$_SESSION['logo']);
+
+
 	}elseif (isset($_GET['sector'])){
 
 		switch ($_GET['sector']) {

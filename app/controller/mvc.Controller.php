@@ -222,6 +222,36 @@ class mvc_controller {
 	   			}		
 		view_page($pagina);
 	 }
+//**************FUNCIONES DE PRODUCTO************************/
+
+
+	function insertarProducto($nombreProd,$medida,$idSector,$idProveedor, $precio){
+		$proveedor=new Proveedor();
+
+		$pagina=load_template();
+		$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
+		if($idProducto!=''){
+			//detectar idProducto
+
+			$proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio);
+
+		}else{
+
+			$proveedor->addProductoTablaProd($idSector, $nombreProd, $medida);
+			$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
+			$proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio);
+		}
+
+	}
+
+	function eliminarProducto($idProd, $idProveedor){
+		$proveedor=new Proveedor();
+
+		$pagina=load_template();
+		$proveedor->eliminarProducto($idProd,$idProveedor);
+
+	}
+
 
 
 
@@ -248,6 +278,38 @@ class mvc_controller {
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
 		view_page($pagina);
+	}
+	function mostrarPedidosRestaurante($idRestaurante,$logo){
+			$restaurante=new Restaurante();
+
+			$pagina=load_template();	
+
+			$tsArray = $restaurante->verListaPedidos($idRestaurante);			   
+				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+						//var_dump($tsArray);
+						//carga la tabla de la seccion de m.table_univ.php
+						include './app/views/default/modules/m_pedidosRestaurante.php';
+						$table = ob_get_clean();	
+						$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
+						//realiza el parseado 
+							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+				   	}else{
+					   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+					   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+		   			}		
+			view_page($pagina);
+		}
+
+
+	function modificarEstadoPedido($idPedido, $estado, $hora, $fecha){
+			$proveedor=new Proveedor();
+
+			$pagina=load_template();
+			$proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha);
+
 	}
 
 }

@@ -5,10 +5,32 @@ require_once "inter_proveedor.php";
 
 class Proveedor extends Database implements Iproveedor{
 
-	public function addProductoTablaProd($idSector, $nombre, $medida){
+	//Falta una funcion de selec de id Producto
+
+
+	public function detectaProducto($nombreProd,$medida){
+	 	$this->conectar();		
+		$query = $this->consulta("SELECT COUNT(*) FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
+ 	    $query2 = $this->consulta("SELECT p.idProducto FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
+
+ 	    $this->disconnect();					
+		if($this->numero_de_filas($query) == 1){ // existe -> datos correctos
+				return $query2;
+		}else
+		{	
+			return false;
+		}	
+
+	 }
+
+	 /*********FUNCIONES DE PRODUCTO***********/
+
+
+
+	public function addProductoTablaProd($idSector, $nombreProd, $medida){
 			//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "INSERT INTO productos(idSector, nombre, medida) VALUES ($idSector, '$nombre', '$medida')";
+		$sentencia = "INSERT INTO productos(idSector, nombre, medida) VALUES ($idSector, '$nombreProd', '$medida')";
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
 			return true;
@@ -20,12 +42,13 @@ class Proveedor extends Database implements Iproveedor{
 	public function addProductoTablaProd_Prov($idProducto, $idProveedor, $precio){
 			//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, $precio)";	
-		if($query = $this->consulta($sentencia)){
-			$this->disconnect();	
+		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, $precio)";
+
+		if($this->consulta($sentencia)){
+		$this->disconnect();	
 			return true;
-		}else{
-			$this->disconnect();	
+		}else{	
+			$this->disconnect();
 			return false;
 		}
 	}
@@ -69,9 +92,9 @@ class Proveedor extends Database implements Iproveedor{
 	 public function modificarEstadoPedido($idPedido, $estado, $hora, $fecha){
 	 		//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "UPDATE pedidos SET estado='$estado', hora='$hora', fecha='$fecha' WHERE idPedido='$idPedido'";
+		$sentencia = "UPDATE pedidos SET estado='$estado', hora='$hora', fecha='$fecha' WHERE idPedido=$idPedido";
 		echo $sentencia;	
-	$query = $this->consulta("UPDATE pedidos SET estado='$estado', hora='$hora', fecha='$fecha' WHERE idPedido='$idPedido'");
+	$query = $this->consulta($sentencia);
  	    $this->disconnect();					
 		if($query) // existe -> datos correctos
 		{		
@@ -227,7 +250,7 @@ class Proveedor extends Database implements Iproveedor{
 		$sentencia2="INSERT INTO empresa(idUsuario, cif, nombreEmpresa, email, telefono, descripcion) VALUES ('$id', '$cif', '$empresa', '$email', '$telefono', '$descripcion')";
 		$sentencia3="INSERT INTO direccion(idUsuario, provincia, localidad, calle, numero, cp) VALUES ('$id', '$provincia', '$localidad', '$calle', '$numero', '$cp')";	
 		if($query = $this->consulta($sentencia)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)){
-			$this->disconnect();	
+			$this->disconnect();
 			return true;
 		}else{
 			$this->disconnect();	
