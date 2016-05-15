@@ -1,6 +1,10 @@
 <?php
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require './app/controller/mvc.Controller.php';
+	require_once "./app/lib/recaptchalib.php";
+	$flag=0;
+	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
+	$response = null;
 
 $mvc = new mvc_controller();
 	session_start();
@@ -81,7 +85,7 @@ $mvc = new mvc_controller();
 				$mvc->buscarProveedor(2,$_SESSION['id'],$_SESSION['logo']);
 				break;
 			case '3':
-				$mvc->buscarProveedor(3,$_SESSION['id'],$_SESSION['logo']);
+				$mvc->buscarProveedor(3,$_SESSION['decisionid'],$_SESSION['logo']);
 				break;
 			case '4':
 				$mvc->buscarProveedor(4,$_SESSION['id'],$_SESSION['logo']);
@@ -126,6 +130,7 @@ $mvc = new mvc_controller();
 						$encripKey=md5($_POST['password']);
 
 						//Insertar usuario nuevo
+
 						$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
 						$datos=$mvc->controlExist($_POST['username']);
 								
@@ -139,11 +144,26 @@ $mvc = new mvc_controller();
 						}
 								
 			}else{
-				$_POST= array();
-				$mvc->decision();
+				$pagina=load_page("app/views/default/login.php");
+			$error=load_page("app/views/default/modules/m_Error.php");
+			$pagina = replace_error("/listo/" , $error, $pagina);
+			view_page($pagina);
 			}
 	}else{
+		/*$reCaptcha = new ReCaptcha($secret);
+		if ($_POST["g-recaptcha-response"]) {
+		$response = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]);
+		}
+ 		if ($response != null && $response->success) {*/
+       			$mvc->decision();
+ 		/*} else{
+ 		 	$pagina=load_page("app/views/default/login.php");
+			$error=load_page("app/views/default/modules/m_Error.php");
+			$pagina = replace_error("/listo/" , $error, $pagina);
+			view_page($pagina);
+ 		}*/
 		
-		$mvc->decision();
 	}
 ?>

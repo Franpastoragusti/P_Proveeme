@@ -12,7 +12,7 @@
 
 <div class="modal fade" id="contenidoPedido" tabindex="-1" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content small">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Introduce el ID del Pedido</h4>
@@ -39,7 +39,7 @@
 <!--FUNCION PARA MODIFICAR EL ESTADO DE UN PEDIDO-->
 <div class="modal fade" id="modificar" tabindex="-1" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content medium">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Modifica el pedido</h4>
@@ -54,7 +54,7 @@
 				        </div>
 						<div class="form-group">
 				            <label for="estado" class="control-label col-xs-4">Estado</label>
-			                    <div class="col-xs-3">
+			                    <div class="col-xs-6">
 			                        <select class="form-control" name="estadoPedido" id="estado" required>
 			                            <option value="Aceptado">Aceptado</option>
 			                            <option value="Rechazado">Rechazado</option>

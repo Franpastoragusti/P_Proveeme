@@ -149,3 +149,13 @@ thead{
 	background-color: rgba(158, 160, 158, 0.7);
 	box-shadow: 2px 1px 2px #212021;
 }
+
+.small{
+	width: 300px;
+}
+.medium{
+	width: 400px;
+}
+.modal-title{
+	background-color: #ff8000;
+}

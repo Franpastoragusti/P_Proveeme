@@ -6,12 +6,12 @@
 	<li><a class="btn btn-primary center-block btn-lg btn-block" href="indexP.php?action=PedidoNuevo"> Haz un Pedido</a></li>
 </ul>
 
-<div class="modal fade" id="contenidoPedido" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<div class="modal fade divmodal" id="contenidoPedido" tabindex="-1" role="dialog">
+  <div class="modal-dialog personal-modal">
+    <div class="modal-content small">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Introduce el ID del Pedido</h4>
+        <h4 class="modal-title tittle">Introduce el ID del Pedido</h4>
       </div>
       <div class="modal-body">
 				<form class="form-horizontal" method="POST" action="index.php">

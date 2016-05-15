@@ -70,10 +70,10 @@ function exist($nombre){
 	}
 	function proveOrest($id){
 
-		$sentenciaP = "SELECT * FROM proveedores p, usuarios u WHERE u.id='$id' AND p.idProveedor=u.id";
+		$sentenciaP = "SELECT u.id, u.nombreUsuario, u.logo, p.idSector, p.idProveedor FROM proveedores p, usuarios u WHERE u.id='$id' AND p.idProveedor=u.id";
 		$query=$this->consulta($sentenciaP);
 
-		$sentenciaR="SELECT * FROM restaurante r, usuarios u WHERE u.id='$id' AND r.idRestaurante=u.id";
+		$sentenciaR="SELECT u.id, u.nombreUsuario, u.logo, r.idRestaurante FROM restaurante r, usuarios u WHERE u.id='$id' AND r.idRestaurante=u.id";
 		$query2=$this->consulta($sentenciaR);
 
 		$this->disconnect();	

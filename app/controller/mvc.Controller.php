@@ -11,6 +11,11 @@ class mvc_controller {
 
 /***************FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO***********/
 
+
+
+
+
+
 	function menuPrincipal($id,$logo){
 		$usuario = new User();
 		$datos=$usuario->existo($nombre);
@@ -72,6 +77,8 @@ class mvc_controller {
 		}else{
 			//si POST esta vacio es la primera vez que entramos al login
 			$pagina=load_page("app/views/default/login.php");
+			$error=load_page("app/views/default/modules/m_Error.php");
+			$pagina = replace_error("/listo/" , $error, $pagina);
 			view_page($pagina);
 		}
 
@@ -132,21 +139,22 @@ class mvc_controller {
 		$proveedor=new Proveedor();
 
 		$pagina=load_template();	
-
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
+		$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
 		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 			    	var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_misRestaurantes.php';
 					$table = ob_get_clean();	
-					$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
 
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
-				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
@@ -155,22 +163,21 @@ class mvc_controller {
 
 	function mostrarPedidos($idProveedor,$logo){
 		$proveedor=new Proveedor();
-
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$pagina=load_template();	
-
+		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_pedidosProveedor.php';
 					$table = ob_get_clean();	
-					$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
-				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
@@ -179,24 +186,22 @@ class mvc_controller {
 
 	function mostrarProductos($idProveedor,$logo){
 		$proveedor=new Proveedor();
-
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$pagina=load_template();	
-
+		$botones=load_page("app/views/default/modules/m_botonesMisProductos.php");
 		$tsArray = $proveedor->verProductos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_listaProductos.php';
 					$table = ob_get_clean();
-		
-					$botones=load_page("app/views/default/modules/m_botonesMisProductos.php");
 					//realiza el parseado 
 					var_dump($tsArray);
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
-				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' , $botones, $pagina);
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
 		view_page($pagina);
@@ -204,20 +209,22 @@ class mvc_controller {
 
 	function buscarProveedor($idSector,$idRestaurante,$logo){
 		$restaurante = new Restaurante();	
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$pagina=load_template();
+		$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
 		$tsArray = $restaurante->verProveedoresPorSector($idSector);	
 		//var_dump($tsArray);		   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_listaProveedorR.php';
 					$table = ob_get_clean();	
-					$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
+
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
-				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
@@ -228,7 +235,7 @@ class mvc_controller {
 
 	function insertarProducto($nombreProd,$medida,$idSector,$idProveedor, $precio){
 		$proveedor=new Proveedor();
-
+		
 		$pagina=load_template();
 		$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
 		if($idProducto!=''){
@@ -260,21 +267,20 @@ class mvc_controller {
 	//METODOS QUE MUESTRAN LAS PAGINAS PRINCIPALES DE LOS RESTAURANTES//
 	function mostrarProveedores($idRestaurante,$logo){
 		$restaurante=new Restaurante();
-
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$pagina=load_template();	
-
+		$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
 		$tsArray = $restaurante->verListaProveedores($idRestaurante);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_listaProveedorR.php';
 					$table = ob_get_clean();	
-					$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
 					//realiza el parseado 
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 			   	}else{
-				   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 	   			}		
@@ -282,8 +288,9 @@ class mvc_controller {
 	}
 	function mostrarPedidosRestaurante($idRestaurante,$logo){
 			$restaurante=new Restaurante();
-
+			$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 			$pagina=load_template();	
+			$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
 
 			$tsArray = $restaurante->verListaPedidos($idRestaurante);			   
 				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
@@ -291,15 +298,14 @@ class mvc_controller {
 						//carga la tabla de la seccion de m.table_univ.php
 						include './app/views/default/modules/m_pedidosRestaurante.php';
 						$table = ob_get_clean();	
-						$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
 						//realiza el parseado 
 							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 				   	}else{
-					   		$pagina = replace_content('/\#TABLA\#/ms' ,'<h3>No existen resultados</h3>', $pagina);	
-					   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 		   			}		
 			view_page($pagina);
 		}
@@ -316,7 +322,7 @@ class mvc_controller {
 
 	function mostrarProductosPedido($idPedido,$id,$logo){
 		$pedido=new Pedido();
-
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$usuario = new User();
 		$datos=$usuario->existo($nombre);
 		$profesion=$usuario->proveOrest($id);
@@ -326,27 +332,27 @@ class mvc_controller {
 		$tsArray = $pedido->verProductosPedido($idPedido);	
 		echo "tsArray";
 		var_dump($tsArray); 
+		if (isset($profesion[0]["idProveedor"])) {
+			$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
+		}elseif(isset($profesion[0]["idRestaurante"])){
+			$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
+		}
+
 				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						var_dump($tsArray);
 						//carga la tabla de la seccion de m.table_univ.php
 
 						include './app/views/default/modules/m_productosPedido.php';
 						$table = ob_get_clean();	
-
-
-						if (isset($profesion[0]["idProveedor"])) {
-							$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
-						}elseif(isset($profesion[0]["idRestaurante"])){
-							$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
-						}		
+	
 						//realiza el parseado 
 							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 				   	}else{
-					   		$pagina = replace_content('/\#TABLA\#/ms' ,"<h3>No existen resultados</h3>", $pagina);	
-					   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 		   			}		
 			view_page($pagina);
 	}
