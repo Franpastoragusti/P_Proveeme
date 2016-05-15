@@ -70,9 +70,10 @@ $mvc = new mvc_controller();
 		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
 
 
-	}elseif ( $_GET['action'] == 'AddProducto' ){
+	}elseif ( isset($_POST['nombreProd']) ){
 
-		$mvc->addProducto($_SESSION['id'],$_SESSION['logo']);
+		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
+		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 
 
 	}elseif (isset($_GET['sector'])){

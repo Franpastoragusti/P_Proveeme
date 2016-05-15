@@ -238,16 +238,24 @@ class mvc_controller {
 		
 		$pagina=load_template();
 		$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
+		echo $idProducto;
 		if($idProducto!=''){
 			//detectar idProducto
 
-			$proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio);
+			if ($proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio)) {
+				echo "insertado";
+			}
 
 		}else{
 
-			$proveedor->addProductoTablaProd($idSector, $nombreProd, $medida);
+			if ($proveedor->addProductoTablaProd($idSector, $nombreProd, $medida)) {
+				echo "Creado producto nuevo";
+			}
 			$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
-			$proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio);
+			if (addProductoTablaProd_Prov($idProducto, $idProveedor, $precio)) {
+				echo "Creado y asumido";
+			}
+			
 		}
 
 	}

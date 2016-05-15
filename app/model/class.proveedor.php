@@ -12,13 +12,15 @@ class Proveedor extends Database implements Iproveedor{
 	 	$this->conectar();		
 		$query = $this->consulta("SELECT COUNT(*) FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
  	    $query2 = $this->consulta("SELECT p.idProducto FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
-
- 	    $this->disconnect();					
+ 	    var_dump($query2);
+ 	    				
 		if($this->numero_de_filas($query) == 1){ // existe -> datos correctos
-				return $query2;
+				return true;
+			
 		}else
 		{	
 			return false;
+		
 		}	
 
 	 }
@@ -29,26 +31,26 @@ class Proveedor extends Database implements Iproveedor{
 
 	public function addProductoTablaProd($idSector, $nombreProd, $medida){
 			//conexion a la base de datos
-		$this->conectar();	
+	
 		$sentencia = "INSERT INTO productos(idSector, nombre, medida) VALUES ($idSector, '$nombreProd', '$medida')";
 		if($query = $this->consulta($sentencia)){
-			$this->disconnect();	
+		
 			return true;
 		}else{
-			$this->disconnect();	
+	
 			return false;
 		}
 	}
 	public function addProductoTablaProd_Prov($idProducto, $idProveedor, $precio){
 			//conexion a la base de datos
-		$this->conectar();	
-		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, $precio)";
-
-		if($this->consulta($sentencia)){
-		$this->disconnect();	
+	
+		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, '$precio')";
+		var_dump($sentencia);
+		if($query= $this->consulta($sentencia)){
+		
 			return true;
 		}else{	
-			$this->disconnect();
+			
 			return false;
 		}
 	}

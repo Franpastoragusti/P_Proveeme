@@ -38,7 +38,7 @@
 			            </div>
 				        <div class="form-group">
 				            <label for="idSector" class="control-label col-xs-4">Tipo de Producto</label>
-			                    <div class="col-xs-3">
+			                    <div class="col-xs-5">
 			                        <select class="form-control" name="idSector" id="idSector" required>
 			                            <option value="1">Carnicería</option>
 			                            <option value="2">Bebidas</option>
