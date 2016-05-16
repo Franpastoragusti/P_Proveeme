@@ -9,12 +9,9 @@ require 'app/controller/pageGenerator.php';
 class mvc_controller {
 
 
-/***************FUNCION PARA DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO***********/
-
-
-
-
-
+/****************************************************************************************************************************/
+/************************** DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO********************************************/
+/****************************************************************************************************************************/
 
 	function menuPrincipal($id,$logo){
 		$usuario = new User();
@@ -34,7 +31,7 @@ class mvc_controller {
 				view_page($pagina);
 		}
 	}
-/********************************************************************************************/
+/****************************************************************LOGIN*******************************************************/
 
 	function decision(){
 		
@@ -84,21 +81,16 @@ class mvc_controller {
 
 	}
 
-/****************************************************************************/
 
-
-/*****************INSERTAR USUARIOS NUEVOS*************************************/
-	//Despues de rellenar el formulario de registro
+/****************************************************************************************************************************/
+/***********************************************INSERTAR USUARIOS NUEVOS*****************************************************/
+/****************************************************************************************************************************/
 
 	function controlExist($nombre){
 		$usuario=new User();
 		$datos=$usuario->existo($nombre);
 		return $datos;
 	}
-
-
-	///////AQUIIIIIIIIIIIIIIII //////////////
-	//determindo ya si eres proveedor o restaurante en funcion del campo tipoUsuario y en funcion de lo que determine se llama a altaProveedor u a altaRestaurante
 
 	function registroUsuario($nombre, $pass, $logo){
 		$usuario = new User();	

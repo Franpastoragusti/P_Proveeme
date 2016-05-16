@@ -8,77 +8,43 @@
 $mvc = new mvc_controller();
 	session_start();
 
-	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo del buscador
+
+
+
+/****************************************************************************************************************************/
+/**********************************************METODOS CON GET***************************************************************/
+/****************************************************************************************************************************/
+
+	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo de crear cuenta
 	{	
 		$mvc->introducirInfo();	
 
-	}elseif ( $_GET['action'] == 'PMRestaurantes' ) 
+	}elseif ( $_GET['action'] == 'PMRestaurantes' ) //Muestra los restaurantes que han comerciado con el proveedor
 	{
 		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
-		//var_dump($_SESSION);
-		//$_SESSION está vacia 
 		
-	}elseif ( $_GET['action'] == 'PLPedido' ){
+	}elseif ( $_GET['action'] == 'PLPedido' ){ //Muestra la lista de pedidos de un proveedor
 
 		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
 	
 
-	}elseif ( $_GET['action'] == 'PLProductos' ){
+	}elseif ( $_GET['action'] == 'PLProductos' ){ //Muestra la lista de productos de un proveedor
 
 		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 	
-	}elseif ( $_GET['action'] == 'RLProveedores' ){
+	}elseif ( $_GET['action'] == 'RLProveedores' ){ //Muestra la lista con todos los proveedores existentes
 
 		$mvc->mostrarProveedores($_SESSION['id'],$_SESSION['logo']);
-	}elseif ( $_GET['action'] == 'MenuPrincipal' ){
 
-		$datos=$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
+	}elseif ( $_GET['action'] == 'MenuPrincipal' ){	//Permite retroceder al menu principal del restaurante o del proveedor
 
-	}elseif ( $_GET['action'] == 'RLPedido' ){
+		$mvc->menuPrincipal($_SESSION['id'],$_SESSION['logo']);
+
+	}elseif ( $_GET['action'] == 'RLPedido' ){ //Muestra la lista de pedidos de un restaurante
 
 		$mvc->mostrarPedidosRestaurante($_SESSION['id'],$_SESSION['logo']);
 
-
-
-
-
-	}elseif (isset($_POST['nombreProd']) && 
-			isset($_POST['medida']) &&  
-			isset($_POST['idSector'])){
-		
-		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
-
-		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
-	
-
-
-	}elseif (isset($_POST['idProducto'])){
-
-		$mvc->eliminarProducto($_POST['idProducto'], $_SESSION['id']);
-		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
-
-	}elseif (isset($_POST['estadoPedido'])&&isset($_POST['idPedido'])){
-
-		$mvc->modificarEstadoPedido($_POST['idPedido'], $_POST['estadoPedido'], $_POST['hora'], $_POST['fecha']);
-		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
-
-
-	}elseif (isset($_POST['idPedidoBuscado'])){
-
-		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
-
-
-	}elseif ( isset($_POST['nombreProd'])&&isset($_POST['medida'])&&isset($_POST['idSector'])&&isset($_POST['precio'])){
-
-		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
-		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
-
-
-	}elseif (isset($_POST['idProveedorSeleccionado'])){
-
-		$mvc->productosProveedor($_POST['idProveedorSeleccionado'],$_SESSION['id'],$_SESSION['logo']);
-
-	}elseif (isset($_GET['sector'])){
+	}elseif (isset($_GET['sector'])){ //Realiza la busqueda de proveedores segun si tienen productos de dicho tipo
 
 		switch ($_GET['sector']) {
 			case '1':
@@ -113,7 +79,45 @@ $mvc = new mvc_controller();
 				break;
 		}
 
-	}elseif (isset($_POST['username']) && 
+
+
+
+
+/****************************************************************************************************************************/
+/**********************************************METODOS CON POST***************************************************************/
+/****************************************************************************************************************************/
+	}elseif (isset($_POST['idProducto'])){ //Elimina un producto de la lista de productos de un proveedor
+
+		$mvc->eliminarProducto($_POST['idProducto'], $_SESSION['id']);
+		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
+
+	}elseif (isset($_POST['estadoPedido'])&& //Da la opcion a un proveedor de aceptar/cancelar un pedido y establecer una hora y fecha de entrega
+			isset($_POST['idPedido'])){
+
+		$mvc->modificarEstadoPedido($_POST['idPedido'], $_POST['estadoPedido'], $_POST['hora'], $_POST['fecha']);
+		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
+
+
+	}elseif (isset($_POST['idPedidoBuscado'])){ //Muestra los roductos de un pedido
+
+		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
+
+
+	}elseif ( isset($_POST['nombreProd'])&& //Inserta un producto en la lista de productos de un proveedor
+			isset($_POST['medida'])&&
+			isset($_POST['idSector'])&&
+			isset($_POST['precio'])){
+
+		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
+		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
+
+
+	}elseif (isset($_POST['idProveedorSeleccionado'])){ //Muestra a un restaurante el modulo de os productos que tiene un proveedor y le permite modificar las cantidades del producto
+
+		$mvc->productosProveedor($_POST['idProveedorSeleccionado'],$_SESSION['id'],$_SESSION['logo']);
+
+
+	}elseif (isset($_POST['username']) &&  //Registra un nuevo usuario
 			isset($_POST['password']) && 
 			isset($_POST['confirmPassword']) && 
 			isset($_POST['tipoUsuario']) && 
@@ -131,9 +135,6 @@ $mvc = new mvc_controller();
 			if ($_POST['password']===$_POST['confirmPassword']) {
 						//encriptamos la contraseña
 						$encripKey=md5($_POST['password']);
-
-						//Insertar usuario nuevo
-
 						$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
 						$datos=$mvc->controlExist($_POST['username']);
 								
@@ -152,7 +153,8 @@ $mvc = new mvc_controller();
 			$pagina = replace_error("/listo/" , $error, $pagina);
 			view_page($pagina);
 			}
-	}else{
+	}else{ //Muestra el login con el captcha
+		
 		/*$reCaptcha = new ReCaptcha($secret);
 		if ($_POST["g-recaptcha-response"]) {
 		$response = $reCaptcha->verifyResponse(
