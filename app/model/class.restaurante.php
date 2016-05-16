@@ -132,7 +132,29 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	}
 
-}
 
+
+	function verProductosProveedor($idProveedor){
+		$this->conectar();		
+		$query = $this->consulta("SELECT p.nombre,s.nombre AS 'Tipo' , prod.precio, p.medida, p.idProducto
+									FROM productos p, proveedores prov, productos_proveedor prod, sectores s
+									WHERE prod.idProveedor=prov.idProveedor AND prod.idProducto=p.idProducto 
+									AND s.idSector=p.idSector AND prov.idProveedor='$idProveedor'");
+ 	    $this->disconnect();	
+ 	    				
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}			
+
+	}
+}
 
 ?>

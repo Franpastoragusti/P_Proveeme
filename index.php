@@ -2,13 +2,11 @@
 	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
-	$flag=0;
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
 	$response = null;
 
 $mvc = new mvc_controller();
 	session_start();
-	var_dump($_SESSION);
 
 	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo del buscador
 	{	
@@ -75,6 +73,10 @@ $mvc = new mvc_controller();
 		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
 		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 
+
+	}elseif (isset($_POST['idProveedorSeleccionado'])){
+
+		$mvc->productosProveedor($_POST['idProveedorSeleccionado'],$_SESSION['id'],$_SESSION['logo']);
 
 	}elseif (isset($_GET['sector'])){
 

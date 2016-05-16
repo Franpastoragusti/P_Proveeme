@@ -339,8 +339,7 @@ class mvc_controller {
 
 		$pagina=load_template();
 		$tsArray = $pedido->verProductosPedido($idPedido,$id);	
-		echo "tsArray";
-		var_dump($tsArray); 
+		//var_dump($tsArray); 
 		if (isset($profesion[0]["idProveedor"])) {
 			$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 		}elseif(isset($profesion[0]["idRestaurante"])){
@@ -348,7 +347,7 @@ class mvc_controller {
 		}
 
 				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-						var_dump($tsArray);
+						//var_dump($tsArray);
 						//carga la tabla de la seccion de m.table_univ.php
 
 						include './app/views/default/modules/m_productosPedido.php';
@@ -367,7 +366,31 @@ class mvc_controller {
 	}
 
 
+	function productosProveedor($idProveedor,$idRestautante,$logo){
+		$restaurante=new Restaurante();
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
+		$tsArray=$restaurante->verProductosProveedor($idProveedor);
+		$pagina=load_template();
+		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
+		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+						
+						//carga la tabla de la seccion de m.table_univ.php
+
+						include './app/views/default/modules/m_elegirProductos.php';
+						$table = ob_get_clean();	
+	
+						//realiza el parseado 
+							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+				   	}else{
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+		   			}		
+			view_page($pagina);
+
+	}
 }
 	
 
-?>
