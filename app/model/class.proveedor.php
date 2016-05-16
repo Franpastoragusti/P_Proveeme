@@ -12,14 +12,17 @@ class Proveedor extends Database implements Iproveedor{
 	 	$this->conectar();		
 		$query = $this->consulta("SELECT COUNT(*) FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
  	    $query2 = $this->consulta("SELECT p.idProducto FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
- 	    var_dump($query2);
+ 	    
  	    				
-		if($this->numero_de_filas($query) == 1){ // existe -> datos correctos
-				return true;
-			
+		if($this->numero_de_filas($query) > 0){ // existe -> datos correctos
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query2)) 
+					$data[] = $tsArray;			
+		
+				return $data;
 		}else
 		{	
-			return false;
+			return '';
 		
 		}	
 
@@ -45,7 +48,7 @@ class Proveedor extends Database implements Iproveedor{
 			//conexion a la base de datos
 	
 		$sentencia = "INSERT INTO productos_proveedor(idProducto, idProveedor, Precio) VALUES ($idProducto, $idProveedor, '$precio')";
-		var_dump($sentencia);
+
 		if($query= $this->consulta($sentencia)){
 		
 			return true;
@@ -93,8 +96,9 @@ class Proveedor extends Database implements Iproveedor{
 	 public function modificarEstadoPedido($idPedido, $estado, $hora, $fecha){
 	 		//conexion a la base de datos
 		$this->conectar();	
-		$sentencia = "UPDATE pedidos SET estado='$estado', hora='$hora', fecha='$fecha' WHERE idPedido=$idPedido";	
+		$sentencia = "UPDATE pedidos SET estado='$estado', hora='$hora', fechaEntrega='$fecha' WHERE idPedido=$idPedido";	
 		$query = $this->consulta($sentencia);
+		var_dump($query);
  	    $this->disconnect();					
 		if($query) // existe -> datos correctos
 		{		

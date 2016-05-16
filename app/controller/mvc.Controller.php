@@ -237,12 +237,11 @@ class mvc_controller {
 		$proveedor=new Proveedor();
 		
 		$pagina=load_template();
-		$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
-		echo $idProducto;
-		if($idProducto!=''){
-			//detectar idProducto
+		$tsArray=$proveedor->detectaProducto($nombreProd,$medida);
+		
+		if($tsArray!=''){
 
-			if ($proveedor->addProductoTablaProd_Prov($idProducto, $idProveedor, $precio)) {
+			if ($proveedor->addProductoTablaProd_Prov($tsArray[0]['idProducto'], $idProveedor, $precio)) {
 				echo "insertado";
 			}
 
@@ -252,7 +251,7 @@ class mvc_controller {
 				echo "Creado producto nuevo";
 			}
 			$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
-			if (addProductoTablaProd_Prov($idProducto, $idProveedor, $precio)) {
+			if ($proveedor->addProductoTablaProd_Prov($idProducto[0]['idProducto'], $idProveedor, $precio)) {
 				echo "Creado y asumido";
 			}
 			
@@ -323,8 +322,11 @@ class mvc_controller {
 			$proveedor=new Proveedor();
 
 			$pagina=load_template();
-			$proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha);
-
+			if ($proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha)){
+				echo "Aleluya";
+			}else{
+				echo "error al insertar";
+			}
 	}
 
 
@@ -335,9 +337,8 @@ class mvc_controller {
 		$datos=$usuario->existo($nombre);
 		$profesion=$usuario->proveOrest($id);
 
-
 		$pagina=load_template();
-		$tsArray = $pedido->verProductosPedido($idPedido);	
+		$tsArray = $pedido->verProductosPedido($idPedido,$id);	
 		echo "tsArray";
 		var_dump($tsArray); 
 		if (isset($profesion[0]["idProveedor"])) {

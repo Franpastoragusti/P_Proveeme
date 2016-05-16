@@ -23,13 +23,9 @@ class Pedido extends Database implements Ipedido{
 
 
 
-	function verProductosPedido($idPedido){
+	function verProductosPedido($idPedido,$id){
 		$this->conectar();		
-	 	$sentencia = "SELECT p.nombre, p.medida, prod.Precio, cont.cantidad, (cont.cantidad * prod.Precio) AS 'preciototal'
-			FROM productos p, productos_proveedor prod, proveedores prov, contenido_pedidos cont, procesado_pedido proc, pedidos ped
-			WHERE p.idProducto=prod.idProducto AND prov.idProveedor=prod.idProveedor AND proc.idProveedor=prov.idProveedor
-			AND cont.idProducto=prod.idProducto AND cont.idPedido=proc.idPedido AND ped.idPedido=proc.idPedido AND proc.idPedido=$idPedido
-			GROUP BY p.idProducto";
+	 	$sentencia = "SELECT p.nombre, p.medida, prod.Precio, cont.cantidad, (cont.cantidad * prod.Precio) AS 'preciototal' FROM productos p, productos_proveedor prod, proveedores prov, contenido_pedidos cont, procesado_pedido proc, pedidos ped, usuarios u WHERE p.idProducto=prod.idProducto AND prov.idProveedor=prod.idProveedor AND proc.idProveedor=prov.idProveedor AND cont.idProducto=prod.idProducto AND cont.idPedido=proc.idPedido AND ped.idPedido=proc.idPedido AND (proc.idRestaurante=$id OR proc.idProveedor=$id) AND proc.idPedido=$idPedido GROUP BY p.idProducto ";
 		$query = $this->consulta($sentencia);
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos

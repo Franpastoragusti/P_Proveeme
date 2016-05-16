@@ -59,9 +59,9 @@ $mvc = new mvc_controller();
 		$mvc->eliminarProducto($_POST['idProducto'], $_SESSION['id']);
 		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);
 
-	}elseif (isset($_POST['estadoPedido'])){
+	}elseif (isset($_POST['estadoPedido'])&&isset($_POST['idPedido'])){
 
-		$mvc->modificarEstadoPedido($_SESSION['id'], $_POST['estadoPedido'], $_POST['hora'], $_POST['fecha']);
+		$mvc->modificarEstadoPedido($_POST['idPedido'], $_POST['estadoPedido'], $_POST['hora'], $_POST['fecha']);
 		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
 
 
@@ -70,7 +70,7 @@ $mvc = new mvc_controller();
 		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
 
 
-	}elseif ( isset($_POST['nombreProd']) ){
+	}elseif ( isset($_POST['nombreProd'])&&isset($_POST['medida'])&&isset($_POST['idSector'])&&isset($_POST['precio'])){
 
 		$mvc->insertarProducto($_POST['nombreProd'],$_POST['medida'],$_POST['idSector'],$_SESSION['id'], $_POST['precio']);
 		$mvc->mostrarProductos($_SESSION['id'],$_SESSION['logo']);

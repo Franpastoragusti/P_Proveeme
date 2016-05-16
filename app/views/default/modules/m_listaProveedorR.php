@@ -43,7 +43,6 @@
 						<th>Dirección</th>
 						<th>Localidad</th>
 						<th>Teléfono</th>
-						<th>Sector</th>
 						<th>Pedido Mínimo €</th>
 					</tr>
 				</thead>
@@ -55,7 +54,6 @@
 							<td><?php echo $data['calle']." ".$data['numero']." ".$data['cp'];?></td>
 							<td><?php echo $data['localidad'];?></td>
 							<td><?php echo $data['telefono'];?></td>
-							<td><?php echo $data['idSector'];?></td>
 							<td><?php echo $data['pedidoMinimo'];?></td>
 						</tr>
 					 <?php endforeach;?>				

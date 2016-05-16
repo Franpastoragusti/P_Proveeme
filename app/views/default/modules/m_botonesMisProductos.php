@@ -47,7 +47,7 @@
 			                            <option value="5">Pescadería</option>
 			                            <option value="6">Menaje</option>
 			                            <option value="7">Hortofrutícola</option>
-			                            <option value="8">Lícteos</option>
+			                            <option value="8">Lácteos</option>
 			                            <option value="9">Aliños</option>
 			                            <option value="10">Aditivos</option>
 			                        </select>
