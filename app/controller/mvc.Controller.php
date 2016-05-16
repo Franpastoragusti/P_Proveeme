@@ -17,8 +17,6 @@ class mvc_controller {
 		$usuario = new User();
 		$datos=$usuario->existo($nombre);
 		$profesion=$usuario->proveOrest($id);
-		var_dump($profesion);
-		var_dump($_SESSION);
 		if (isset($profesion[0]["idProveedor"])) {
 
 				$pagina=load_page("app/views/default/indexP.php");
@@ -46,10 +44,10 @@ class mvc_controller {
 				if (!empty($datos[0]['pass'])&&$datos[0]["pass"]===md5($_POST["password"])) {
 						//Buscamos en la BBDD si el id es Proveedor o Restaurante
 						$profesion=$usuario->proveOrest($datos[0]['id']);
-						var_dump($profesion);
+						//var_dump($profesion);
 						$_SESSION['id']=$profesion[0]['id'];
 						$_SESSION['logo']=$profesion[0]['logo'];
-						var_dump($_SESSION);
+						//var_dump($_SESSION);
 
 						//En funcion de lo que sea el id (Proveedor/Restaurante) cargamos un menu u otro
 						if (isset($profesion[0]["idProveedor"])) {
@@ -135,7 +133,7 @@ class mvc_controller {
 		$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
 		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-			    	var_dump($tsArray);
+			    	//var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_misRestaurantes.php';
 					$table = ob_get_clean();	
@@ -160,7 +158,7 @@ class mvc_controller {
 		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					var_dump($tsArray);
+					//var_dump($tsArray);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_pedidosProveedor.php';
 					$table = ob_get_clean();	
@@ -187,7 +185,7 @@ class mvc_controller {
 					include './app/views/default/modules/m_listaProductos.php';
 					$table = ob_get_clean();
 					//realiza el parseado 
-					var_dump($tsArray);
+					//var_dump($tsArray);
 						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);

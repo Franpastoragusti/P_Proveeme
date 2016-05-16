@@ -1,4 +1,4 @@
-<h4 class="text-center">Productos del proveedor NNNN</h4>
+<h4 class="text-center">Productos del proveedor<?php echo "Contenido del pedido $idProveedor";?></h4>
 				<table class="table table-hover">
 				<thead class="text-center">
 					<tr>

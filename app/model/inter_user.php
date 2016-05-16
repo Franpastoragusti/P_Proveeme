@@ -1,6 +1,8 @@
 <?php
 interface Iuser {
- public function login($nombre,$pass);
+	public function registro($usuario, $pass, $logo);
+	public function existo($nombre);
+	public function proveOrest($id);
 
 }
 ?>

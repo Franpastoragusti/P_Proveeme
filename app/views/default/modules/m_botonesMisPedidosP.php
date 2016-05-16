@@ -70,7 +70,7 @@
 				         <div class="form-group">
 				           	<label for="fecha" class="control-label col-xs-3">Fecha de entrega</label>
 				            <div class="col-xs-9">
-				                <input type="text" class="form-control" name="fecha" id="fecha" placeholder="0000-00-00" required>
+				                <input type="date" class="form-control" name="fecha" id="fecha" placeholder="0000-00-00" required>
 				            </div>
 				        </div>
 				        <div class="modal-footer">

@@ -5,7 +5,7 @@ body{
 }
 .frestaurante{
 	background: url("../images/fondo_restaurante.png");
-	background-position: top;
+	background-position:bottom;
 
 }
 .fproveedor{
@@ -21,10 +21,9 @@ color: rgba(185, 113, 60, 0.9);
 text-shadow:4px 2px 4px #212021;
 }
 .login{
-	padding: 60px;
+	
 	padding-top: 20px;
 	background-color: rgba(255, 255, 255, 0.2);
-	margin-bottom: 130px;
 }
 
 
@@ -74,12 +73,9 @@ a{
 a:visited{
 	color: #000;
 }
-.fijo{
-	position: relative;
-}
+
 footer{
-	
-	
+
 	padding-left: 20px;
 }
 .menu{
@@ -93,7 +89,7 @@ footer{
 }
 .pro{
 	position: absolute;
-	bottom: -110px;
+	bottom: 50px;
 	left: 20px;
 }
 .cc{
@@ -101,19 +97,21 @@ footer{
 	
 }
 #casa{
+	position: absolute;
 	width: 40px;
+	bottom: -100px;
 }
 .casita{
 	position: absolute;
-	bottom: -150px;
+	bottom: 20px;
 	left: 30px;
 }
 .foot{
 	position: absolute;
-	bottom:-80px;
+	bottom: 30px;
 }
 #botonesVacios{
-	height: 500px;
+	height: 270px;
 }
 
 .error{
@@ -143,13 +141,15 @@ h4{
 }
 tbody{
 	background-color: rgba(255, 255, 255, 0.2);
+	
 
 }
 thead{
 	background-color: rgba(158, 160, 158, 0.7);
 	box-shadow: 2px 1px 2px #212021;
-}
 
+
+}
 .small{
 	width: 300px;
 }

@@ -17,7 +17,7 @@
 			<section class="col-md-offset-4 text-center center-block" >
 				<img id="logo" src="#LOGO#">
 			</section>
-			<section class="col-md-offset-4 text-center center-block fijo" >
+			<section class="col-md-offset-4 text-center center-block" >
 				#BOTONES#
 			</section>
 			<section class="col-md-offset-4 casita">

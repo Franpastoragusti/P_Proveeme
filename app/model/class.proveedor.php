@@ -98,7 +98,6 @@ class Proveedor extends Database implements Iproveedor{
 		$this->conectar();	
 		$sentencia = "UPDATE pedidos SET estado='$estado', hora='$hora', fechaEntrega='$fecha' WHERE idPedido=$idPedido";	
 		$query = $this->consulta($sentencia);
-		var_dump($query);
  	    $this->disconnect();					
 		if($query) // existe -> datos correctos
 		{		

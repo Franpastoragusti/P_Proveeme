@@ -1,5 +1,5 @@
 <h4 class="text-center">Productos</h4>
-				<table class="table table-hover">
+				<table class="table table-hover t-grande">
 				<thead class="text-center">
 					<tr>
 						<th>Nº</th>

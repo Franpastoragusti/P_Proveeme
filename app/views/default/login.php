@@ -28,8 +28,17 @@
 						<label for="password"></label>
 							<input class="form-control " placeholder="Contraseña" type="password" name="password" value="" required="">
 					 </div>
+					 <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10 text-left">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox"> Administrador
+					        </label>
+					      </div>
+					    </div>
+					 </div>
+					 <div class="g-recaptcha" data-sitekey="6Lc0pB8TAAAAAAxV42kLAcE7TNuala8Kv-BQiyte"></div>
 						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR">
-					<div class="g-recaptcha" data-sitekey="6Lc0pB8TAAAAAAxV42kLAcE7TNuala8Kv-BQiyte"></div>
 				</form>
 				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block cc">Registrate</a>
 			</div>

@@ -3,18 +3,6 @@ require_once "class.db.php";
 require_once "inter_restaurante.php";
 class Restaurante extends Database implements Irestaurante{
 
-	public function addPedido($idProd, $cantidad){
-			//conexion a la base de datos
-		$this->conectar();	
-		$sentencia = "INSERT INTO contenido_pedidos(idProducto, cantidad) VALUES ('$idProd', '$cantidad')";	
-		if($query = $this->consulta($sentencia)){
-			$this->disconnect();	
-			return true;
-		}else{
-			$this->disconnect();	
-			return false;
-		}
-	}
  
 	 public function verListaPedidos($idRestaurante){
 
@@ -74,7 +62,7 @@ class Restaurante extends Database implements Irestaurante{
 		}	
 
 	 }
-	 function verProveedoresPorSector($idSector){
+	public function verProveedoresPorSector($idSector){
 	 	$this->conectar();		
 		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia, e.telefono, e.email, prov.pedidoMinimo FROM empresa e, proveedores prov, direccion d, productos p, productos_proveedor prod WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor AND prod.idProveedor=prov.idProveedor AND p.idProducto=prod.idProducto AND p.idSector=$idSector GROUP BY prov.idProveedor");
  	    $this->disconnect();					
@@ -105,7 +93,6 @@ class Restaurante extends Database implements Irestaurante{
 		$sentencia = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id";
 		$sentencia2 = "UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id'";
 		$sentencia3 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";
-		echo $sentencia;	
  	    $this->disconnect();					
 		if($query = $this->consulta($sentencia)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)) // existe -> datos correctos
 		{		

@@ -27,10 +27,6 @@ class Database {
 	public function consulta($sql)
 	{
 		$resultado = mysqli_query($this->conexion,$sql);
-		$descripcion_error = mysqli_error($this->connexion);
-			if($descripcion_error!=''){
-			echo $descripcion_error;
-			}
 					
 		return $resultado; 
 	}
