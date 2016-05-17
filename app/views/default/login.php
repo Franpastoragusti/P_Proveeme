@@ -32,7 +32,7 @@
 					    <div class="col-sm-offset-2 col-sm-10 text-left">
 					      <div class="checkbox">
 					        <label>
-					          <input type="checkbox"> Administrador
+					          <input type="checkbox" name="admin" value="1"> Administrador
 					        </label>
 					      </div>
 					    </div>

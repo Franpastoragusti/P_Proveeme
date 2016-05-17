@@ -1,6 +1,6 @@
 <h4 class="text-center">Productos del proveedor <?php echo $tsArray[0]['nombreEmpresa'];?></h4>
 			<form class="form-horizontal" method="POST" action="index.php">
-				<table class="table table-hover">
+				<table class="table table-hover table-responsive">
 				<thead class="text-center">
 					<tr>
 						<th>Nº</th>
@@ -12,8 +12,6 @@
 					</tr>
 				</thead>
 				<tbody>
-	
-						<div>
 							<?php foreach ($tsArray as $data): ?>
 								<tr>
 									<td><?php echo $data['idProducto'];?></td>
@@ -23,14 +21,13 @@
 									<td><?php echo $data['medida'];?></td>
 									<td>
 									    <div class="form-group">
-									        <div class="col-xs-9">
-									            <input type="number" class="form-control" name="cantidades[]" id="cantidades">
+									        <div class="col-xs-1">
+									            <input type="number" class="form-control cantidades" name="cantidades[]" id="cantidades">
 									        </div>
 									    </div>
 							    	</td>
 								</tr>
 							 <?php endforeach;?>
-						</div>
 				</tbody>
 				</table>
 				<div class="form-group center-block">

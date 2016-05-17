@@ -34,6 +34,8 @@ class mvc_controller {
 	function decision(){
 		
 		$usuario = new User();
+		var_dump($_SESSION);
+		var_dump($_POST);
 		//comprobamos que se ha rellenado el login
 		if (!empty($_POST)) {
 					$nombre=$_POST["username"];

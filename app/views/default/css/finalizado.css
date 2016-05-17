@@ -159,3 +159,8 @@ thead{
 .modal-title{
 	background-color: #ff8000;
 }
+.cantidades{
+	width: 100px;
+	padding: 0px;
+	margin: 0px;
+}

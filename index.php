@@ -1,5 +1,5 @@
 <?php
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
@@ -47,38 +47,50 @@ $mvc = new mvc_controller();
 	}elseif (isset($_GET['sector'])){ //Realiza la busqueda de proveedores segun si tienen productos de dicho tipo
 
 		switch ($_GET['sector']) {
+
 			case '1':
 				$mvc->buscarProveedor(1,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '2':
 				$mvc->buscarProveedor(2,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '3':
 				$mvc->buscarProveedor(3,$_SESSION['decisionid'],$_SESSION['logo']);
 				break;
+
 			case '4':
 				$mvc->buscarProveedor(4,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '5':
 				$mvc->buscarProveedor(5,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '6':
 				$mvc->buscarProveedor(6,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '7':
 				$mvc->buscarProveedor(7,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '8':
 				$mvc->buscarProveedor(8,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			case '9':
 				$mvc->buscarProveedor(9,$_SESSION['id'],$_SESSION['logo']);
 				break;
+
 			default:
 				$mvc->buscarProveedor(10,$_SESSION['id'],$_SESSION['logo']);
 				break;
-		}
+					}
+		//}elseif ( $_GET['action'] == 'admin' ){	//Permite retroceder al menu principal del restaurante o del proveedor
 
+		//$mvc->admin($_SESSION['id'],$_SESSION['logo']);
 
 
 
@@ -162,6 +174,7 @@ $mvc = new mvc_controller();
         $_POST["g-recaptcha-response"]);
 		}
  		if ($response != null && $response->success) {*/
+
        			$mvc->decision();
  		/*} else{
  		 	$pagina=load_page("app/views/default/login.php");
