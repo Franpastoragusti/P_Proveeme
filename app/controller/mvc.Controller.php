@@ -73,7 +73,6 @@ class mvc_controller {
 			//si POST esta vacio es la primera vez que entramos al login
 			$pagina=load_page("app/views/default/login.php");
 			$error=load_page("app/views/default/modules/m_Error.php");
-			$pagina = replace_error("/listo/" , $error, $pagina);
 			view_page($pagina);
 		}
 

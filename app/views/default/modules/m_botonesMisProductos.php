@@ -25,10 +25,16 @@
 				            </div>
 				        </div>
 				        <div class="form-group">
-				           	<label for="medida" class="control-label col-xs-3">Medida</label>
-				            <div class="col-xs-9">
-				                <input type="text" class="form-control" name="medida" id="medida" placeholder="Packs,unidades,kg..." required>
-				   	        </div>
+				           	<label for="idSector" class="control-label col-xs-4">Medida</label>
+			                    <div class="col-xs-5">
+			                        <select class="form-control" name="idSector" id="idSector" required>
+			                            <option value="kg">Kilogramos</option>
+			                            <option value="litros">Litros</option>
+			                            <option value="caja">Caja</option>
+			                            <option value="pack de 12">Pack de 12</option>
+			                            <option value="pack de 24">Pack de 24</option>
+			                        </select>
+			                    </div>
 				        </div>
 				        <div class="form-group">
 				            <label for="precio" class="control-label col-xs-3">Precio</label>

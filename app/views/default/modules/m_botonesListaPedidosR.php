@@ -39,12 +39,12 @@
     <div class="modal-content small">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title tittle">Introduce el ID del Proveedor</h4>
+        <h4 class="modal-title tittle">Introduce el Nombre del Proveedor</h4>
       </div>
       <div class="modal-body">
 				<form class="form-horizontal" method="POST" action="index.php">
 				        <div class="form-group">
-				           	<label for="idProveedorSeleccionado" class="control-label col-xs-3">ID del Proveedor</label>
+				           	<label for="idProveedorSeleccionado" class="control-label col-xs-3">Nombre del Proveedor</label>
 				            <div class="col-xs-9">
 				                <input type="text" class="form-control" name="idProveedorSeleccionado" id="idProveedorSeleccionado" required>
 				            </div>
