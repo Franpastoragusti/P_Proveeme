@@ -321,6 +321,54 @@ class mvc_controller {
 	}
 
 
+
+
+
+
+
+
+
+
+	function insertarPedido($idPedido,$idRestaurante,$idProveedor){
+		$restaurante=new Restaurante();
+		
+		$pagina=load_template();
+		$restaurante->insertarPedido();
+		
+		if($restaurante->insertarPedido()){
+			$idPedido=$restaurante->detectaPedido();
+			if($restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor)){
+				//hacer consulta
+				$restaurante->insertarContenidoPedido($idPedido,$VectorProd);
+
+			}
+			
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	function mostrarProductosPedido($idPedido,$id,$logo){
 		$pedido=new Pedido();
 		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
@@ -363,6 +411,7 @@ class mvc_controller {
 		$tsArray=$restaurante->verProductosProveedor($idProveedor);
 		$pagina=load_template();
 		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
+		 //var_dump($tsArray);
 		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						
 						//carga la tabla de la seccion de m.table_univ.php

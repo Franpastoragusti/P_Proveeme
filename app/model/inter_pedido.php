@@ -1,6 +1,6 @@
 <?php
 interface Ipedido {
-	 public function precioTotal($idPedido);
+	// public function precioTotal($idPedido);
 
 	 public function verProductosPedido($idPedido,$id);
 	 

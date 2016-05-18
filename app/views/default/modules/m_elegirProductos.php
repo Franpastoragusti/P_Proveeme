@@ -21,7 +21,7 @@
 									<td><?php echo $data['medida'];?></td>
 									<td>
 									    <div class="form-group">
-									        <div class="col-xs-1">
+									        <div class="col-xs-5">
 									            <input type="number" class="form-control cantidades" name="cantidades[]" id="cantidades">
 									        </div>
 									    </div>

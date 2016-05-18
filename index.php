@@ -115,6 +115,39 @@ $mvc = new mvc_controller();
 		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['logo']);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}elseif (isset($_POST['cantidades'])){ //Crear un pedido nuevo
+
+		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['idProveedor'],$_SESSION['logo']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
 	}elseif ( isset($_POST['nombreProd'])&& //Inserta un producto en la lista de productos de un proveedor
 			isset($_POST['medida'])&&
 			isset($_POST['idSector'])&&
