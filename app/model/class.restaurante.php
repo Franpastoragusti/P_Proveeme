@@ -29,15 +29,15 @@ class Restaurante extends Database implements Irestaurante{
 
 	 }
 
+/*******************************************************************************************************************************/
+/*************************************************REALIZAR UN PEDIDO************************************************************/
+/*******************************************************************************************************************************/
 
-
-
-
-
+//hace bien
 
 	 public function insertarPedido(){
 	 	$this->conectar();	
-		$sentencia = "INSERT INTO pedidos(estado) VALUES 'Pendiente'";
+		$sentencia = "INSERT INTO pedidos(estado) VALUES ('Pendiente')";
 
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
@@ -48,10 +48,40 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	 }
 
+//falla
 
 	 public function detectarPedido(){
 	 	$this->conectar();	
-		$sentencia = "SELECT p.idPedido FROM pedidos p ORDER BY p.idPedido DESC LIMIT 1";
+		$sentencia = "SELECT idPedido FROM pedidos ORDER BY idPedido DESC LIMIT 1";
+		echo $sentencia;
+		$query = $this->consulta($sentencia);
+		//$query siempre vale NUUUUUL NO REALIZA LA CONSULTA
+		echo "esto es query";
+		var_dump($query);
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		echo "queri tiene filas";
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}	
+
+	}
+
+
+
+
+
+
+
+	public function detectarProveedor($nombreProveedor)
+	 {
+	 $this->conectar();	
+		$sentencia = "SELECT u.id FROM usuarios u WHERE u.nombreUsuario='$nombreProveedor'";
 
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
@@ -60,6 +90,7 @@ class Restaurante extends Database implements Irestaurante{
 			$this->disconnect();	
 			return '';
 		}
+
 	 }
 
 	 public function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
@@ -77,6 +108,66 @@ class Restaurante extends Database implements Irestaurante{
 
 
 	 
+	function idsProductosProveedor($idProveedor){
+		$this->conectar();		
+		$query = $this->consulta("SELECT p.idProducto
+		FROM productos p, proveedores prov, productos_proveedor prod, sectores s, empresa e
+		WHERE prod.idProveedor=prov.idProveedor AND prod.idProducto=p.idProducto 
+		AND s.idSector=p.idSector AND e.idUsuario=prov.idProveedor AND e.idUsuario='$idProveedor'");
+ 	    $this->disconnect();	
+
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;	
+				return $data;
+		}else
+		{	
+			return '';
+		}			
+
+	}
+
+	function insertarContenidoPedido($idPedido,$VProductos,$cantidades){
+		
+		for ($i=0; $i < sizeof($VProductos); $i++) { 
+			if ($cantidades[$i]!=0) {
+
+				$sentencia = "INSERT INTO contenido_pedido (idPedido, idProducto, cantidad) VALUES ($idPedido, $VProductos[$i], $cantidades[$i])";
+
+				if($query = $this->consulta($sentencia)){
+					$this->disconnect();	
+					echo "bien $i";
+				}else{
+					$this->disconnect();	
+					echo "error en $i";
+				}
+			}
+		}
+	 }
+
+
+
+
+	/*****************************************************************************/
+	/***************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -194,12 +285,12 @@ class Restaurante extends Database implements Irestaurante{
 
 
 
-	function verProductosProveedor($idProveedor){
+	function verProductosProveedor($nombreProveedor){
 		$this->conectar();		
 		$query = $this->consulta("SELECT e.nombreEmpresa, p.nombre,s.nombre AS 'Tipo' , prod.precio, p.medida, p.idProducto
 									FROM productos p, proveedores prov, productos_proveedor prod, sectores s, empresa e
 									WHERE prod.idProveedor=prov.idProveedor AND prod.idProducto=p.idProducto 
-									AND s.idSector=p.idSector AND e.idUsuario=prov.idProveedor AND e.nombreEmpresa like '$idProveedor'");
+									AND s.idSector=p.idSector AND e.idUsuario=prov.idProveedor AND e.nombreEmpresa like '$nombreProveedor'");
  	    $this->disconnect();	
 
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
@@ -207,9 +298,6 @@ class Restaurante extends Database implements Irestaurante{
 				//se llenan los datos en un array
 				while ( $tsArray = $this->fetch_assoc($query) ) 
 					$data[] = $tsArray;	
-					$_SESSION['VECTOR'][1][]=$data[0]['idProducto'];		
-				var_dump($data['idProducto']);
-				var_dump($_SESSION);
 				return $data;
 		}else
 		{	

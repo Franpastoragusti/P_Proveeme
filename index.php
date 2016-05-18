@@ -7,7 +7,7 @@
 
 $mvc = new mvc_controller();
 	session_start();
-
+	//session_destroy();
 
 
 
@@ -128,9 +128,9 @@ $mvc = new mvc_controller();
 
 
 
-	}elseif (isset($_POST['cantidades'])){ //Crear un pedido nuevo
-
-		$mvc->mostrarProductosPedido($_POST['idPedidoBuscado'],$_SESSION['id'],$_SESSION['idProveedor'],$_SESSION['logo']);
+	}elseif (isset($_POST['cantidades'][0])){ //Crear un pedido nuevo
+		echo "HA ENTRADO";
+		$mvc->insertarPedido($_SESSION['id'],$_SESSION['nombreProveedor'],$_POST['cantidades']);
 
 
 

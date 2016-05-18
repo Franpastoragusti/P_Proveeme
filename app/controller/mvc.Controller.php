@@ -329,20 +329,28 @@ class mvc_controller {
 
 
 
-	function insertarPedido($idPedido,$idRestaurante,$idProveedor){
+	function insertarPedido($idRestaurante,$nombreProveedor,$cantidades){
 		$restaurante=new Restaurante();
 		
 		$pagina=load_template();
-		$restaurante->insertarPedido();
-		
 		if($restaurante->insertarPedido()){
-			$idPedido=$restaurante->detectaPedido();
+			echo "entra el primer if";
+			$idPedido=$restaurante->detectarPedido();
+			//var_dump($idPedido);
+			$idProveedor=$restaurante->detectarProveedor($nombreProveedor);
+			//var_dump($idProovedor);
 			if($restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor)){
-				//hacer consulta
-				$restaurante->insertarContenidoPedido($idPedido,$VectorProd);
+				$VProductos=$restaurante->idsProductosProveedor($idProveedor);
 
+
+				$restaurante->insertarContenidoPedido($idPedido,$VProductos,$cantidades);
+
+			}else{
+				echo "error en el segundo if";
 			}
 			
+		}else{
+			echo "error en el primer if";
 		}
 
 	}
@@ -405,17 +413,18 @@ class mvc_controller {
 	}
 
 
-	function productosProveedor($idProveedor,$idRestautante,$logo){
+	function productosProveedor($nombreProveedor,$idRestaurante,$logo){
 		$restaurante=new Restaurante();
+	
 		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$tsArray=$restaurante->verProductosProveedor($idProveedor);
+		$tsArray=$restaurante->verProductosProveedor($nombreProveedor);
 		$pagina=load_template();
 		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 		 //var_dump($tsArray);
 		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						
 						//carga la tabla de la seccion de m.table_univ.php
-
+		 				$_SESSION['nombreProveedor']=$tsArray[0]['nombreEmpresa'];
 						include './app/views/default/modules/m_elegirProductos.php';
 						$table = ob_get_clean();	
 	
@@ -428,6 +437,7 @@ class mvc_controller {
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 		   			}		
+		   				var_dump($_SESSION);
 			view_page($pagina);
 
 	}
