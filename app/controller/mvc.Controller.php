@@ -185,6 +185,10 @@ class mvc_controller {
 			$mvcRestaurante->productosProveedor($nombreProveedor,$idRestaurante,$logo);
 
 		}
+		function hacerPedido($idRestaurante,$nombreProveedor,$cantidades,$logo){
+			$mvcRestaurante = new restaurante_controller();
+			$mvcRestaurante->hacerPedido($idRestaurante,$nombreProveedor,$cantidades,$logo);
+		}
 
 
 /****************************************************************************************************************************/
@@ -197,6 +201,7 @@ class mvc_controller {
 			$pagina = load_page('app/views/default/modules/m_creacioncuenta.php');
 			view_page($pagina);
 		}
+
 
 
 }

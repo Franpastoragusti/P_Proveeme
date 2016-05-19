@@ -12,7 +12,9 @@ body{
 		background: url("../images/fondo_proveedores.png");
 		background-position: top;
 }
-
+.encima{
+	z-index: 3;
+}
 h1{
 font-family: 'Cookie', cursive;
 font-size: 150px;

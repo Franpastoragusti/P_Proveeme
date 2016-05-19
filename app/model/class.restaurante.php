@@ -134,36 +134,22 @@ class Restaurante extends Database implements Irestaurante{
 
 
 	function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
-		echo "Entra hasta el insert<br>";
-		echo "Esto es $idPedido<br>";
-		echo "Esto es vectorProductos<br>";
-			//var_dump($vectorProductos[0]['idProducto']);
-		echo "Esto es cantidades<br>";
-			//var_dump($cantidades);
-			echo $cantidades[0];
-
-
 
 		$this->conectar();
 		for ($i=0; $i <sizeof($cantidades); $i++) { 
 
-
-
 			if ($cantidades[$i]!='') {
 				$idProducto=$vectorProductos[$i]['idProducto'];
-				echo "hola";
-				var_dump($idProducto);
 				$sentencia = "INSERT INTO contenido_pedidos(idPedido, idProducto, cantidad) VALUES ($idPedido, '$idProducto', $cantidades[$i])";
-				if($query = $this->consulta($sentencia)){	
-					return true;
-				}else{	
-					return '';
-				}
-			}else{
-				return '';
-
+				$query = $this->consulta($sentencia);
 			}
 		}
+		echo "<div class='col-md-4'>
+			<div class='alert alert-success'>
+			<button class='close' data-dismiss='alert'><span>&times;</span></button>
+			¡Todo ha salido <strong>correctamente!</strong>
+			</div>	 
+			</div>";
 		$this->disconnect();
 
 	}

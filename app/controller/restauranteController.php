@@ -159,8 +159,6 @@ class restaurante_controller {
 	}
 
 
-
-
 }
 
 
