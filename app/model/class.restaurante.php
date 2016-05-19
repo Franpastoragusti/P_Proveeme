@@ -150,8 +150,10 @@ class Restaurante extends Database implements Irestaurante{
 
 
 			if ($cantidades[$i]!='') {
-
-				$sentencia = "INSERT INTO contenido_pedidos(idPedido, idProducto, cantidad) VALUES ($idPedido, $vectorProductos[$i]['idProducto'], $cantidades[$i])";
+				$idProducto=$vectorProductos[$i]['idProducto'];
+				echo "hola";
+				var_dump($idProducto);
+				$sentencia = "INSERT INTO contenido_pedidos(idPedido, idProducto, cantidad) VALUES ($idPedido, '$idProducto', $cantidades[$i])";
 				if($query = $this->consulta($sentencia)){	
 					echo "bien $i";
 				}else{	
