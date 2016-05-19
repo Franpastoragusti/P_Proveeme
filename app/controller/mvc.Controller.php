@@ -1,443 +1,204 @@
 <?php
 
-require 'app/model/class.user.php';
-require 'app/model/class.restaurante.php';
-require 'app/model/class.proveedor.php';
-require 'app/model/class.pedido.php';
-require 'app/controller/pageGenerator.php';
+require_once './app/controller/userController.php';
+require_once './app/controller/restauranteController.php';
+require_once './app/controller/proveedorController.php';
+require_once './app/controller/pedidoController.php';
 
 class mvc_controller {
 
 
 /****************************************************************************************************************************/
-/************************** DECIDIR SI ERES PROVEEDOR/RESTAURANTE/AUN NO LOGUEADO********************************************/
+/*****************************************************FUNCIONES DE USUARIO***************************************************/
 /****************************************************************************************************************************/
+	
 
-	function menuPrincipal($id,$logo){
-		$usuario = new User();
-		$datos=$usuario->existo($nombre);
-		$profesion=$usuario->proveOrest($id);
-		if (isset($profesion[0]["idProveedor"])) {
-
-				$pagina=load_page("app/views/default/indexP.php");
-				$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
-				view_page($pagina);
-
-		}elseif(isset($profesion[0]["idRestaurante"])){
-				$pagina=load_page("app/views/default/indexR.php");
-				$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
-				view_page($pagina);
-		}
-	}
-/****************************************************************LOGIN*******************************************************/
-
-	function decision(){
-		
-		$usuario = new User();
-		//var_dump($_SESSION);
-		//var_dump($_POST);
-		//comprobamos que se ha rellenado el login
-		if (!empty($_POST)) {
-					$nombre=$_POST["username"];
-					//comparo el nombre del formulario con la BBDD que me devuelve el id y la pass
-					$datos=$usuario->existo($nombre);	
-					//var_dump($datos);
-					//Si no encuentra la pass devolvera '' entonces si esta llena Y es igual a la de la BBDD
-				if (!empty($datos[0]['pass'])&&$datos[0]["pass"]===md5($_POST["password"])) {
-						//Buscamos en la BBDD si el id es Proveedor o Restaurante
-						$profesion=$usuario->proveOrest($datos[0]['id']);
-						//var_dump($profesion);
-						$_SESSION['id']=$profesion[0]['id'];
-						$_SESSION['logo']=$profesion[0]['logo'];
-						//var_dump($_SESSION);
-
-						//En funcion de lo que sea el id (Proveedor/Restaurante) cargamos un menu u otro
-						if (isset($profesion[0]["idProveedor"])) {
-
-							$pagina=load_page("app/views/default/indexP.php");
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
-							view_page($pagina);
-
-						}elseif(isset($profesion[0]["idRestaurante"])){
-							$pagina=load_page("app/views/default/indexR.php");
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$_SESSION["logo"] , $pagina);
-							view_page($pagina);
-						}
-				}else{
-					//Si la contraseña no coicide volvemos al login
-					//$error=load_page('app/views/default/modules/m_Error.php');
-					$pagina=load_page("app/views/default/login.php");
-					$error=load_page("app/views/default/modules/m_Error.php");
-					$pagina = replace_error("/listo/" , $error, $pagina);
-					view_page($pagina);
-				}
-		}else{
-			//si POST esta vacio es la primera vez que entramos al login
-			$pagina=load_page("app/views/default/login.php");
-			$error=load_page("app/views/default/modules/m_Error.php");
-			view_page($pagina);
+		function menuPrincipal($id,$logo){
+			$mvcUser = new user_controller();
+			$mvcUser->menuPrincipal($id,$logo);
 		}
 
-	}
+		function decision(){
+			$mvcUser = new user_controller();
+			$mvcUser->decision();
+		}
+
+		function controlExist($nombre){
+			$mvcUser = new user_controller();
+			$mvcUser->controlExist($nombre);
+
+		}
+
+		function registroUsuario($nombre, $pass, $logo){
+			$mvcUser = new user_controller();
+			$mvcUser->registroUsuario($nombre, $pass, $logo);
+		}
+
+/****************************************************************************************************************************/
+/*****************************************************FIN FUNCIONES USUARIO**************************************************/
+/****************************************************************************************************************************/
+
+
+
 
 
 /****************************************************************************************************************************/
-/***********************************************INSERTAR USUARIOS NUEVOS*****************************************************/
+/*****************************************************FUNCIONES DE PEDIDO***************************************************/
+/****************************************************************************************************************************/
+	
+		function mostrarProductosPedido($idPedido,$id,$logo){
+			$mvcPedido = new pedido_controller();
+			$mvcPedido->mostrarProductosPedido($idPedido,$id,$logo);
+		}
+
+/****************************************************************************************************************************/
+/*****************************************************FIN FUNCIONES DE PEDIDO************************************************/
 /****************************************************************************************************************************/
 
-	function controlExist($nombre){
-		$usuario=new User();
-		$datos=$usuario->existo($nombre);
-		return $datos;
-	}
-
-	function registroUsuario($nombre, $pass, $logo){
-		$usuario = new User();	
-		$usuario->registro($nombre, $pass, $logo);
-	}
-	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
-			$Proveedor=new Proveedor();
-			$pagina=load_page("app/views/default/login.php");
-			$Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
-			view_page($pagina);
-	}
-	function registroRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
-			$Restaurante=new Restaurante();
-			$pagina=load_page("app/views/default/login.php");
-			$Restaurante->registro($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);		
-			view_page($pagina);			
-	}
 
 
-	//INTRODUCIR DATOS PARA ALTA//
+
+
+
+/****************************************************************************************************************************/
+/*****************************************************FUNCIONES DE PROVEEDOR*************************************************/
+/****************************************************************************************************************************/
+
+
+		function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor=registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+		}
+
+		function mostrarMisRestaurantes($idProveedor,$logo){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->mostrarMisRestaurantes($idProveedor,$logo);
+		}
+
+		function mostrarPedidos($idProveedor,$logo){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->mostrarPedidos($idProveedor,$logo);
+		}
+
+		function mostrarProductos($idProveedor,$logo){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->mostrarProductos($idProveedor,$logo);
+		}
+
+
+		function modificarEstadoPedido($idPedido, $estado, $hora, $fecha){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha);
+		}
+
+
+		//**************FUNCIONES DE PRODUCTO************************/
+
+
+		function insertarProducto($nombreProd,$medida,$idSector,$idProveedor, $precio){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->insertarProducto($nombreProd,$medida,$idSector,$idProveedor, $precio);
+		}
+
+		function eliminarProducto($idProd, $idProveedor){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->eliminarProducto($idProd, $idProveedor);
+		}
+
+
+
+
+/****************************************************************************************************************************/
+/*****************************************************FIN FUNCIONES DE PROVEEDOR*********************************************/
+/****************************************************************************************************************************/
+
+
+
+
+
+
+/****************************************************************************************************************************/
+/*****************************************************FUNCIONES DE RESTAURANTE***********************************************/
+/****************************************************************************************************************************/
+
+
+		function registroRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+			$mvcRestaurante = new restaurante_controller();
+				$mvcRestaurante->registroRestaurante($id,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);		
+		}
+
+
+		function buscarProveedor($idSector,$idRestaurante,$logo){
+			$mvcRestaurante = new restaurante_controller();
+			$mvcRestaurante->buscarProveedor($idSector,$idRestaurante,$logo);	
+		}
+
+		function mostrarProveedores($idRestaurante,$logo){
+			$mvcRestaurante = new restaurante_controller();
+			$mvcRestaurante->mostrarProveedores($idRestaurante,$logo);
+		}
+
+		function mostrarPedidosRestaurante($idRestaurante,$logo){
+			$mvcRestaurante = new restaurante_controller();
+			$mvcRestaurante->mostrarPedidosRestaurante($idRestaurante,$logo);
+		}
+
+		function buscarIdPedido(){
+			$mvcRestaurante = new restaurante_controller();
+			$idPedido=$mvcRestaurante-> buscarIdPedido();
+			return $idPedido;
+		}
+		function insertarPedido(){
+			$mvcRestaurante = new restaurante_controller();
+			$confirmacion=$mvcRestaurante->insertarPedido();
+			return $confirmacion;
+		}
+
+
+		function detectarProveedor($nombreProveedor){
+			$mvcRestaurante = new restaurante_controller();
+			$idProveedor=$mvcRestaurante->detectarProveedor($nombreProveedor);
+			return $idProveedor;
+		}
+
+
+		function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
+			$mvcRestaurante = new restaurante_controller();
+			$procesado=$mvcRestaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor);
+			return $procesado;
+		}
+
+		function idsProductosProveedor($idProveedor){
+			$mvcRestaurante = new restaurante_controller();
+			$vectorProductos=$mvcRestaurante->idsProductosProveedor($idProveedor);
+			return $vectorProductos;
+		}
+
+		function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
+			$mvcRestaurante = new restaurante_controller();
+			$confirmPedido=$mvcRestaurante->insertarContenidoPedido($idPedido,$vectorProductos,$cantidades);
+			return $confirmPedido;
+		}
+
+		function productosProveedor($nombreProveedor,$idRestaurante,$logo){
+			$mvcRestaurante = new restaurante_controller();
+			$mvcRestaurante->productosProveedor($nombreProveedor,$idRestaurante,$logo);
+
+		}
+
+
+/****************************************************************************************************************************/
+/*****************************************************FIN FUNCIONES DE RESTAURANTE***********************************************/
+/****************************************************************************************************************************/
+
+
+
 		function introducirInfo(){					
-		$pagina = load_page('app/views/default/modules/m_creacioncuenta.php');
-		view_page($pagina);
-	}
-
-
-/********************************************************************************/
-
-
-
-
-
-
-
-	//METODOS QUE MUESTRAN LAS PAGINAS PRINCIPALES DE LOS PROVEEDORES//
-
-	function mostrarMisRestaurantes($idProveedor,$logo){
-		$proveedor=new Proveedor();
-
-		$pagina=load_template();	
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
-		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
-			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-			    	//var_dump($tsArray);
-					//carga la tabla de la seccion de m.table_univ.php
-					include './app/views/default/modules/m_misRestaurantes.php';
-					$table = ob_get_clean();	
-
-					//realiza el parseado 
-						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-			   	}else{
-
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-	   			}		
-		view_page($pagina);
-	}
-
-	function mostrarPedidos($idProveedor,$logo){
-		$proveedor=new Proveedor();
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$pagina=load_template();	
-		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
-		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
-			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//var_dump($tsArray);
-					//carga la tabla de la seccion de m.table_univ.php
-					include './app/views/default/modules/m_pedidosProveedor.php';
-					$table = ob_get_clean();	
-					//realiza el parseado 
-						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-			   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-	   			}		
-		view_page($pagina);
-	}
-
-	function mostrarProductos($idProveedor,$logo){
-		$proveedor=new Proveedor();
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$pagina=load_template();	
-		$botones=load_page("app/views/default/modules/m_botonesMisProductos.php");
-		$tsArray = $proveedor->verProductos($idProveedor);			   
-			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
-					include './app/views/default/modules/m_listaProductos.php';
-					$table = ob_get_clean();
-					//realiza el parseado 
-					//var_dump($tsArray);
-						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-			   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-	   			}		
-		view_page($pagina);
-	}
-
-	function buscarProveedor($idSector,$idRestaurante,$logo){
-		$restaurante = new Restaurante();	
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$pagina=load_template();
-		$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
-		$tsArray = $restaurante->verProveedoresPorSector($idSector);	
-		//var_dump($tsArray);		   
-			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
-					include './app/views/default/modules/m_listaProveedorR.php';
-					$table = ob_get_clean();	
-
-					//realiza el parseado 
-						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-			   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-	   			}		
-		view_page($pagina);
-	 }
-//**************FUNCIONES DE PRODUCTO************************/
-
-
-	function insertarProducto($nombreProd,$medida,$idSector,$idProveedor, $precio){
-		$proveedor=new Proveedor();
-		
-		$pagina=load_template();
-		$tsArray=$proveedor->detectaProducto($nombreProd,$medida);
-		
-		if($tsArray!=''){
-
-			if ($proveedor->addProductoTablaProd_Prov($tsArray[0]['idProducto'], $idProveedor, $precio)) {
-				echo "insertado";
-			}
-
-		}else{
-
-			if ($proveedor->addProductoTablaProd($idSector, $nombreProd, $medida)) {
-				echo "Creado producto nuevo";
-			}
-			$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
-			if ($proveedor->addProductoTablaProd_Prov($idProducto[0]['idProducto'], $idProveedor, $precio)) {
-				echo "Creado y asumido";
-			}
-			
-		}
-
-	}
-
-	function eliminarProducto($idProd, $idProveedor){
-		$proveedor=new Proveedor();
-
-		$pagina=load_template();
-		$proveedor->eliminarProducto($idProd,$idProveedor);
-
-	}
-
-
-
-
-
-	//METODOS QUE MUESTRAN LAS PAGINAS PRINCIPALES DE LOS RESTAURANTES//
-	function mostrarProveedores($idRestaurante,$logo){
-		$restaurante=new Restaurante();
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$pagina=load_template();	
-		$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
-		$tsArray = $restaurante->verListaProveedores($idRestaurante);			   
-			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
-					include './app/views/default/modules/m_listaProveedorR.php';
-					$table = ob_get_clean();	
-					//realiza el parseado 
-						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-			   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-	   			}		
-		view_page($pagina);
-	}
-	function mostrarPedidosRestaurante($idRestaurante,$logo){
-			$restaurante=new Restaurante();
-			$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-			$pagina=load_template();	
-			$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
-
-			$tsArray = $restaurante->verListaPedidos($idRestaurante);			   
-				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-						//var_dump($tsArray);
-						//carga la tabla de la seccion de m.table_univ.php
-						include './app/views/default/modules/m_pedidosRestaurante.php';
-						$table = ob_get_clean();	
-						//realiza el parseado 
-							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-				   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-		   			}		
+			$pagina = load_page('app/views/default/modules/m_creacioncuenta.php');
 			view_page($pagina);
 		}
 
 
-	function modificarEstadoPedido($idPedido, $estado, $hora, $fecha){
-			$proveedor=new Proveedor();
-
-			$pagina=load_template();
-			if ($proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha)){
-				echo "Aleluya";
-			}else{
-				echo "error al insertar";
-			}
-	}
-
-
-
-
-	function buscarIdPedido(){
-	$restaurante=new Restaurante();
-	$idPedido=$restaurante->detectarPedido();
-
-	return $idPedido;
-	}
-	function insertarPedido(){
-	$restaurante=new Restaurante();
-	$confirmacion=$restaurante->insertarPedido();
-	return $confirmacion;
-	}
-
-
-	function detectarProveedor($nombreProveedor){
-	$restaurante=new Restaurante();
-	$idProveedor=$restaurante->detectarProveedor($nombreProveedor);
-	return $idProveedor;
-	}
-
-
-	function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
-	$restaurante=new Restaurante();
-	$procesado=$restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor);
-	//var_dump($procesado);
-	return $procesado;
-	}
-
-	function idsProductosProveedor($idProveedor){
-	$restaurante=new Restaurante();
-	$vectorProductos=$restaurante->idsProductosProveedor($idProveedor);
-	//var_dump($vectorProductos);
-	return $vectorProductos;
-
-	}
-
-	function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
-	$restaurante=new Restaurante();
-	$confirmPedido=$restaurante->insertarContenidoPedido($idPedido,$vectorProductos,$cantidades);
-	return $confirmPedido;
-	}
-
-
-
-
-
-
-
-
-
-
-
-	function mostrarProductosPedido($idPedido,$id,$logo){
-		$pedido=new Pedido();
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$usuario = new User();
-		$datos=$usuario->existo($nombre);
-		$profesion=$usuario->proveOrest($id);
-
-		$pagina=load_template();
-		$tsArray = $pedido->verProductosPedido($idPedido,$id);	
-		//var_dump($tsArray); 
-		if (isset($profesion[0]["idProveedor"])) {
-			$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
-		}elseif(isset($profesion[0]["idRestaurante"])){
-			$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
-		}
-
-				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-						//var_dump($tsArray);
-						//carga la tabla de la seccion de m.table_univ.php
-
-						include './app/views/default/modules/m_productosPedido.php';
-						$table = ob_get_clean();	
-	
-						//realiza el parseado 
-							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-				   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-		   			}		
-			view_page($pagina);
-	}
-
-
-	function productosProveedor($nombreProveedor,$idRestaurante,$logo){
-		$restaurante=new Restaurante();
-	
-		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
-		$tsArray=$restaurante->verProductosProveedor($nombreProveedor);
-		$pagina=load_template();
-		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
-		 //var_dump($tsArray);
-		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-						
-						//carga la tabla de la seccion de m.table_univ.php
-		 				$_SESSION['nombreProveedor']=$tsArray[0]['nombreEmpresa'];
-						include './app/views/default/modules/m_elegirProductos.php';
-						$table = ob_get_clean();	
-	
-						//realiza el parseado 
-							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
-							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-							$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-				   	}else{
-				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
-				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
-						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
-		   			}		
-		   				//var_dump($_SESSION);
-			view_page($pagina);
-
-	}
 }
 	
 

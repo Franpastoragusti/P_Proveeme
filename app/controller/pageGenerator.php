@@ -1,11 +1,8 @@
 <?php
 
 function load_template(){
-
-
 	$pagina = load_page('app/views/default/page.php');
 	//actualización del TITULO de la página por defecto
-
 	return $pagina;
 }
 
