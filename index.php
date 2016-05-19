@@ -130,10 +130,21 @@ $mvc = new mvc_controller();
 
 	}elseif (isset($_POST['cantidades'][0])){ //Crear un pedido nuevo
 		echo "HA ENTRADO";
-		$mvc->insertarPedido($_SESSION['id'],$_SESSION['nombreProveedor'],$_POST['cantidades']);
+		var_dump($_SESSION);
+		//$mvc->insertarPedido($_SESSION['id'],$_SESSION['nombreProveedor'],$_POST['cantidades']);
+		$confirm=$mvc->insertarPedido();
+		$pedido=$mvc->buscarIdPedido();
+		$idPedido=$pedido[0]['idPedido'];
+		echo "esto es idPedido $idPedido";
+		$proveedor=$mvc->detectarProveedor($_SESSION['nombreProveedor']);
+		$idProveedor=$proveedor[0]['id'];
+		echo "esto es idProveedor $idProveedor";
+		$procesado=$mvc->insertarProcesadoPedido($idPedido,$_SESSION['id'],$idProveedor);
 
-
-
+		var_dump($confirm);
+	
+	
+		var_dump($procesado);
 
 
 

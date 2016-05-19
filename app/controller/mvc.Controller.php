@@ -323,45 +323,32 @@ class mvc_controller {
 
 
 
+	function buscarIdPedido(){
+	$restaurante=new Restaurante();
+	$idPedido=$restaurante->detectarPedido();
 
+	return $idPedido;
+	}
+	function insertarPedido(){
+	$restaurante=new Restaurante();
+	$confirmacion=$restaurante->insertarPedido();
 
-
-
-
-
-	function insertarPedido($idRestaurante,$nombreProveedor,$cantidades){
-		$restaurante=new Restaurante();
-		
-		$pagina=load_template();
-		if($restaurante->insertarPedido()){
-			echo "entra el primer if";
-			$idPedido=$restaurante->detectarPedido();
-			//var_dump($idPedido);
-			$idProveedor=$restaurante->detectarProveedor($nombreProveedor);
-			//var_dump($idProovedor);
-			if($restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor)){
-				$VProductos=$restaurante->idsProductosProveedor($idProveedor);
-
-
-				$restaurante->insertarContenidoPedido($idPedido,$VProductos,$cantidades);
-
-			}else{
-				echo "error en el segundo if";
-			}
-			
-		}else{
-			echo "error en el primer if";
-		}
-
+	return $confirmacion;
 	}
 
 
+	function detectarProveedor($nombreProveedor){
+	$restaurante=new Restaurante();
+	$idProveedor=$restaurante->detectarProveedor($nombreProveedor);
+	return $idProveedor;
+	}
 
 
-
-
-
-
+	function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
+	$restaurante=new Restaurante();
+	$procesado=$restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor);
+	return $procesado;
+	}
 
 
 
@@ -444,3 +431,4 @@ class mvc_controller {
 }
 	
 
+?>

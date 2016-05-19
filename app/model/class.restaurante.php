@@ -33,7 +33,6 @@ class Restaurante extends Database implements Irestaurante{
 /*************************************************REALIZAR UN PEDIDO************************************************************/
 /*******************************************************************************************************************************/
 
-//hace bien
 
 	 public function insertarPedido(){
 	 	$this->conectar();	
@@ -48,26 +47,24 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	 }
 
-//falla
 
-	 public function detectarPedido(){
+	public function detectarPedido(){
 	 	$this->conectar();	
-		$sentencia = "SELECT idPedido FROM pedidos ORDER BY idPedido DESC LIMIT 1";
-		echo $sentencia;
-		$query = $this->consulta($sentencia);
-		//$query siempre vale NUUUUUL NO REALIZA LA CONSULTA
-		echo "esto es query";
-		var_dump($query);
+	 	$sentencia="SELECT idPedido FROM pedidos ORDER BY idPedido DESC LIMIT 1";
+		$query = $this->consulta($sentencia);		
+ 	    $this->disconnect();	
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
-		{		echo "queri tiene filas";
+		{		
 				//se llenan los datos en un array
-				while ( $tsArray = $this->fetch_assoc($query) ) 
+				while ( $tsArray = $this->fetch_assoc($query)) 
 					$data[] = $tsArray;			
 		
 				return $data;
+				 
 		}else
 		{	
 			return '';
+			 
 		}	
 
 	}
@@ -75,27 +72,31 @@ class Restaurante extends Database implements Irestaurante{
 
 
 
-
-
-
-	public function detectarProveedor($nombreProveedor)
-	 {
+	public function detectarProveedor($nombreProveedor) {
 	 $this->conectar();	
-		$sentencia = "SELECT u.id FROM usuarios u WHERE u.nombreUsuario='$nombreProveedor'";
+		$sentencia = "SELECT u.id FROM usuarios u , empresa e WHERE u.id=e.idUsuario AND e.nombreEmpresa='$nombreProveedor'";
 
-		if($query = $this->consulta($sentencia)){
-			$this->disconnect();	
-			return $query;
-		}else{
-			$this->disconnect();	
+		$query = $this->consulta($sentencia);				
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+			echo "entra en el pouto if";
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+				    $this->disconnect();	
+				return $data;
+		}else
+		{	
+			    $this->disconnect();	
 			return '';
-		}
+		}	
+
 
 	 }
 
 	 public function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
-
-	 	$sentencia = "INSERT INTO procesado_pedido (idPedido, idRestaurante, idProveedor) VALUES ($idPedido, $idRestaurante, $idProveedor)";
+	 	echo "ENTRA EN PROCESADO";
+	 	$sentencia = "INSERT INTO procesado_pedido (idPedido, idRestaurante, idProveedor) VALUES ('$idPedido', $idRestaurante, '$idProveedor')";
 
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	

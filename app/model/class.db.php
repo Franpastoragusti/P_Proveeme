@@ -12,7 +12,7 @@ class Database {
 		if(!isset($this->conexion))
 		{
 			
-		  $this->conexion = (mysqli_connect("localhost","root","", "proveeme")) or die(mysqli_error());
+		  $this->conexion = (mysqli_connect("localhost","root","", "proveeme"));
 		  //para conectar con RDS el Usuario es admin y la pass 1234ABCD
 		  mysqli_set_charset($this->conexion, "utf8");
 		  
