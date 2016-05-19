@@ -79,7 +79,6 @@ class Restaurante extends Database implements Irestaurante{
 		$query = $this->consulta($sentencia);				
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
 		{		
-			echo "entra en el pouto if";
 				//se llenan los datos en un array
 				while ( $tsArray = $this->fetch_assoc($query) ) 
 					$data[] = $tsArray;			
@@ -95,9 +94,8 @@ class Restaurante extends Database implements Irestaurante{
 	 }
 
 	 public function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
-	 	echo "ENTRA EN PROCESADO";
-	 	$sentencia = "INSERT INTO procesado_pedido (idPedido, idRestaurante, idProveedor) VALUES ('$idPedido', $idRestaurante, '$idProveedor')";
-
+	 	$this->conectar();	
+	 	$sentencia ="INSERT INTO procesado_pedido(idPedido,idRestaurante,idProveedor) VALUES ('$idPedido','$idRestaurante','$idProveedor')";
 		if($query = $this->consulta($sentencia)){
 			$this->disconnect();	
 			return true;
@@ -107,8 +105,6 @@ class Restaurante extends Database implements Irestaurante{
 		}
 	 }
 
-
-	 
 	function idsProductosProveedor($idProveedor){
 		$this->conectar();		
 		$query = $this->consulta("SELECT p.idProducto
@@ -130,25 +126,48 @@ class Restaurante extends Database implements Irestaurante{
 
 	}
 
-	function insertarContenidoPedido($idPedido,$VProductos,$cantidades){
-		
-		for ($i=0; $i < sizeof($VProductos); $i++) { 
-			if ($cantidades[$i]!=0) {
 
-				$sentencia = "INSERT INTO contenido_pedido (idPedido, idProducto, cantidad) VALUES ($idPedido, $VProductos[$i], $cantidades[$i])";
 
-				if($query = $this->consulta($sentencia)){
-					$this->disconnect();	
+
+
+
+
+
+	function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
+		echo "Entra hasta el insert<br>";
+		echo "Esto es $idPedido<br>";
+		echo "Esto es vectorProductos<br>";
+			//var_dump($vectorProductos[0]['idProducto']);
+		echo "Esto es cantidades<br>";
+			//var_dump($cantidades);
+			echo $cantidades[0];
+
+
+
+		$this->conectar();
+		for ($i=0; $i <sizeof($cantidades); $i++) { 
+
+
+
+			if ($cantidades[$i]!='') {
+
+				$sentencia = "INSERT INTO contenido_pedidos(idPedido, idProducto, cantidad) VALUES ($idPedido, $vectorProductos[$i]['idProducto'], $cantidades[$i])";
+				if($query = $this->consulta($sentencia)){	
 					echo "bien $i";
-				}else{
-					$this->disconnect();	
-					echo "error en $i";
+				}else{	
+					echo "SALE FUERA EN $i<br>";
+					echo $vectorProductos[$i]['idProducto']."<br>";
+					echo $cantidades[$i]."<br>";
 				}
+			}else{
+					echo "cantidades es vacio en $i<br>";
+					echo $vectorProductos[$i]['idProducto']."<br>";
+					echo $cantidades[$i]."<br>";
 			}
 		}
-	 }
+		$this->disconnect();
 
-
+	}
 
 
 	/*****************************************************************************/

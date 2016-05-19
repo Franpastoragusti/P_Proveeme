@@ -131,22 +131,24 @@ $mvc = new mvc_controller();
 	}elseif (isset($_POST['cantidades'][0])){ //Crear un pedido nuevo
 		echo "HA ENTRADO";
 		var_dump($_SESSION);
-		//$mvc->insertarPedido($_SESSION['id'],$_SESSION['nombreProveedor'],$_POST['cantidades']);
+
 		$confirm=$mvc->insertarPedido();
 		$pedido=$mvc->buscarIdPedido();
-		$idPedido=$pedido[0]['idPedido'];
-		echo "esto es idPedido $idPedido";
+		echo $pedido[0]['idPedido'];//ID DEL PEDIDO
+		echo $_SESSION['id'];//ID DEL RESTAURANTE
+		//echo "esto es idPedido; $idPedido<br>";
 		$proveedor=$mvc->detectarProveedor($_SESSION['nombreProveedor']);
-		$idProveedor=$proveedor[0]['id'];
-		echo "esto es idProveedor $idProveedor";
-		$procesado=$mvc->insertarProcesadoPedido($idPedido,$_SESSION['id'],$idProveedor);
-
+		echo $proveedor[0]['id'];//ID DEL PROVEEDOR
+		//echo "esto es idProveedor $idProveedor<br>";
+		$procesado=$mvc->insertarProcesadoPedido($pedido[0]['idPedido'],$_SESSION['id'],$proveedor[0]['id']);
 		var_dump($confirm);
-	
-	
 		var_dump($procesado);
-
-
+		$vectorProductos=$mvc->idsProductosProveedor($proveedor[0]['id']);
+		echo "Esto es El vector de productos";
+		//CADA PRODUCTO
+		var_dump($vectorProductos[0]['idProducto']);
+		var_dump($vectorProductos[1]['idProducto']);
+		$mvc->insertarContenidoPedido($pedido[0]['idPedido'],$vectorProductos,$_POST['cantidades']);
 
 
 

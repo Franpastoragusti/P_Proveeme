@@ -332,7 +332,6 @@ class mvc_controller {
 	function insertarPedido(){
 	$restaurante=new Restaurante();
 	$confirmacion=$restaurante->insertarPedido();
-
 	return $confirmacion;
 	}
 
@@ -347,12 +346,28 @@ class mvc_controller {
 	function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
 	$restaurante=new Restaurante();
 	$procesado=$restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor);
+	var_dump($procesado);
 	return $procesado;
 	}
 
+	function idsProductosProveedor($idProveedor){
+	$restaurante=new Restaurante();
+	$vectorProductos=$restaurante->idsProductosProveedor($idProveedor);
+	//var_dump($vectorProductos);
+	return $vectorProductos;
+
+	}
+
+	function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
+	$restaurante=new Restaurante();
+	$restaurante->insertarContenidoPedido($idPedido,$vectorProductos,$cantidades);
+
+	
 
 
 
+
+	}
 
 
 
