@@ -23,7 +23,9 @@
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLProveedores">Lista de Proveedores</a></li>
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
 					</ul>
+					<a href="index.php"> <img id="loggout" src="app/views/default/images/logout.png"></a>
 			</section>
+
 		<footer class="container-fluid vertical text-center res">
 		<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>

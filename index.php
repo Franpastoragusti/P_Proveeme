@@ -1,5 +1,5 @@
 <?php
-	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
@@ -129,37 +129,21 @@ $mvc = new mvc_controller();
 
 
 	}elseif (isset($_POST['cantidades'][0])){ //Crear un pedido nuevo
-		echo "HA ENTRADO";
-		var_dump($_SESSION);
-
-		$confirm=$mvc->insertarPedido();
-		$pedido=$mvc->buscarIdPedido();
-		echo $pedido[0]['idPedido'];//ID DEL PEDIDO
-		echo $_SESSION['id'];//ID DEL RESTAURANTE
-		//echo "esto es idPedido; $idPedido<br>";
-		$proveedor=$mvc->detectarProveedor($_SESSION['nombreProveedor']);
-		echo $proveedor[0]['id'];//ID DEL PROVEEDOR
-		//echo "esto es idProveedor $idProveedor<br>";
-		$procesado=$mvc->insertarProcesadoPedido($pedido[0]['idPedido'],$_SESSION['id'],$proveedor[0]['id']);
-		var_dump($confirm);
-		var_dump($procesado);
-		$vectorProductos=$mvc->idsProductosProveedor($proveedor[0]['id']);
-		echo "Esto es El vector de productos";
-		//CADA PRODUCTO
-		var_dump($vectorProductos[0]['idProducto']);
-		var_dump($vectorProductos[1]['idProducto']);
-		$mvc->insertarContenidoPedido($pedido[0]['idPedido'],$vectorProductos,$_POST['cantidades']);
-
-
-
-
-
-
-
-
-
-
-		
+		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
+		$pagina=load_template();	
+		$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
+		if ($confirm=$mvc->insertarPedido()) {
+			$pedido=$mvc->buscarIdPedido();
+			$proveedor=$mvc->detectarProveedor($_SESSION['nombreProveedor']);
+			$procesado=$mvc->insertarProcesadoPedido($pedido[0]['idPedido'],$_SESSION['id'],$proveedor[0]['id']);
+			$vectorProductos=$mvc->idsProductosProveedor($proveedor[0]['id']);
+			$confirmPedido=$mvc->insertarContenidoPedido($pedido[0]['idPedido'],$vectorProductos,$_POST['cantidades']);
+			$mvc->mostrarPedidosRestaurante($_SESSION['id'],$_SESSION['logo']);
+		}else{
+			$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+			$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+			$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
+		}
 
 	}elseif ( isset($_POST['nombreProd'])&& //Inserta un producto en la lista de productos de un proveedor
 			isset($_POST['medida'])&&

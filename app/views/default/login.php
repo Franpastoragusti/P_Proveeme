@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		
-		<footer class="row">
+		<footer class="row res">
 			<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
 

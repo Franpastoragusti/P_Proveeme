@@ -27,7 +27,7 @@
 				        <div class="form-group">
 				           	<label for="idSector" class="control-label col-xs-4">Medida</label>
 			                    <div class="col-xs-5">
-			                        <select class="form-control" name="idSector" id="idSector" required>
+			                        <select class="form-control" name="medida" id="medida" required>
 			                            <option value="kg">Kilogramos</option>
 			                            <option value="litros">Litros</option>
 			                            <option value="caja">Caja</option>

@@ -190,8 +190,7 @@ class Proveedor extends Database implements Iproveedor{
 		$sentencia1 = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id";
 		$sentencia2 = "UPDATE proveedores SET idSector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor=$id";
 		$sentencia3 = "UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id'";
-		$sentencia4 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";
-		echo $sentencia;	
+		$sentencia4 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";	
  	    $this->disconnect();					
 		if($query = $this->consulta($sentencia1)&&$query2 = $this->consulta($sentencia2)&&$query3 = $this->consulta($sentencia3)&&$query4 = $this->consulta($sentencia4)) // existe -> datos correctos
 		{		

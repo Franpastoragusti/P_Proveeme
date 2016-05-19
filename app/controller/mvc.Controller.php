@@ -34,8 +34,8 @@ class mvc_controller {
 	function decision(){
 		
 		$usuario = new User();
-		var_dump($_SESSION);
-		var_dump($_POST);
+		//var_dump($_SESSION);
+		//var_dump($_POST);
 		//comprobamos que se ha rellenado el login
 		if (!empty($_POST)) {
 					$nombre=$_POST["username"];
@@ -346,7 +346,7 @@ class mvc_controller {
 	function insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor){
 	$restaurante=new Restaurante();
 	$procesado=$restaurante->insertarProcesadoPedido($idPedido,$idRestaurante,$idProveedor);
-	var_dump($procesado);
+	//var_dump($procesado);
 	return $procesado;
 	}
 
@@ -360,13 +360,8 @@ class mvc_controller {
 
 	function insertarContenidoPedido($idPedido,$vectorProductos,$cantidades){
 	$restaurante=new Restaurante();
-	$restaurante->insertarContenidoPedido($idPedido,$vectorProductos,$cantidades);
-
-	
-
-
-
-
+	$confirmPedido=$restaurante->insertarContenidoPedido($idPedido,$vectorProductos,$cantidades);
+	return $confirmPedido;
 	}
 
 
@@ -439,7 +434,7 @@ class mvc_controller {
 				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
 						$pagina = replace_logo('/\#LOGO\#/ms' ,$logo , $pagina);
 		   			}		
-		   				var_dump($_SESSION);
+		   				//var_dump($_SESSION);
 			view_page($pagina);
 
 	}

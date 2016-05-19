@@ -155,16 +155,13 @@ class Restaurante extends Database implements Irestaurante{
 				var_dump($idProducto);
 				$sentencia = "INSERT INTO contenido_pedidos(idPedido, idProducto, cantidad) VALUES ($idPedido, '$idProducto', $cantidades[$i])";
 				if($query = $this->consulta($sentencia)){	
-					echo "bien $i";
+					return true;
 				}else{	
-					echo "SALE FUERA EN $i<br>";
-					echo $vectorProductos[$i]['idProducto']."<br>";
-					echo $cantidades[$i]."<br>";
+					return '';
 				}
 			}else{
-					echo "cantidades es vacio en $i<br>";
-					echo $vectorProductos[$i]['idProducto']."<br>";
-					echo $cantidades[$i]."<br>";
+				return '';
+
 			}
 		}
 		$this->disconnect();
@@ -174,9 +171,6 @@ class Restaurante extends Database implements Irestaurante{
 
 	/*****************************************************************************/
 	/***************************************************************************/
-
-
-
 
 
 

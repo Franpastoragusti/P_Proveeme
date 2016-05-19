@@ -5,7 +5,7 @@ body{
 }
 .frestaurante{
 	background: url("../images/fondo_restaurante.png");
-	background-position:bottom;
+	background-position:top;
 
 }
 .fproveedor{
@@ -78,13 +78,11 @@ footer{
 
 	padding-left: 20px;
 }
-.menu{
-	margin-bottom: 83px;
-}
+
 
 .res{
 	position: absolute;
-	bottom: -95px;
+	bottom: 50px;
 	left: 20px;
 }
 .pro{
@@ -147,9 +145,33 @@ tbody{
 thead{
 	background-color: rgba(158, 160, 158, 0.7);
 	box-shadow: 2px 1px 2px #212021;
+}
 
+
+
+/*Cuando necesite scroll
+tbody{
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 102%;
+	overflow-y: auto;
+	display: block;
+	height: 450px;
 
 }
+thead{
+	background-color: rgba(158, 160, 158, 0.7);
+	box-shadow: 2px 1px 2px #212021;
+	display: block;
+	width: 100%;
+}
+th{
+	width: 20%;
+}
+td{
+	width: 20%;
+}
+*/
+
 .small{
 	width: 300px;
 }
@@ -158,4 +180,13 @@ thead{
 }
 .modal-title{
 	background-color: #ff8000;
+}
+#loggout{
+	width: 40px;
+}
+body > div > div > div > form > div.g-recaptcha > div > div{
+	margin: 0 auto
+}
+body > div > div > div > form > div:nth-child(3) > div{
+	margin: 0 auto;
 }
