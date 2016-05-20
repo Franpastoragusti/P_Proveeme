@@ -202,7 +202,31 @@ class mvc_controller {
 			view_page($pagina);
 		}
 
+		function admin($user,$password){
+		    $adServer = "ldap://10.2.72.199";	
+			var_dump($_POST);
+		    $ldap = ldap_connect($adServer);
+		    $username = $user;    
+		    $password = $password;
+		  
+		    $ldaprdn = 'ProveemeWServer' . "\\" . $username;
+		    ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+		    ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+		    $bind = @ldap_bind($ldap, $ldaprdn, $password);
+		    if ($bind) {	
 
+		    	$pagina=load_page("app/views/default/indexAdmin.php");
+				view_page($pagina);  
+
+		    } else {
+		    	$pagina=load_page("app/views/default/login.php");
+				$error=load_page("app/views/default/modules/m_Error.php");
+				$pagina = replace_error("/listo/" , $error, $pagina);
+				view_page($pagina);
+		    }
+	
+		    ldap_close();
+		}
 
 }
 	

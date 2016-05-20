@@ -183,7 +183,7 @@ td{
 .modal-title{
 	background-color: #ff8000;
 }
-#loggout{
+.loggout{
 	width: 40px;
 }
 body > div > div > div > form > div.g-recaptcha > div > div{
