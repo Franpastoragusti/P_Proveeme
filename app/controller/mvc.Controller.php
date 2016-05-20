@@ -68,7 +68,7 @@ class mvc_controller {
 
 		function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 			$mvcProveedor = new proveedor_controller();
-			$mvcProveedor=registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+			$mvcProveedor->registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
 		}
 
 		function mostrarMisRestaurantes($idProveedor,$logo){
