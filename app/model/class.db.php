@@ -19,11 +19,35 @@ class Database {
 		}
 	}	
 
-	 /* METODO PARA REALIZAR UNA CONSULTA 
-		INPUT:
-		$sql | codigo sql para ejecutar  la consulta
-		OUTPUT: $result
-	*/
+
+
+     /* METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
+     
+  public function conectar()
+	{	
+		include("mysqli.inc.php");
+		if(!isset($this->conexion))
+		{
+			
+		  $this->conexion = mysqli_connect($mysql_server,$mysql_login,$mysql_pass,$mysql_db,3306) or die(mysqli_error());
+		  //para conectar con RDS el Usuario es admin y la pass 1234ABCD
+		  mysqli_set_charset($this->conexion, "utf8");
+	}	
+	}
+	
+  
+ 	*/
+
+
+
+
+
+
+
+
+
+
+
 	public function consulta($sql)
 	{
 		$resultado = mysqli_query($this->conexion,$sql);
