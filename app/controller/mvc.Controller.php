@@ -25,7 +25,8 @@ class mvc_controller {
 
 		function controlExist($nombre){
 			$mvcUser = new user_controller();
-			$mvcUser->controlExist($nombre);
+			$datos=$mvcUser->controlExist($nombre);
+			return $datos;
 
 		}
 

@@ -90,7 +90,11 @@ class user_controller {
 		$usuario->registro($nombre, $pass, $logo);
 	}
 
-
+	function existo($nombre){
+		$usuario = new User();	
+		$idProveedor=$usuario->existo($nombre);
+		return $datos;
+	}
 
 
 

@@ -1,5 +1,5 @@
 <?php
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require_once './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
@@ -174,7 +174,8 @@ $mvc = new mvc_controller();
 							$encripKey=md5($_POST['password']);
 							$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
 							$datos=$mvc->controlExist($_POST['username']);
-									
+							var_dump($datos);
+							echo "holaaaa";
 							if ($_POST['tipoUsuario']=='Restaurante') {
 									//inserta un restaurante
 									$mvc->registroRestaurante($datos[0]['id'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);

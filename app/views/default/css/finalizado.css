@@ -192,3 +192,8 @@ body > div > div > div > form > div.g-recaptcha > div > div{
 body > div > div > div > form > div:nth-child(3) > div{
 	margin: 0 auto;
 }
+
+
+.checkbox{
+	font-family: 'Ubuntu', sans-serif;
+}
