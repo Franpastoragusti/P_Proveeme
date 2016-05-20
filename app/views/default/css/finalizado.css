@@ -3,18 +3,24 @@ body{
 	background-repeat: no-repeat;
 	background: url("../images/fondo_proveeme.png");
 }
+/**********************Clase del body del indexR.php*******************************************************/
 .frestaurante{
 	background: url("../images/fondo_restaurante.png");
 	background-position:top;
 
 }
+/**********************Clase del body del indexP.php*******************************************************/
 .fproveedor{
 		background: url("../images/fondo_proveedores.png");
 		background-position: top;
 }
+
 .encima{
 	z-index: 3;
 }
+
+
+/**********************Fuente de los Titulos***************************************************************/
 h1{
 font-family: 'Cookie', cursive;
 font-size: 150px;
@@ -22,17 +28,20 @@ font-size: 150px;
 color: rgba(185, 113, 60, 0.9);
 text-shadow:4px 2px 4px #212021;
 }
+
+/**********************Parte del login*********************************************************************/
 .login{
 	
 	padding-top: 20px;
 	background-color: rgba(255, 255, 255, 0.2);
 }
 
-
+/**********************Cabecera****************************************************************************/
 header{
 	padding:35px;
 	text-align: center;
 }
+/**********************Botones ****************************************************************************/
 .btn{
 	margin-top: 60px;
 	margin-bottom: 35px;
@@ -42,8 +51,6 @@ header{
 	color: black;	
 	font-size: 15px;
 	font-family: 'Ubuntu', sans-serif !important;
-
-
 }
 
 .btn:hover{
@@ -55,6 +62,7 @@ li>a.btn{
 	color: black;	
 
 }
+/**********************Logo de la empresa/proveedor********************************************************/
 #logo{
 	width:240px;
 	height: 200px;
@@ -62,6 +70,7 @@ li>a.btn{
 	-moz-filter: grayscale(100%);
 
 }
+/**********************Enlaces****************************************************************************/
 li>a.btn:hover{
 	background-color: rgba(92, 94, 90, 0.9);
 }
@@ -76,26 +85,30 @@ a:visited{
 	color: #000;
 }
 
+/**********************FOOTER***********************************************************************/
 footer{
 
 	padding-left: 20px;
 }
 
-
+/**********************Footer de IndexR.php*********************************************************/
 .res{
 	position: absolute;
 	bottom: 50px;
 	left: 20px;
 }
+/**********************Footer de IndexP.php************************************************************/
 .pro{
 	position: absolute;
 	bottom: 50px;
 	left: 20px;
 }
+/**********************Enlace de login.php*****************************************************************/
 .cc{
 	margin-bottom: 70px;
 	
 }
+/**********************************************VUELTA A LA HOME******************************************/
 #casa{
 	position: absolute;
 	width: 40px;
@@ -106,17 +119,25 @@ footer{
 	bottom: 20px;
 	left: 30px;
 }
+
+/*****************************Clase del footer en page.php***********************************************/
+
 .foot{
 	position: absolute;
 	bottom: 30px;
 }
+
+
+
+/*****************************Clase m_botonesVacios.php**********************************************/
 #botonesVacios{
 	height: 270px;
 }
-
+/**********************Clase m_error.php******************************************************/
 .error{
 z-index: 2;
 }
+/*********************Mensaje emergente***************************************************************/
 #mensaje{
 	color:rgba(255, 255, 255, 0);
 	position: absolute;
@@ -130,6 +151,18 @@ z-index: 2;
 .selectSector{
 	padding: 5px 50px;
 }
+.small{
+	width: 300px;
+}
+
+.medium{
+	width: 400px;
+}
+
+.modal-title{
+	background-color: #ff8000;
+}
+/*******************Fuente de los botones**************************************************************/
 h4{
 	background-color: rgba(255, 255, 255, 0.2);
 	padding-top: 10px;
@@ -139,11 +172,11 @@ h4{
 	font-size: 25px;
 	font-family: 'Ubuntu', sans-serif !important;
 }
+/***************Body de las tablas m_ .php************************************************************/
 tbody{
 	background-color: rgba(255, 255, 255, 0.2);
-	
-
 }
+/********************Head de las tablas m_ .php******************************************************/
 thead{
 	background-color: rgba(158, 160, 158, 0.7);
 	box-shadow: 2px 1px 2px #212021;
@@ -174,26 +207,25 @@ td{
 }
 */
 
-.small{
-	width: 300px;
-}
-.medium{
-	width: 400px;
-}
-.modal-title{
-	background-color: #ff8000;
-}
+
+/**********************Imagen de desconexión en IndexPyR*************************************************/
 .loggout{
 	width: 40px;
 }
+
+
+/*
 body > div > div > div > form > div.g-recaptcha > div > div{
 	margin: 0 auto
 }
 body > div > div > div > form > div:nth-child(3) > div{
 	margin: 0 auto;
 }
+*/
 
 
+
+/*************************Checbox tipografia*************************************************/
 .checkbox{
 	font-family: 'Ubuntu', sans-serif;
 }
