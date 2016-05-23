@@ -4,6 +4,7 @@ require_once './app/controller/userController.php';
 require_once './app/controller/restauranteController.php';
 require_once './app/controller/proveedorController.php';
 require_once './app/controller/pedidoController.php';
+require_once './app/model/class.administrador.php';
 
 class mvc_controller {
 
@@ -203,6 +204,11 @@ class mvc_controller {
 			view_page($pagina);
 		}
 
+
+/****************************************************************************************************************************/
+/*****************************************************FUNCIONES DE ADMINISTRADOR***********************************************/
+/****************************************************************************************************************************/
+
 		function admin($user,$password){
 		    $adServer = "ldap://10.2.72.199";	
 			var_dump($_POST);
@@ -229,6 +235,40 @@ class mvc_controller {
 		    ldap_close();
 		}
 
+
+
+		function mostrarTodosPedidos(){
+			$admin=new Admin();
+			
+			$pagina=load_template();	
+			$notFound=load_page('./app/views/default/modules/m_noResultado.php');
+			$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
+			$tsArray = $admin->verPedidos();			   
+			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
+			    	//var_dump($tsArray);
+					//carga la tabla de la seccion de m.table_univ.php
+					include './app/views/default/modules/m_pedidosProveedor.php';
+					$table = ob_get_clean();	
+
+					//realiza el parseado 
+						$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
+						$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,'http://www.emprendepyme.net/wp-content/uploads/2014/11/administrador.jpg' , $pagina);
+			   	}else{
+
+				   		$pagina = replace_content('/\#CONTENT\#/ms' ,$notFound, $pagina);	
+				   		$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);
+						$pagina = replace_logo('/\#LOGO\#/ms' ,'http://www.emprendepyme.net/wp-content/uploads/2014/11/administrador.jpg' , $pagina);
+	   			}		
+			view_page($pagina);
+
+
+
+			var_dump($datos);
+		}
+/****************************************************************************************************************************/
+/*****************************************************FIN FUNCIONES DE ADMINISTRADOR*****************************************/
+/****************************************************************************************************************************/
 }
 	
 

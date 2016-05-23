@@ -19,7 +19,7 @@
 			<section class="col-md-4 col-md-offset-4 text-center menu">
 					
 					<ul class="nav nav-pills nav-stacked">
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLPedido">Ver pedidos</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=TPedidos">Ver pedidos</a></li>
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLProveedores">Ver usuarios</a></li>
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RModCuenta">Eliminar cuenta</a></li>
 					</ul>

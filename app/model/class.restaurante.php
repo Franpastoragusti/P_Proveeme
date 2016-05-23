@@ -159,22 +159,6 @@ class Restaurante extends Database implements Irestaurante{
 	/***************************************************************************/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public function detectaProducto($nombreProd,$medida){
 		 	$this->conectar();		
 			$query = $this->consulta("SELECT COUNT(*) FROM productos p WHERE p.nombre='$nombreProd' AND p.medida='$medida'");
@@ -193,18 +177,7 @@ class Restaurante extends Database implements Irestaurante{
 			
 			}	
 
-		 }
-
-
-
-
-
-
-
-
-
-
-
+	}
 
 
  

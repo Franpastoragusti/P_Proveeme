@@ -37,7 +37,6 @@
 					      </div>
 					    </div>
 					 </div>
-					 <div class="g-recaptcha" data-sitekey="6Lc0pB8TAAAAAAxV42kLAcE7TNuala8Kv-BQiyte"></div>
 						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR">
 				</form>
 				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block cc">Registrate</a>

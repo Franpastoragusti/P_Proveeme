@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="app/views/default/css/formularios.css"/>
@@ -147,8 +148,10 @@
                         <textarea rows="3" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
                     </div>
                 </div>
+
                 <div class="form-group text-center">
                     <div class="col-xs-offset-3 col-xs-9">
+                     <div class="g-recaptcha" data-sitekey="6Lc0pB8TAAAAAAxV42kLAcE7TNuala8Kv-BQiyte"></div>
                         <input type="submit" class="btn btn-warning" value="Enviar">
                         <input type="reset" class="btn1 btn-default" value="Limpiar">
                     </div>
