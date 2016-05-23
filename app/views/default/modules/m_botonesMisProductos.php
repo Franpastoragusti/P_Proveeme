@@ -21,7 +21,7 @@
 				        <div class="form-group">
 				           	<label for="nombreProd" class="control-label col-xs-3">Producto</label>
 				            <div class="col-xs-9">
-				                <input type="text" class="form-control" name="nombreProd" id="nombreProd" placeholder="Nombre del producto" required>
+				                <input type="text" class="form-control" name="nombreProd" id="nombreProd" placeholder="Número del producto" required>
 				            </div>
 				        </div>
 				        <div class="form-group">

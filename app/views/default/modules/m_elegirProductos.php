@@ -11,7 +11,7 @@
 						<th>Cantidad</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="t-ProdPed">
 							<?php foreach ($tsArray as $data): ?>
 								<tr>
 									<td><?php echo $data['idProducto'];?></td>
@@ -22,7 +22,7 @@
 									<td>
 									    <div class="form-group">
 									        <div class="col-xs-5">
-									            <input type="number" class="form-control cantidades" name="cantidades[]" id="cantidades">
+									            <input type="number" class="form-control cantidades" name="cantidades[]" min="0" id="cantidades">
 									        </div>
 									    </div>
 							    	</td>

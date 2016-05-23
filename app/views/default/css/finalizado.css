@@ -172,32 +172,18 @@ h4{
 	font-size: 25px;
 	font-family: 'Ubuntu', sans-serif !important;
 }
+
 /***************Body de las tablas m_ .php************************************************************/
 tbody{
 	background-color: rgba(255, 255, 255, 0.2);
-}
-/********************Head de las tablas m_ .php******************************************************/
-thead{
-	background-color: rgba(158, 160, 158, 0.7);
-	box-shadow: 2px 1px 2px #212021;
-}
-
-
-
-/*Cuando necesite scroll
-tbody{
-	background-color: rgba(255, 255, 255, 0.2);
-	width: 102%;
-	overflow-y: auto;
-	display: block;
-	height: 450px;
-
-}
-thead{
-	background-color: rgba(158, 160, 158, 0.7);
-	box-shadow: 2px 1px 2px #212021;
-	display: block;
 	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: block;
+	height: 430px;
+}
+body > main > div.col-md-9.pull-right > table > tbody > tr > td{
+	width: 25%;
 }
 th{
 	width: 20%;
@@ -205,15 +191,38 @@ th{
 td{
 	width: 20%;
 }
-*/
+body > main > div.col-md-9.pull-right.tyu > table > tbody{
+	height: 300px;
+}
+/********************Head de las tablas m_ .php******************************************************/
+thead{
+	background-color: rgba(158, 160, 158, 0.7);
+	box-shadow: 2px 1px 2px #212021;
+	display: block;
+	width: 100%;
+}
 
+
+body > main > div.col-md-9.pull-right > table > thead > tr > th{
+	width: 25%;
+}
+
+
+.cantidades{
+	width: 70px;
+}
+.t-ProdPed{
+	height: 400px;
+}
 
 /**********************Imagen de desconexión en IndexPyR*************************************************/
 .loggout{
 	width: 40px;
 }
 
-
+.envioPedido{
+	margin: 0px;
+}
 
 /*************************Checbox tipografia*************************************************/
 .checkbox{

@@ -14,7 +14,7 @@
 					<?php foreach ($tsArray as $data): ?>
 						<tr>
 							<td><?php echo $data['idPedido'];?></td>
-							<td><?php echo $data['nombreEmpresa']."  (Id=". $data['idProveedor'].")";?></td>
+							<td><?php echo $data['nombreEmpresa'];?></td>
 							<td><?php echo $data['fechaEntrega'];?></td>
 							<td><?php echo $data['hora'];?></td>
 							<td><?php echo $data['precioTotalPedido'];?></td>

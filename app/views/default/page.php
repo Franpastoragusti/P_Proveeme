@@ -24,7 +24,7 @@
 				<a href="index.php?action=MenuPrincipal"> <img id="casa" src="app/views/default/images/home.png"></a>
 			</section>
 		</div>
-		<div class="col-md-9 pull-right">
+		<div class="col-md-9 pull-right tyu">
 			#CONTENT#
 		</div>
 

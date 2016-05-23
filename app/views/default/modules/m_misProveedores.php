@@ -1,5 +1,5 @@
 <h4 class="text-center">Proveedores</h4>
-				<table class="table table-hover table-responsive">
+				<table class="table table-hover">
 				<thead class="text-center">
 					<tr>
 						<th>Proveedor</th>

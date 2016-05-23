@@ -43,7 +43,7 @@
 						<th>Dirección</th>
 						<th>Localidad</th>
 						<th>Teléfono</th>
-						<th>Pedido Mínimo €</th>
+						<th>Pedido Mínimo</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -1,5 +1,5 @@
 <?php
-	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	require_once './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
