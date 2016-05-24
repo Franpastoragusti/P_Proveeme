@@ -41,7 +41,7 @@
                 <label class="control-label col-xs-3">Tipo de Usuario</label>
                 <div class="col-xs-2">
                     <label for="restaurante" class="radio-inline">
-                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="idSector.disabled=true;pedidoMin.disabled=true" required> Restaurante
+                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante" onclick="idSector.disabled=true;pedidoMin.disabled=true" required> Restaurante
                     </label>
                 </div>
                 <div class="col-xs-2">

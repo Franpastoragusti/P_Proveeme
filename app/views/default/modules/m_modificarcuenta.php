@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <header class="row text-center">
         <h1>Provéeme</h1>
-        <h4>Crea tu propia cuenta</h4>
+        <h4>Modifica los datos de tu Cuenta</h4>
     </header>
     <form class="form-horizontal" method="POST" action="index.php">
         <fieldset>
@@ -41,7 +41,7 @@
                 <label class="control-label col-xs-3">Tipo de Usuario</label>
                 <div class="col-xs-2">
                     <label for="restaurante" class="radio-inline">
-                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante"onclick="idSector.disabled=true;pedidoMin.disabled=true" required> Restaurante
+                        <input type="radio" name="tipoUsuario" id="restaurante" value="Restaurante" onclick="idSector.disabled=true;pedidoMin.disabled=true" required> Restaurante
                     </label>
                 </div>
                 <div class="col-xs-2">
