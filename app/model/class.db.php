@@ -4,9 +4,9 @@ CLASE PARA LA CONEXION Y LA GESTION DE LA BASE DE DATOS Y LA PAGINA WEB
 */
 class Database {
 
- private $conexion;
+ protected $conexion;
   
-    /* METODO PARA CONECTAR CON LA BASE DE DATOS
+    /*METODO PARA CONECTAR CON LA BASE DE DATOS
 	public function conectar()
 	{
 		if(!isset($this->conexion))
@@ -19,7 +19,7 @@ class Database {
 		}
 	}	
 
-*/
+	*/
 
    //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
      
@@ -32,11 +32,11 @@ class Database {
 		  $this->conexion = mysqli_connect($mysql_server,$mysql_login,$mysql_pass,$mysql_db,3306) or die(mysqli_error());
 		  //para conectar con RDS el Usuario es admin y la pass 1234ABCD
 		  mysqli_set_charset($this->conexion, "utf8");
-	}	
+		}	
 	}
 	
   
- 	//*/
+
 
 
 

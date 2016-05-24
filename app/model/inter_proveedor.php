@@ -15,7 +15,7 @@ interface Iproveedor {
 	 public function verMisRestaurantes($idProveedor);
 
 	 
-	 public function modificarCuenta($id,$nombreUsuario,$pass,$logo,
+	 public function modificarCuenta($id,$nombreUsuario,$logo,
 	 	$sector, $pedidoMinimo,
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
 	 	$provincia, $localidad, $calle, $numero, $cp);

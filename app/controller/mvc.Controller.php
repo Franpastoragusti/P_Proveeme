@@ -107,7 +107,10 @@ class mvc_controller {
 			$mvcProveedor->eliminarProducto($idProd, $idProveedor);
 		}
 
-
+		function modificarCuenta($idProveedor){
+			$mvcProveedor = new proveedor_controller();
+			$mvcProveedor->modificarCuenta($idProveedor);
+		}
 
 
 /****************************************************************************************************************************/

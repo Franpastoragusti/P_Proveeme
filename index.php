@@ -1,5 +1,5 @@
 <?php
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	error_reporting(E_PARSE);
 	require_once './app/controller/mvc.Controller.php';
 	require_once "./app/lib/recaptchalib.php";
 	$secret = "6Lc0pB8TAAAAANveSGRDa0p-DF5iQJMHf7-6EEco";
@@ -13,7 +13,6 @@ $mvc = new mvc_controller();
 /****************************************************************************************************************************/
 /**********************************************METODOS CON GET***************************************************************/
 /****************************************************************************************************************************/
-
 	if( $_GET['action'] == 'crearCuenta' ) //muestra el modulo de crear cuenta
 	{	
 		$mvc->introducirInfo();	
@@ -21,10 +20,28 @@ $mvc = new mvc_controller();
 	}elseif ( $_GET['action'] == 'PMRestaurantes' ) //Muestra los restaurantes que han comerciado con el proveedor
 	{
 		$mvc->mostrarMisRestaurantes($_SESSION['id'],$_SESSION['logo']);
-		
-	}elseif ( $_GET['action'] == 'PLPedido' ){ //Muestra la lista de pedidos de un proveedor
 
+
+
+
+
+	
+	}elseif ( $_GET['action'] == 'PModCuenta' ) //Muestra los restaurantes que han comerciado con el proveedor
+	{
+
+		$mvc->modificarCuenta($_SESSION['id']);
+
+
+
+
+
+
+
+
+
+	}elseif ( $_GET['action'] == 'PLPedido' ){ //Muestra la lista de pedidos de un proveedor
 		$mvc->mostrarPedidos($_SESSION['id'],$_SESSION['logo']);
+
 	
 
 	}elseif ( $_GET['action'] == 'PLProductos' ){ //Muestra la lista de productos de un proveedor

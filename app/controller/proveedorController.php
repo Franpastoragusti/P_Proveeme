@@ -43,7 +43,7 @@ class proveedor_controller {
 		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//var_dump($tsArray);
+					//var_dump($_SESSION);
 					//carga la tabla de la seccion de m.table_univ.php
 					include './app/views/default/modules/m_pedidosProveedor.php';
 					$table = ob_get_clean();	
@@ -132,16 +132,27 @@ class proveedor_controller {
 	}
 
 
-function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
-			$Proveedor=new Proveedor();
-			$pagina=load_page("app/views/default/login.php");
-			$Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
-			view_page($pagina);
+	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
+				$proveedor=new Proveedor();
+				$pagina=load_page("app/views/default/login.php");
+				$Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+				view_page($pagina);
+		}
+
+
+
+	function modificarCuenta($idProveedor){
+		$proveedor=new Proveedor();
+		$pagina=load_page("app/views/default/modules/m_modificarcuenta.php");
+		$data=$proveedor->misDatos($idProveedor);
+		//var_dump($data);
+		$var= $data[0]['logo'];
+		
+		view_page($pagina);
+		//$proveedor->modificarCuenta($data[0]['idProveedor'],$data[0]['nombreUsuario'],$data[0]['logo'],$data[0]['idSector'], $data[0]['pedidoMinimo'],$data[0]['cif'], $data[0]['nombreEmpresa'], $data[0]['email'],$data[0]['telefono'], $data[0]['descripcion'],$data[0]['provincia'], $data[0]['localidad'], $data[0]['calle'], $data[0]['numero'], $data[0]['cp']);
+		//$var=$data[0]['nombreUsuario'];
+		
 	}
-
-
-
-
 
 
 }

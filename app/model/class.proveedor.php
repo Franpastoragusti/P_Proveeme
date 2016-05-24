@@ -181,13 +181,13 @@ class Proveedor extends Database implements Iproveedor{
 		}			
 	}
 	 
-	function modificarCuenta($id,$nombreUsuario,$pass,$logo,
+	function modificarCuenta($id,$nombreUsuario,$logo,
 	 	$sector, $pedidoMinimo,
 	 	$cif, $nombreEmpresa, $email, $telefono, $descripcion,
 	 	$provincia, $localidad, $calle, $numero, $cp){
 	 	//conexion a la base de datos
 		$this->conectar();	
-		$sentencia1 = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', pass='$pass', logo='$logo' WHERE id=$id";
+		$sentencia1 = "UPDATE usuarios SET nombreUsuario='$nombreUsuario', logo='$logo' WHERE id=$id";
 		$sentencia2 = "UPDATE proveedores SET idSector='$sector', pedidoMinimo='$pedidoMinimo' WHERE idProveedor=$id";
 		$sentencia3 = "UPDATE empresa SET cif='$cif', nombreEmpresa='$nombreEmpresa', email='$email', telefono='telefono', descripcion='$descripcion' WHERE idUsuario='$id'";
 		$sentencia4 = "UPDATE direccion SET provincia='$provincia', localidad='$localidad', calle='$calle', numero='$numero', cp='$cp' WHERE idUsuario='$id'";	
@@ -201,6 +201,26 @@ class Proveedor extends Database implements Iproveedor{
 		}
 	 }
 
+
+	 function misDatos($idProveedor){
+	 	$this->conectar();		
+		$query = $this->consulta("SELECT  u.nombreUsuario, u.logo, prov.idProveedor, e.nombreEmpresa, e.cif, d.calle, d.numero, d.cp, d.localidad, d.provincia,
+								 e.telefono, e.email, prov.pedidoMinimo, prov.idSector
+								FROM empresa e, proveedores prov, direccion d, usuarios u
+								WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor AND d.idUsuario=u.id AND d.idUsuario=$idProveedor");
+ 	    $this->disconnect();					
+		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
+		{		
+				//se llenan los datos en un array
+				while ( $tsArray = $this->fetch_assoc($query) ) 
+					$data[] = $tsArray;			
+		
+				return $data;
+		}else
+		{	
+			return '';
+		}	
+	 }
 	 function registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 	 	//conexion a la base de datos
 		$this->conectar();	
