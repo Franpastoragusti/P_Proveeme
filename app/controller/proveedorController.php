@@ -126,7 +126,6 @@ class proveedor_controller {
 
 			$pagina=load_template();
 			if ($proveedor->modificarEstadoPedido($idPedido, $estado, $hora, $fecha)){
-				echo "Aleluya";
 			}else{
 				echo "error al insertar";
 			}

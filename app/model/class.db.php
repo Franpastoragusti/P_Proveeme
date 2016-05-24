@@ -6,7 +6,7 @@ class Database {
 
  private $conexion;
   
-    /* METODO PARA CONECTAR CON LA BASE DE DATOS*/
+    /* METODO PARA CONECTAR CON LA BASE DE DATOS
 	public function conectar()
 	{
 		if(!isset($this->conexion))
@@ -19,9 +19,9 @@ class Database {
 		}
 	}	
 
+*/
 
-
-     /* METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
+   //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
      
   public function conectar()
 	{	
@@ -36,7 +36,7 @@ class Database {
 	}
 	
   
- 	*/
+ 	//*/
 
 
 

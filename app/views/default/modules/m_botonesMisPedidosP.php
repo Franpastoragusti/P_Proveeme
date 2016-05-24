@@ -64,13 +64,13 @@
 				         <div class="form-group">
 				           	<label for="hora" class="control-label col-xs-3">Hora de entrega</label>
 				            <div class="col-xs-9">
-				                <input type="time" class="form-control" name="hora" id="hora" required>
+				                <input type="time" class="form-control" name="hora" id="hora">
 				            </div>
 				        </div>
 				         <div class="form-group">
 				           	<label for="fecha" class="control-label col-xs-3">Fecha de entrega</label>
 				            <div class="col-xs-9">
-				                <input type="date" class="form-control" name="fecha" id="fecha" placeholder="0000-00-00" required>
+				                <input type="date" class="form-control" name="fecha" id="fecha" placeholder="00-00-0000">
 				            </div>
 				        </div>
 				        <div class="modal-footer">
