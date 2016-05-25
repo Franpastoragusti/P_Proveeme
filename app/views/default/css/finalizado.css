@@ -191,9 +191,7 @@ th{
 td{
 	width: 20%;
 }
-body > main > div.col-md-9.pull-right.tyu > table > tbody{
-	height: 300px;
-}
+
 /********************Head de las tablas m_ .php******************************************************/
 thead{
 	background-color: rgba(158, 160, 158, 0.7);

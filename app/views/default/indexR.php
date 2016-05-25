@@ -21,7 +21,7 @@
 					<ul class="nav nav-pills nav-stacked">
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLPedido">Lista de Pedidos</a></li>
 		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RLProveedores">Lista de Proveedores</a></li>
-		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=RModCuenta">Modificar datos de la cuenta</a></li>
+		    			<li><a class="btn btn-primary center-block btn-lg btn-block" href="index.php?action=PModCuenta">Modificar datos de la cuenta</a></li>
 					</ul>
 					<a href="index.php"> <img class="loggout" src="app/views/default/images/logout.png"></a>
 			</section>
