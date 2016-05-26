@@ -93,17 +93,17 @@ class proveedor_controller {
 		if($tsArray!=''){
 
 			if ($proveedor->addProductoTablaProd_Prov($tsArray[0]['idProducto'], $idProveedor, $precio)) {
-				echo "insertado";
+				
 			}
 
 		}else{
 
 			if ($proveedor->addProductoTablaProd($idSector, $nombreProd, $medida)) {
-				echo "Creado producto nuevo";
+				
 			}
 			$idProducto=$proveedor->detectaProducto($nombreProd,$medida);
 			if ($proveedor->addProductoTablaProd_Prov($idProducto[0]['idProducto'], $idProveedor, $precio)) {
-				echo "Creado y asumido";
+				
 			}
 			
 		}
