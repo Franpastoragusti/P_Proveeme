@@ -19,7 +19,7 @@ class proveedor_controller {
 		$tsArray = $proveedor->verMisRestaurantes($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 			    	//var_dump($tsArray);
-					//carga la tabla de la seccion de m.table_univ.php
+				
 					include './app/views/default/modules/m_misRestaurantes.php';
 					$table = ob_get_clean();	
 
@@ -44,7 +44,7 @@ class proveedor_controller {
 		$tsArray = $proveedor->verListaPedidos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 					//var_dump($_SESSION);
-					//carga la tabla de la seccion de m.table_univ.php
+				
 					include './app/views/default/modules/m_pedidosProveedor.php';
 					$table = ob_get_clean();	
 					//realiza el parseado 
@@ -66,7 +66,7 @@ class proveedor_controller {
 		$botones=load_page("app/views/default/modules/m_botonesMisProductos.php");
 		$tsArray = $proveedor->verProductos($idProveedor);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
+				
 					include './app/views/default/modules/m_listaProductos.php';
 					$table = ob_get_clean();
 					//realiza el parseado 

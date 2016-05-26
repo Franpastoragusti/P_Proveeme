@@ -16,7 +16,7 @@ class restaurante_controller {
 		$tsArray = $restaurante->verProveedoresPorSector($idSector);	
 		//var_dump($tsArray);		   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
+
 					include './app/views/default/modules/m_listaProveedorR.php';
 					$table = ob_get_clean();	
 
@@ -39,7 +39,7 @@ class restaurante_controller {
 		$botones=load_page('./app/views/default/modules/m_botonesMisProveedores.php');
 		$tsArray = $restaurante->verListaProveedores($idRestaurante);			   
 			    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
-					//carga la tabla de la seccion de m.table_univ.php
+	
 					include './app/views/default/modules/m_listaProveedorR.php';
 					$table = ob_get_clean();	
 					//realiza el parseado 
@@ -63,7 +63,7 @@ class restaurante_controller {
 			$tsArray = $restaurante->verListaPedidos($idRestaurante);			   
 				    if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						//var_dump($tsArray);
-						//carga la tabla de la seccion de m.table_univ.php
+			
 						include './app/views/default/modules/m_pedidosRestaurante.php';
 						$table = ob_get_clean();	
 						//realiza el parseado 
@@ -89,7 +89,7 @@ class restaurante_controller {
 		 //var_dump($tsArray);
 		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						
-						//carga la tabla de la seccion de m.table_univ.php
+		
 		 				$_SESSION['nombreProveedor']=$tsArray[0]['nombreEmpresa'];
 						include './app/views/default/modules/m_elegirProductos.php';
 						$table = ob_get_clean();	
