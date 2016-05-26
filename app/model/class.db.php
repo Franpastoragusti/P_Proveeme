@@ -6,7 +6,7 @@ class Database {
 
  protected $conexion;
   
-    METODO PARA CONECTAR CON LA BASE DE DATOS
+    //METODO PARA CONECTAR CON LA BASE DE DATOS
 	public function conectar()
 	{
 		if(!isset($this->conexion))
