@@ -6,22 +6,22 @@ class Database {
 
  protected $conexion;
   
-    /*METODO PARA CONECTAR CON LA BASE DE DATOS
+    //METODO PARA CONECTAR CON LA BASE DE DATOS
 	public function conectar()
 	{
 		if(!isset($this->conexion))
 		{
 			
-		  $this->conexion = (mysqli_connect("localhost","root","root", "proveeme"));
+		  $this->conexion = (mysqli_connect("localhost","root","", "proveeme"));
 		  //para conectar con RDS el Usuario es admin y la pass 1234ABCD
 		  mysqli_set_charset($this->conexion, "utf8");
 		  
 		}
 	}	
 
-	*/
+	
 
-   //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
+  /* //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
      
   public function conectar()
 	{	
@@ -39,7 +39,7 @@ class Database {
 
 
 
-
+*/
 
 
 
