@@ -39,11 +39,11 @@
 					 </div>
 						<input class="btn btn-primary center-block btn-lg btn-block" type="submit" id="enviar" value="ENTRAR">
 				</form>
-				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block cc">Registrate</a>
+				<a href="index.php?action=crearCuenta" class="btn btn-primary center-block btn-lg btn-block ">Registrate</a>
 			</div>
 		</div>
 		
-		<footer class="row res">
+		<footer class="row foot">
 			<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
 

@@ -26,7 +26,7 @@
 					<a href="index.php"> <img class="loggout" src="app/views/default/images/logout.png"></a>
 			</section>
 
-		<footer class="container-fluid vertical text-center res">
+		<footer class="container-fluid vertical text-center foot">
 		<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
 	</main>	

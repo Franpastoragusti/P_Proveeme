@@ -91,40 +91,24 @@ footer{
 	padding-left: 20px;
 }
 
-/**********************Footer de IndexR.php*********************************************************/
-.res{
-	position: absolute;
-	bottom: 50px;
-	left: 20px;
-}
-/**********************Footer de IndexP.php************************************************************/
-.pro{
-	position: absolute;
-	bottom: 50px;
-	left: 20px;
-}
-/**********************Enlace de login.php*****************************************************************/
-.cc{
-	margin-bottom: 70px;
-	
-}
+
 /**********************************************VUELTA A LA HOME******************************************/
 #casa{
 	position: absolute;
 	width: 40px;
-	bottom: -100px;
+	
 }
 .casita{
 	position: absolute;
-	bottom: 20px;
-	left: 30px;
+	bottom: -3%;
+	left: 7%;
 }
 
-/*****************************Clase del footer en page.php***********************************************/
+/*****************************Clase del footer***********************************************/
 
 .foot{
 	position: absolute;
-	bottom: 30px;
+	bottom: 3%;
 }
 
 
@@ -180,7 +164,7 @@ tbody{
 	overflow-y: auto;
 	overflow-x: hidden;
 	display: block;
-	height: 430px;
+	height: 370px;
 }
 body > main > div.col-md-9.pull-right > table > tbody > tr > td{
 	width: 25%;
