@@ -16,7 +16,7 @@
 							<td><?php echo $data['cantidad'];?></td>
 							<td><?php echo $data['Precio'];?></td>
 							<td><?php echo $data['medida'];?></td>
-							<td><?php echo $data['preciototal'];?></td>
+							<td><?php echo round($data['preciototal'], 2);?></td>
 						</tr>
 					 <?php endforeach;?>				
 				</tbody>

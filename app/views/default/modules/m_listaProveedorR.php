@@ -18,7 +18,7 @@
 											<span class="caret"></span> 
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="drop3">
-											<li><a href="index.php?sector=1">Carniceria</a></li> 
+											<li><a href="index.php?sector=1" selected>Carniceria</a></li> 
 											<li><a href="index.php?sector=2">Bebidas</a></li> 
 											<li><a href="index.php?sector=3">Reposteria</a></li> 
 											<li><a href="index.php?sector=4">Congelados</a></li> 

@@ -26,10 +26,10 @@
 					</ul>
 					<a href="index.php"> <img class="loggout" src="app/views/default/images/logout.png"></a>
 			</section>
+	</main>	
 		<footer class="container-fluid vertical text-center foot">
 		<p>© 2016 por Valhala Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
 		</footer>
-	</main>	
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>		
 </body>
 </html>

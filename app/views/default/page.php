@@ -24,14 +24,14 @@
 				<a href="index.php?action=MenuPrincipal"> <img id="casa" src="app/views/default/images/home.png"></a>
 			</section>
 		</div>
-		<div class="col-md-9 pull-right tyu">
+		<div class="col-md-9 pull-right">
 			#CONTENT#
 		</div>
 
 	</main>	
-			<footer class="container-fluid vertical text-center foot">
+	<footer class="container-fluid vertical text-center foot">
 		<p>© 2016 por Valhalla Project | <a href="http://goo.gl/x4tE2M">Florida Universitaria</a></p>
-		</footer>
+	</footer>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>	
 </body>

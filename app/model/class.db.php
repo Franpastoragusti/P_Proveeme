@@ -6,6 +6,7 @@ class Database {
 
  protected $conexion;
   
+ /*
     //METODO PARA CONECTAR CON LA BASE DE DATOS
 	public function conectar()
 	{
@@ -19,9 +20,9 @@ class Database {
 		}
 	}	
 
-	
+	*/
 
-  /* //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
+   //  METODO PARA CONECTAR CON LA BASE DE DATOS CON AWS
      
   public function conectar()
 	{	
@@ -35,11 +36,7 @@ class Database {
 		}	
 	}
 	
-  
-
-
-
-*/
+ 
 
 
 

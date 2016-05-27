@@ -85,7 +85,7 @@ class restaurante_controller {
 		$notFound=load_page('./app/views/default/modules/m_noResultado.php');
 		$tsArray=$restaurante->verProductosProveedor($nombreProveedor);
 		$pagina=load_template();
-		$botones=load_page('./app/views/default/modules/m_botonesMisPedidosP.php');
+		$botones=load_page('./app/views/default/modules/m_botonesListaPedidosR.php');
 		 //var_dump($tsArray);
 		 if($tsArray!=''){//si existen registros carga el modulo  en memoria y rellena con los datos 
 						
@@ -93,7 +93,7 @@ class restaurante_controller {
 		 				$_SESSION['nombreProveedor']=$tsArray[0]['nombreEmpresa'];
 						include './app/views/default/modules/m_elegirProductos.php';
 						$table = ob_get_clean();	
-	
+						$botones=load_page('./app/views/default/modules/m_botonesVacios.php');
 						//realiza el parseado 
 							$pagina = replace_content('/\#CONTENT\#/ms' ,$table , $pagina);
 							$pagina = replace_botones('/\#BOTONES\#/ms' ,$botones, $pagina);

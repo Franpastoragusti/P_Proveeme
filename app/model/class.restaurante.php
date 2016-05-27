@@ -183,10 +183,7 @@ class Restaurante extends Database implements Irestaurante{
  
 	 public function verListaProveedores($idRestaurante){
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT prov.idProveedor, e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia,
-								 e.telefono, e.email, prov.pedidoMinimo, prov.idSector
-								FROM empresa e, proveedores prov, direccion d
-								WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor");
+		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia, e.telefono, e.email, prov.pedidoMinimo FROM empresa e, proveedores prov, direccion d WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor");
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
 		{		
@@ -203,7 +200,11 @@ class Restaurante extends Database implements Irestaurante{
 	 }
 	public function verProveedoresPorSector($idSector){
 	 	$this->conectar();		
-		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia, e.telefono, e.email, prov.pedidoMinimo FROM empresa e, proveedores prov, direccion d, productos p, productos_proveedor prod WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor AND prod.idProveedor=prov.idProveedor AND p.idProducto=prod.idProducto AND p.idSector=$idSector GROUP BY prov.idProveedor");
+	 	if ($idSector==0) {
+	 		$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia, e.telefono, e.email, prov.pedidoMinimo FROM empresa e, proveedores prov, direccion d WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor");
+	 	}else{
+			$query = $this->consulta("SELECT e.nombreEmpresa, prov.idProveedor, d.calle, d.numero, d.cp, d.localidad, d.provincia, e.telefono, e.email, prov.pedidoMinimo FROM empresa e, proveedores prov, direccion d, productos p, productos_proveedor prod WHERE e.idUsuario=prov.idProveedor AND d.idUsuario=prov.idProveedor AND prod.idProveedor=prov.idProveedor AND p.idProducto=prod.idProducto AND p.idSector=$idSector GROUP BY prov.idProveedor");
+		}
  	    $this->disconnect();					
 		if($this->numero_de_filas($query) > 0) // existe -> datos correctos
 

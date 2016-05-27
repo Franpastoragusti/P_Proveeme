@@ -24,7 +24,6 @@ body{
 h1{
 font-family: 'Cookie', cursive;
 font-size: 150px;
-
 color: rgba(185, 113, 60, 0.9);
 text-shadow:4px 2px 4px #212021;
 }
@@ -38,7 +37,8 @@ text-shadow:4px 2px 4px #212021;
 
 /**********************Cabecera****************************************************************************/
 header{
-	padding:35px;
+	padding:30px;
+	padding-top: 2%;
 	text-align: center;
 }
 /**********************Botones ****************************************************************************/
@@ -94,21 +94,20 @@ footer{
 
 /**********************************************VUELTA A LA HOME******************************************/
 #casa{
-	position: absolute;
+	
 	width: 40px;
 	
 }
 .casita{
-	position: absolute;
-	bottom: -3%;
+
+
 	left: 7%;
 }
 
 /*****************************Clase del footer***********************************************/
 
 .foot{
-	position: absolute;
-	bottom: 3%;
+	text-align: left;
 }
 
 
@@ -193,9 +192,7 @@ body > main > div.col-md-9.pull-right > table > thead > tr > th{
 .cantidades{
 	width: 70px;
 }
-.t-ProdPed{
-	height: 400px;
-}
+
 
 /**********************Imagen de desconexión en IndexPyR*************************************************/
 .loggout{

@@ -50,7 +50,7 @@ $mvc = new mvc_controller();
 	
 	}elseif ( $_GET['action'] == 'RLProveedores' ){ //Muestra la lista con todos los proveedores existentes
 
-		$mvc->mostrarProveedores($_SESSION['id'],$_SESSION['logo']);
+		$mvc->buscarProveedor(1,$_SESSION['id'],$_SESSION['logo']);
 
 	}elseif ( $_GET['action'] == 'MenuPrincipal' ){	//Permite retroceder al menu principal del restaurante o del proveedor
 
@@ -105,7 +105,7 @@ $mvc = new mvc_controller();
 				break;
 
 			default:
-				$mvc->buscarProveedor(10,$_SESSION['id'],$_SESSION['logo']);
+				$mvc->buscarProveedor(1,$_SESSION['id'],$_SESSION['logo']);
 				break;
 					}
 		}elseif (isset($_POST['admin'])){	//Permite retroceder al menu principal del restaurante o del proveedor
@@ -193,8 +193,6 @@ $mvc = new mvc_controller();
 								$encripKey=md5($_POST['password']);
 								$mvc->registroUsuario($_POST['username'], $encripKey, $_POST["logo"]);
 								$datos=$mvc->controlExist($_POST['username']);
-								var_dump($datos);
-								echo "holaaaa";
 								if ($_POST['tipoUsuario']=='Restaurante') {
 										//inserta un restaurante
 										$mvc->registroRestaurante($datos[0]['id'],$_POST['empresa'],$_POST['cif'],$_POST['telefono'],$_POST['email'],$_POST['provincia'],$_POST['localidad'],$_POST['cp'],$_POST['calle'],$_POST['numero'],$_POST['descripcion']);

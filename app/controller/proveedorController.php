@@ -135,7 +135,7 @@ class proveedor_controller {
 	function registroProveedor($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion){
 				$proveedor=new Proveedor();
 				$pagina=load_page("app/views/default/login.php");
-				$Proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
+				$proveedor->registro($id,$sector,$pedidoMin,$empresa,$cif,$telefono,$email,$provincia,$localidad,$cp,$calle,$numero,$descripcion);
 				view_page($pagina);
 		}
 
