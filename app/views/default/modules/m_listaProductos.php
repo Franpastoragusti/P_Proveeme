@@ -1,7 +1,7 @@
 <h4 class="text-center">Productos</h4>
 				<table class="table table-hover t-5">
 				<thead class="text-center">
-					<tr>
+					<tr class="telegir">
 						<th>Nº</th>
 						<th>Producto</th>
 						<th>Tipo</th>
